@@ -4,6 +4,22 @@
 
 ---
 
+## 25/07/2026 — Edição do dia
+
+| Caderno | Manchete | Fonte |
+|---|---|---|
+| Brasil | Governo nega visto a diplomatas americanos após suspeita de ligação com campanha eleitoral | UOL Notícias |
+| Economia & Negócios | MDIC calcula que 23,1% das exportações do Brasil para os EUA sofrerão impacto do tarifaço | InfoMoney |
+| Tecnologia & IA | Coalisão de 25 gigantes de tech liderada por Nvidia, Meta e Microsoft rejeita restrições a modelos de IA abertos | TechCrunch |
+| Marketing & Growth | GEO e IA viram prioridade máxima no marketing digital: investimento em vídeo digital no Brasil deve atingir US$ 14,4 bi | Meio & Mensagem |
+| Mundo | Encontros entre EUA e China nas Filipinas buscam aliviar tensões na Ásia após ameaça de novas tarifas | AP News |
+| Futebol | Inter enfrenta o Athletico-PR na Arena da Baixada em busca de reação no 2º turno do Brasileirão | ge.globo RS |
+| Clima (capa) | Balneário Gaivota/SC: 20,2°C, poucas nuvens, 72% de chance de chuva | Open-Meteo |
+
+**Notas da edição:** Edição do dia 25/07/2026 montada e publicada com notícias em tempo real. Todos os 7 cadernos atualizados com matérias reais do dia e dados climáticos ao vivo via API Open-Meteo.
+
+---
+
 ## 25/07/2026 — Edição de lançamento
 
 | Caderno | Manchete | Fonte |
