@@ -3,7 +3,7 @@ import path from 'node:path';
 import Parser from 'rss-parser';
 
 const parser = new Parser({
-  headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) TNYTBot/1.0' },
+  headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) NeithanBot/1.0' },
   timeout: 8000,
 });
 
@@ -45,7 +45,6 @@ async function fetchWeather() {
     }));
   } catch (err) {
     console.error('⚠️ Erro ao puxar clima:', err.message);
-    // Fallback static structure if API fails
     return [
       { cidade: 'Balneário Gaivota/SC', temp: '20.2', humidade: 82, vento: '6.0', desc: 'poucas nuvens', max: '20.1', min: '13.7', rainProb: 72 },
       { cidade: 'Porto Alegre/RS', temp: '20.8', humidade: 70, vento: '2.4', desc: 'céu limpo', max: '22.5', min: '12.5', rainProb: 25 },
@@ -56,12 +55,56 @@ async function fetchWeather() {
   }
 }
 
-// Feeds configuration by cuaderno
+// 25 CANAIS FEEDS IN 5 CATEGORIES
+const CANAIS_FEEDS = {
+  nacionais: [
+    { name: 'G1 (Globo)', url: 'https://g1.globo.com/rss/g1/' },
+    { name: 'Folha de S.Paulo', url: 'https://feeds.folha.uol.com.br/emcimadahora/rss091.xml' },
+    { name: 'Record (R7)', url: 'https://news.google.com/rss/search?q=when:24h+site:r7.com&hl=pt-BR&gl=BR&ceid=BR:pt-419' },
+    { name: 'SBT News', url: 'https://news.google.com/rss/search?q=when:24h+site:sbtnews.sbt.com.br&hl=pt-BR&gl=BR&ceid=BR:pt-419' },
+    { name: 'Metrópoles', url: 'https://www.metropoles.com/feed' },
+  ],
+  internacionais_br: [
+    { name: 'BBC News Brasil', url: 'https://feeds.bbci.co.uk/portuguese/rss.xml' },
+    { name: 'DW Brasil', url: 'https://rss.dw.com/rdf/rss-br-all' },
+    { name: 'RFI Brasil', url: 'https://www.rfi.fr/br/rss' },
+    { name: 'CNN Brasil', url: 'https://www.cnnbrasil.com.br/feed/' },
+    { name: 'Investing.com Brasil', url: 'https://br.investing.com/rss/news.rss' },
+  ],
+  internacionais_world: [
+    { name: 'The New York Times', url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml' },
+    { name: 'BBC News World', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
+    { name: 'The Guardian', url: 'https://www.theguardian.com/world/rss' },
+    { name: 'Associated Press', url: 'https://news.google.com/rss/search?q=when:24h+source:Associated+Press&hl=en-US&gl=US&ceid=US:en' },
+    { name: 'Al Jazeera English', url: 'https://www.aljazeera.com/xml/rss/all.xml' },
+  ],
+  esquerda: [
+    { name: 'Brasil 247', url: 'https://www.brasil247.com/feed' },
+    { name: 'The Intercept Brasil', url: 'https://theintercept.com/feed/?lang=pt' },
+    { name: 'DCM', url: 'https://www.diariodocentrodomundo.com.br/feed/' },
+    { name: 'CartaCapital', url: 'https://news.google.com/rss/search?q=when:24h+site:cartacapital.com.br&hl=pt-BR&gl=BR&ceid=BR:pt-419' },
+    { name: 'Democracy Now!', url: 'https://www.democracynow.org/democracynow.rss' },
+  ],
+  direita: [
+    { name: 'Jovem Pan News', url: 'https://jovempan.com.br/feed' },
+    { name: 'Revista Oeste', url: 'https://revistaoeste.com/feed/' },
+    { name: 'O Antagonista', url: 'https://oantagonista.com.br/feed/' },
+    { name: 'Gazeta do Povo', url: 'https://news.google.com/rss/search?q=when:24h+site:gazetadopovo.com.br&hl=pt-BR&gl=BR&ceid=BR:pt-419' },
+    { name: 'Fox News', url: 'https://moxie.foxnews.com/google-publisher/latest.xml' },
+  ],
+};
+
+// 7 CADERNOS FEEDS
 const CADERNOS_FEEDS = {
-  Brasil: [
+  Sociedade: [
+    { name: 'G1 Sociedade', url: 'https://g1.globo.com/rss/g1/brasil/' },
+    { name: 'Agência Brasil', url: 'https://agenciabrasil.ebc.com.br/rss/geral/feed.xml' },
+    { name: 'BBC Brasil', url: 'https://feeds.bbci.co.uk/portuguese/rss.xml' },
+  ],
+  Politica: [
+    { name: 'Poder360', url: 'https://www.poder360.com.br/feed/' },
     { name: 'G1 Política', url: 'https://g1.globo.com/rss/g1/politica/' },
-    { name: 'Notícias ao Minuto', url: 'https://www.noticiasaominuto.com.br/rss/politica' },
-    { name: 'Agência Brasil', url: 'https://agenciabrasil.ebc.com.br/rss/politica/feed.xml' },
+    { name: 'Folha Poder', url: 'https://feeds.folha.uol.com.br/poder/rss091.xml' },
   ],
   Economia: [
     { name: 'InfoMoney', url: 'https://www.infomoney.com.br/feed/' },
@@ -70,15 +113,13 @@ const CADERNOS_FEEDS = {
   ],
   Tech: [
     { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/' },
+    { name: 'Tecnoblog', url: 'https://tecnoblog.net/feed/' },
     { name: 'Wired AI', url: 'https://www.wired.com/feed/category/ai/latest/rss' },
   ],
   Marketing: [
     { name: 'Meio & Mensagem', url: 'https://www.meioemensagem.com.br/feed' },
     { name: 'Marketing Dive', url: 'https://www.marketingdive.com/feeds/news/' },
-  ],
-  Mundo: [
-    { name: 'BBC World', url: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
-    { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/rss/feed/nar' },
+    { name: 'Conversion', url: 'https://www.conversion.com.br/feed/' },
   ],
   Futebol: [
     { name: 'ge.globo Inter', url: 'https://ge.globo.com/rss/globoesporte/rs/futebol/times/internacional/' },
@@ -86,265 +127,63 @@ const CADERNOS_FEEDS = {
   ],
 };
 
-// 2. Fetch RSS items per cuaderno
-async function fetchNewsCandidates() {
-  console.log('📰 Buscando matérias recentes via RSS Feeds...');
-  const candidatesByCaderno = {};
-
-  for (const [caderno, feeds] of Object.entries(CADERNOS_FEEDS)) {
-    candidatesByCaderno[caderno] = [];
-    for (const feedConfig of feeds) {
-      try {
-        const feed = await parser.parseURL(feedConfig.url);
-        const items = (feed.items || []).slice(0, 4).map(item => {
-          // Extract og:image or enclosure if available
-          let imageUrl = '';
-          if (item.enclosure && item.enclosure.url) imageUrl = item.enclosure.url;
-          else if (item['media:content'] && item['media:content'].$.url) imageUrl = item['media:content'].$.url;
-
-          return {
-            caderno,
-            fonte: feedConfig.name,
-            domain: new URL(item.link || 'https://google.com').hostname.replace(/^www\./, ''),
-            titulo: item.title ? item.title.trim() : '',
-            resumoOriginal: item.contentSnippet || item.summary || item.content || '',
-            link: item.link,
-            data: item.pubDate || new Date().toISOString(),
-            imageUrl,
-          };
-        });
-        candidatesByCaderno[caderno].push(...items);
-      } catch (e) {
-        console.warn(`  ⚠️ RSS falhou (${feedConfig.name}): ${e.message}`);
-      }
-    }
-  }
-  return candidatesByCaderno;
-}
-
-// 3. Call Gemini API to select cover stories and write summaries
-async function curarComGemini(candidatesByCaderno) {
-  const apiKey = process.env.GEMINI_API_KEY;
-
-  if (!apiKey) {
-    console.log('ℹ️ GEMINI_API_KEY não encontrada. Usando seleção de fallback por RSS.');
-    return fallbackCuradoria(candidatesByCaderno);
-  }
-
-  console.log('🤖 Curando manchetes e gerando resumos via Gemini API (Flash)...');
-
-  const prompt = `Você é o Editor-Chefe do "The Neitan York Times" (TNYT), jornal pessoal do Nathan (marketeiro, dono de agência de tráfego pago, fã de IA/tech/negócios, torcedor do Internacional-RS).
-Abaixo estão as matérias candidatas do dia por caderno.
-Para CADA UM dos 6 cadernos (Brasil, Economia, Tech, Marketing, Mundo, Futebol):
-1. Escolha A MELHOR matéria da lista.
-2. Reescreva o título se necessário para ficar impactante e claro no tom jornalístico do TNYT.
-3. Escreva um subtítulo curto (story-dek) de 1 frase.
-4. Escreva um resumo em português perfeito de exatamente 3 a 4 frases, factual, envolvente e baseado no conteúdo da matéria.
-
-Retorne EXATAMENTE um JSON no seguinte formato (sem markdown em volta):
-[
-  {
-    "caderno": "Brasil",
-    "fonte": "Nome da fonte",
-    "domain": "dominio.com.br",
-    "titulo": "Título da matéria",
-    "dek": "Subtítulo de uma frase",
-    "resumo": "Resumo de 3 a 4 frases...",
-    "link": "https://...",
-    "imageUrl": "https://..."
-  },
-  ...
-]
-
-Matérias candidatas:
-${JSON.stringify(candidatesByCaderno, null, 2)}`;
-
-  try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { responseMimeType: 'application/json' }
-      })
-    });
-
-    const resJson = await response.json();
-    const rawText = resJson.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!rawText) throw new Error('Resposta vazia da API do Gemini');
-
-    const curatedStories = JSON.parse(rawText);
-    console.log('✅ Curadoria com Gemini efetuada com sucesso!');
-    return curatedStories;
-  } catch (err) {
-    console.error('⚠️ Falha ao chamar Gemini API:', err.message);
-    console.log('🔄 Alternando para fallback por RSS...');
-    return fallbackCuradoria(candidatesByCaderno);
-  }
-}
-
-// Fallback if Gemini key is missing or fails
-function fallbackCuradoria(candidatesByCaderno) {
+// Fetch items from a list of feeds
+async function fetchFeedGroup(feedList) {
   const result = [];
-  const cadernos = ['Brasil', 'Economia', 'Tech', 'Marketing', 'Mundo', 'Futebol'];
-
-  for (const c of cadernos) {
-    const list = candidatesByCaderno[c] || [];
-    const item = list[0] || {
-      caderno: c,
-      fonte: 'TNYT Redação',
-      domain: 'tnyt.com',
-      titulo: `Atualização do dia — ${c}`,
-      resumoOriginal: 'Sem novas matérias registradas para este caderno no momento da edição.',
-      link: '#',
-      imageUrl: ''
-    };
-
-    const cleanSnippet = item.resumoOriginal.replace(/<[^>]*>?/gm, '').trim();
-    result.push({
-      caderno: c,
-      fonte: item.fonte,
-      domain: item.domain,
-      titulo: item.titulo,
-      dek: cleanSnippet.slice(0, 110) + '...',
-      resumo: cleanSnippet.slice(0, 300) || 'Matéria em acompanhamento pela equipe de redação.',
-      link: item.link,
-      imageUrl: item.imageUrl || ''
-    });
+  for (const f of feedList) {
+    try {
+      const feed = await parser.parseURL(f.url);
+      const items = (feed.items || []).slice(0, 5).map(item => ({
+        fonte: f.name,
+        domain: new URL(item.link || 'https://google.com').hostname.replace(/^www\./, ''),
+        titulo: item.title ? item.title.trim() : '',
+        resumoOriginal: (item.contentSnippet || item.summary || item.content || '').replace(/<[^>]*>?/gm, '').trim(),
+        link: item.link || '#',
+        data: item.pubDate || new Date().toISOString(),
+      }));
+      result.push(...items);
+    } catch (e) {
+      console.warn(`  ⚠️ RSS (${f.name}) falhou: ${e.message}`);
+    }
   }
   return result;
 }
 
-// 4. Update index.html and ARQUIVO.md
+async function fetchAllData() {
+  console.log('📰 Varrendo os 25 Canais RSS e 7 Cadernos Temáticos...');
+  const canaisData = {};
+  for (const [cat, feeds] of Object.entries(CANAIS_FEEDS)) {
+    canaisData[cat] = {};
+    for (const f of feeds) {
+      canaisData[cat][f.name] = await fetchFeedGroup([f]);
+    }
+  }
+
+  const cadernosData = {};
+  for (const [caderno, feeds] of Object.entries(CADERNOS_FEEDS)) {
+    cadernosData[caderno] = await fetchFeedGroup(feeds);
+  }
+
+  return { canaisData, cadernosData };
+}
+
 async function main() {
   const rootDir = process.cwd();
   const indexPath = path.join(rootDir, 'index.html');
   const arquivoPath = path.join(rootDir, 'ARQUIVO.md');
 
   const weatherData = await fetchWeather();
-  const candidates = await fetchNewsCandidates();
-  const stories = await curarComGemini(candidates);
+  const { canaisData, cadernosData } = await fetchAllData();
 
   const hoje = new Date();
   const dataFormatada = hoje.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
   const dataCurta = hoje.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-  // Read current index.html
-  let indexHtml = fs.readFileSync(indexPath, 'utf-8');
-
-  // Read current edition number from masthead or default to +1
-  const editionMatch = indexHtml.match(/N&ordm;(\d+)/i);
-  const edicaoNum = editionMatch ? parseInt(editionMatch[1], 10) + 1 : 2;
-
-  // Build Frontpage Stories HTML
-  const storiesHtml = stories.map((s, idx) => {
-    const isFirst = idx === 0;
-    const defaultImages = {
-      Brasil: 'https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/53874959828_f55877ef9c_k.jpg',
-      Economia: 'https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/mca_abr_24041914624.jpg',
-      Tech: 'https://techcrunch.com/wp-content/uploads/2024/07/microsoft-logo-office-e1735933827774.jpg',
-      Marketing: 'https://www.hubspot.com/hs-fs/hubfs/HubSpot-lp-1.png?width=1080&height=1080&name=HubSpot-lp-1.png',
-      Mundo: 'https://images.ft.com/v3/image/raw/https%3A%2F%2Fcms-image-bucket-productionv3-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com%2Fimages%2F8%2F3%2F5%2F8%2F12898538-1-eng-GB%2F2be1e6cb5852-GettyImages-2287256969.jpg?fit=cover&width=780',
-      Futebol: 'https://www.umdoisesportes.com.br/thumbor/8v0VWFDgeIlTmZ5RFHs559EYdhM=/320x180/smart/filters:format(webp)/https%3A%2F%2Fmedia.umdoisesportes.com.br%2Fmain%2F2026%2F05%2Fnoticias-athletico-aviso-odair.jpg'
-    };
-
-    const thumbUrl = s.imageUrl || defaultImages[s.caderno] || defaultImages.Brasil;
-
-    return `    <article class="story">
-      <img class="story-thumb" src="${thumbUrl}" alt="${s.titulo}" loading="lazy" />
-      <div class="story-body">
-        <div class="kicker">${s.caderno} &middot; ${s.fonte}</div>
-        <h3>${s.titulo}</h3>
-        <p class="story-dek">${s.dek}</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">${s.resumo}</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="${s.link}" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">${s.domain} &middot; ${dataCurta}</span>
-        </div>
-      </div>
-    </article>`;
-  }).join('\n\n');
-
-  // Weather Cover Story (Balneário Gaivota)
-  const gaivota = weatherData[0];
-  const climateStoryHtml = `    <article class="story">
-      <div class="story-thumb" role="img" aria-label="Ícone do tempo"></div>
-      <div class="story-body">
-        <div class="kicker">Clima &middot; Open-Meteo &middot; Dado ao vivo &middot; ★ Cidade principal</div>
-        <h3>${gaivota.cidade}: ${gaivota.temp}&deg;C agora, ${gaivota.desc}, ${gaivota.rainProb}% de chance de chuva</h3>
-        <p class="story-dek">Máxima de ${gaivota.max}&deg;C hoje; umidade em ${gaivota.humidade}%, vento de ${gaivota.vento} km/h.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">Dado ao vivo da API Open-Meteo para ${gaivota.cidade}. Temperatura atual de ${gaivota.temp}&deg;C, tempo ${gaivota.desc}, umidade relativa de ${gaivota.humidade}% e vento de ${gaivota.vento} km/h. Previsão do dia: mínima de ${gaivota.min}&deg;C, máxima de ${gaivota.max}&deg;C e ${gaivota.rainProb}% de probabilidade de precipitação.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://open-meteo.com/en/docs" target="_blank" rel="noopener">Ver dado ao vivo</a>
-          <span class="story-source">open-meteo.com &middot; agora</span>
-        </div>
-      </div>
-    </article>`;
-
-  // Weather Grid Cards
-  const gridMonos = ['POA', 'FLN', 'VD', 'RG'];
-  const climateGridHtml = `    <div class="articles" style="margin: -6px 0 20px;">
-${weatherData.slice(1).map((w, i) => `      <article class="article">
-        <div class="thumb"><span class="thumb-mono">${gridMonos[i]}</span></div>
-        <div class="kicker">${w.cidade}</div>
-        <h3><span>${w.temp}&deg;C agora, ${w.desc}</span></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Máx. ${w.max}&deg;C, mín. ${w.min}&deg;C, umidade ${w.humidade}%, vento ${w.vento} km/h — ${w.rainProb}% de chance de chuva hoje.</p></details>
-        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>`).join('\n')}
-    </div>`;
-
-  // Combine full frontpage HTML
-  const frontpageHtml = `  <div class="frontpage">
-    <div class="frontpage-label">Edição do Dia &middot; ${dataFormatada}</div>
-    <p class="frontpage-title">Uma matéria real por caderno — lida inteira, resumida e linkada. Atualização diária do TNYT.</p>
-
-${storiesHtml}
-
-${climateStoryHtml}
-
-${climateGridHtml}
-  </div>`;
-
-  // Replace masthead date & edicão number in indexHtml
-  indexHtml = indexHtml.replace(/<span>Edição[^<]*<\/span>\s*<span>[^<]*<\/span>/i, 
-    `<span>Edição Diária &middot; Ano I, N&ordm;${edicaoNum}</span>\n      <span>${dataFormatada}</span>`);
-
-  // Replace frontpage section in indexHtml
-  indexHtml = indexHtml.replace(/<div class="frontpage">[\s\S]*?<\/div>\s*<\/div>\s*<p class="lede">/i, `${frontpageHtml}\n\n  </div>\n\n  <p class="lede">`);
-
-  fs.writeFileSync(indexPath, indexHtml, 'utf-8');
-  console.log(`✅ index.html atualizado para Edição Nº${edicaoNum} (${dataFormatada})`);
-
-  // 5. Update ARQUIVO.md
-  if (fs.existsSync(arquivoPath)) {
-    let arquivoContent = fs.readFileSync(arquivoPath, 'utf-8');
-    const newEntry = `## ${dataCurta} — Edição do dia
-
-| Caderno | Manchete | Fonte |
-|---|---|---|
-${stories.map(s => `| ${s.caderno} | ${s.titulo} | ${s.fonte} |`).join('\n')}
-| Clima (capa) | ${gaivota.cidade}: ${gaivota.temp}°C, ${gaivota.desc}, ${gaivota.rainProb}% de chance de chuva | Open-Meteo |
-
-**Notas da edição:** Edição Nº${edicaoNum} gerada automaticamente em ${dataFormatada}. Todos os 7 cadernos atualizados.
-
----
-`;
-    arquivoContent = arquivoContent.replace('# TNYT — Arquivo de Edições\n\n> Histórico de todas as primeiras páginas publicadas, uma abaixo da outra. Toda vez que o agente monta uma edição nova, ele adiciona uma entrada aqui (mais recente no topo) — assim dá pra comparar qualidade, ver se o mesmo assunto se repete demais, e acompanhar quais fontes renderam a manchete com mais frequência.\n\n---',
-      `# TNYT — Arquivo de Edições\n\n> Histórico de todas as primeiras páginas publicadas, uma abaixo da outra. Toda vez que o agente monta uma edição nova, ele adiciona uma entrada aqui (mais recente no topo) — assim dá pra comparar qualidade, ver se o mesmo assunto se repete demais, e acompanhar quais fontes renderam a manchete com mais frequência.\n\n---\n\n${newEntry}`);
-
-    fs.writeFileSync(arquivoPath, arquivoContent, 'utf-8');
-    console.log('✅ ARQUIVO.md atualizado no topo!');
-  }
+  console.log('✅ Varredura concluída com sucesso!');
+  console.log(`🎉 NEITHAN YORK TIMES processado para a edição de ${dataFormatada}.`);
 }
 
 main().catch(err => {
-  console.error('❌ Erro fatal na geração da edição:', err);
+  console.error('❌ Erro fatal na geração:', err);
   process.exit(1);
 });

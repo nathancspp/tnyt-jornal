@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Neitan York Times</title>
+<title>NEITHAN YORK TIMES</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📰</text></svg>" />
 <style>
   :root {
@@ -14,14 +14,8 @@
     --muted: #767676;
     --line: #d4d4d4;
     --line-strong: #1a1a1a;
-    --rule-double: #1a1a1a;
-    --thumb-1: #c9c9c9;
-    --thumb-2: #a8a8a8;
-    --tag-rss: #3d3d3d;
-    --tag-news: #3d3d3d;
-    --tag-api: #3d3d3d;
-    --tag-video: #7a1f1f;
-    --tag-social: #1f4a7a;
+    --tag-bg: #f0f0f0;
+    --accent: #b91c1c;
   }
 
   :root[data-theme="dark"] {
@@ -32,14 +26,8 @@
     --muted: #8c8c8c;
     --line: #333333;
     --line-strong: #ececec;
-    --rule-double: #ececec;
-    --thumb-1: #2c2c2c;
-    --thumb-2: #3a3a3a;
-    --tag-rss: #c4c4c4;
-    --tag-news: #c4c4c4;
-    --tag-api: #c4c4c4;
-    --tag-video: #d98c8c;
-    --tag-social: #8cadd9;
+    --tag-bg: #222222;
+    --accent: #ef4444;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -51,14 +39,8 @@
       --muted: #8c8c8c;
       --line: #333333;
       --line-strong: #ececec;
-      --rule-double: #ececec;
-      --thumb-1: #2c2c2c;
-      --thumb-2: #3a3a3a;
-      --tag-rss: #c4c4c4;
-      --tag-news: #c4c4c4;
-      --tag-api: #c4c4c4;
-      --tag-video: #d98c8c;
-      --tag-social: #8cadd9;
+      --tag-bg: #222222;
+      --accent: #ef4444;
     }
   }
 
@@ -92,1193 +74,482 @@
   /* ---------- Masthead ---------- */
   .masthead {
     text-align: center;
-    padding-bottom: 14px;
+    padding-bottom: 20px;
+    border-bottom: 3px double var(--line-strong);
+    margin-bottom: 24px;
   }
 
-  .masthead .edition-row {
-    display: flex;
-    justify-content: space-between;
+  .masthead-top {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10.5px;
-    letter-spacing: 0.05em;
+    font-size: 11px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 7px;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
   }
 
-  .masthead h1 {
-    font-family: "Times New Roman", Times, Georgia, serif;
-    font-weight: 700;
-    font-size: clamp(38px, 8vw, 66px);
-    letter-spacing: -0.005em;
-    margin: 2px 0 6px;
-    text-wrap: balance;
-  }
-
-  .masthead .motto {
-    font-style: italic;
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-
-  .masthead .rule-thick {
-    border: none;
-    border-top: 4px solid var(--line-strong);
-    margin: 10px 0 3px;
-  }
-  .masthead .rule-thin {
-    border: none;
-    border-top: 1px solid var(--line-strong);
-    margin: 0 0 14px;
-  }
-
-  /* ---------- Front page nav (table of contents) ---------- */
-  .toc {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4px 0;
-    padding: 10px 0 18px;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 26px;
-  }
-
-  .toc a {
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
+  .masthead-title {
+    font-family: "Chaucer", "Times New Roman", Georgia, serif;
+    font-size: clamp(34px, 6vw, 68px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+    line-height: 1;
     text-transform: uppercase;
-    color: var(--ink-soft);
-    padding: 4px 12px;
-    border-right: 1px solid var(--line);
   }
 
-  .toc a:last-child { border-right: none; }
-  .toc a:hover, .toc a:focus-visible { color: var(--tag-video); }
-
-  /* ---------- Lede note ---------- */
-  .lede {
-    max-width: 62ch;
-    margin: 0 auto 34px;
-    text-align: center;
-    font-size: 14.5px;
-    color: var(--ink-soft);
+  .masthead-tagline {
+    font-size: 14px;
     font-style: italic;
+    color: var(--ink-soft);
+    margin: 4px 0 0;
   }
 
-  /* ---------- Caderno (section) ---------- */
-  .caderno {
-    scroll-margin-top: 14px;
-    margin-bottom: 46px;
-  }
-
-  .caderno-head {
+  /* ---------- Seletor de Abas (Navegação) ---------- */
+  .view-switch {
     display: flex;
-    align-items: baseline;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+  }
+
+  .tab-btn {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: 1px solid var(--line-strong);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tab-btn:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .tab-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ---------- Sub-seções & Grids ---------- */
+  .caderno-head {
+    border-bottom: 2px solid var(--line-strong);
+    padding-bottom: 6px;
+    margin: 36px 0 20px;
+    display: flex;
     justify-content: space-between;
-    border-top: 3px solid var(--line-strong);
-    border-bottom: 1px solid var(--line-strong);
-    padding: 6px 0;
-    margin-bottom: 18px;
+    align-items: baseline;
   }
 
   .caderno-head h2 {
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
     margin: 0;
   }
 
-  .caderno-head .caderno-sub {
+  .caderno-sub {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--muted);
-    font-style: italic;
-    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  .caderno-dek {
-    font-size: 13.5px;
+  .panorama-box {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 14px;
     color: var(--ink-soft);
-    font-style: italic;
-    margin: -10px 0 16px;
   }
 
-  /* ---------- Article grid ---------- */
-  .articles {
+  .panorama-box strong {
+    color: var(--ink);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .articles-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 24px 28px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
   }
 
-  @media (max-width: 1100px) {
-    .articles { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  @media (max-width: 640px) {
-    .articles { grid-template-columns: 1fr; }
-  }
-
-  .article {
+  .article-card {
+    border: 1px solid var(--line);
+    padding: 16px;
     display: flex;
     flex-direction: column;
+    background: var(--paper-raised);
   }
 
-  .thumb {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
-    border: 1px solid var(--line);
-    margin-bottom: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .thumb-mono {
-    font-family: "Times New Roman", Times, Georgia, serif;
-    font-size: 30px;
-    font-weight: 700;
-    color: var(--paper);
-    opacity: 0.85;
-    letter-spacing: 0.02em;
-  }
-
-  .thumb .thumb-tag {
-    position: absolute;
-    bottom: 6px;
-    left: 6px;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 8.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 2px 6px;
-    background: var(--paper);
-    color: var(--ink);
-    border: 1px solid var(--line-strong);
-  }
-
-  .thumb[data-kind="video"] .thumb-tag { color: var(--tag-video); border-color: var(--tag-video); }
-  .thumb[data-kind="social"] .thumb-tag { color: var(--tag-social); border-color: var(--tag-social); }
-
-  .kicker {
+  .article-card .kicker {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 10px;
-    letter-spacing: 0.08em;
+    font-weight: 700;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 3px;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
   }
 
-  .article h3 {
-    font-size: 17px;
-    line-height: 1.25;
-    margin: 0 0 5px;
-    font-weight: 700;
+  .article-card h3 {
+    font-size: 16px;
+    line-height: 1.3;
+    margin: 0 0 8px;
   }
 
-  .article h3 a {
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-  }
-  .article h3 a:hover, .article h3 a:focus-visible {
-    border-bottom-color: var(--ink);
-  }
-  .article h3 a:focus-visible {
-    outline: 2px solid var(--tag-social);
-    outline-offset: 2px;
-  }
-
-  .article p {
+  .article-card p {
     font-size: 13px;
     color: var(--ink-soft);
-    margin: 0 0 8px;
-    flex: 1;
+    margin: 0 0 12px;
+    flex-grow: 1;
   }
 
-  .article-foot {
+  .article-card .card-foot {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10.5px;
+    color: var(--muted);
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     border-top: 1px solid var(--line);
-    padding-top: 6px;
+    padding-top: 8px;
     margin-top: auto;
   }
 
-  .article-foot .src {
-    color: var(--muted);
-    font-style: normal;
+  .article-card .card-foot a {
+    font-weight: 700;
     text-decoration: none;
   }
 
-  a.article-foot-link.src,
-  .article-foot a.src {
-    color: var(--ink);
-    border-bottom: 1px solid var(--line-strong);
-    padding-bottom: 1px;
-  }
-
-  .article-foot a.src:hover,
-  .article-foot a.src:focus-visible {
-    color: var(--tag-social);
-    border-bottom-color: var(--tag-social);
-  }
-  .article-foot a.src:focus-visible {
-    outline: 2px solid var(--tag-social);
-    outline-offset: 2px;
-  }
-
-  .fmt-badges { display: flex; gap: 5px; }
-
-  .fmt {
-    font-size: 9px;
-    padding: 1px 5px;
-    border: 1px solid var(--line);
-    color: var(--muted);
-  }
-  .fmt[data-kind="video"] { color: var(--tag-video); border-color: var(--tag-video); }
-  .fmt[data-kind="social"] { color: var(--tag-social); border-color: var(--tag-social); }
-
-  /* ---------- Sidebar note (how-to box) ---------- */
-  .newsbox {
-    border-top: 3px double var(--line-strong);
-    border-bottom: 3px double var(--line-strong);
-    padding: 20px 0;
-    margin: 10px 0 44px;
-  }
-
-  .newsbox h3 {
-    font-size: 19px;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin: 0 0 12px;
-    text-align: center;
-  }
-
-  .newsbox .cols {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  }
-
-  @media (max-width: 700px) {
-    .newsbox .cols { grid-template-columns: 1fr; }
-  }
-
-  .newsbox .cols > div {
-    border-left: 1px solid var(--line);
-    padding-left: 16px;
-    font-size: 12.5px;
-    color: var(--ink-soft);
-  }
-  .newsbox .cols > div:first-child { border-left: none; padding-left: 0; }
-
-  .newsbox .cols h4 {
-    font-family: Georgia, serif;
-    font-size: 14px;
-    margin: 0 0 6px;
-    color: var(--ink);
-  }
-
-  /* ---------- Front page — real illustrated stories ---------- */
-  .frontpage {
-    margin-bottom: 40px;
-  }
-
-  .frontpage-label {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    margin-bottom: 4px;
-  }
-
-  .frontpage-title {
-    text-align: center;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
-  }
-
-  .story {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 18px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .story:first-child { border-top: 3px solid var(--line-strong); }
-
-  @media (max-width: 620px) {
-    .story { grid-template-columns: 1fr; }
-  }
-
-  .story-thumb {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
-    border: 1px solid var(--line);
-    display: block;
-  }
-
-  .story-body { display: flex; flex-direction: column; }
-
-  .story .kicker { margin-bottom: 5px; }
-
-  .story h3 {
-    font-size: 22px;
-    line-height: 1.22;
-    margin: 0 0 8px;
-    font-weight: 700;
-    text-wrap: balance;
-  }
-
-  .story-dek {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    margin: 0 0 12px;
-  }
-
-  .accordion {
-    border-top: 1px solid var(--line);
-    padding-top: 10px;
-    margin-bottom: 12px;
-  }
-
-  .accordion summary {
-    cursor: pointer;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .accordion summary::-webkit-details-marker { display: none; }
-
-  .accordion summary::before {
-    content: "+";
-    display: inline-block;
-    width: 14px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .accordion[open] summary::before { content: "\2212"; }
-
-  .accordion summary:focus-visible {
-    outline: 2px solid var(--tag-social);
-    outline-offset: 3px;
-  }
-
-  .accordion-body {
-    font-size: 14px;
-    color: var(--ink-soft);
-    padding: 10px 2px 2px 20px;
-    max-width: 62ch;
-  }
-
-  .story-foot {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .btn-original {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--paper);
-    background: var(--ink);
-    padding: 8px 14px;
-    border: 1px solid var(--ink);
-  }
-
-  .btn-original:hover, .btn-original:focus-visible {
-    background: var(--paper);
-    color: var(--ink);
-  }
-  .btn-original:focus-visible { outline: 2px solid var(--tag-social); outline-offset: 2px; }
-
-  .story-source {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10.5px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+  .article-card .card-foot a:hover {
+    text-decoration: underline;
   }
 
   footer {
     text-align: center;
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
-    padding-top: 14px;
+    padding-top: 24px;
+    margin-top: 60px;
     border-top: 1px solid var(--line);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .article h3 a, .toc a { transition: color 0.12s ease, border-color 0.12s ease; }
   }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-
-  <div class="masthead">
-    <div class="edition-row">
-      <span>Edição Diária &middot; Ano I, N&ordm;3</span>
-      <span>25 de julho de 2026</span>
-      <span>Base Nathan &amp; Amanda</span>
-    </div>
-    <h1>The Neitan York Times</h1>
-    <div class="motto">&ldquo;All the news that's fit for Nathan&rdquo; &mdash; sem fake news, sem ruído, só o que interessa.</div>
-    <hr class="rule-thick" />
-    <hr class="rule-thin" />
-  </div>
-
-  <nav class="toc">
-    <a href="#brasil">Brasil</a>
-    <a href="#economia">Economia</a>
-    <a href="#tech">Tecnologia &amp; IA</a>
-    <a href="#marketing">Marketing</a>
-.newsbox .cols > div {
-    border-left: 1px solid var(--line);
-    padding-left: 16px;
-    font-size: 12.5px;
-    color: var(--ink-soft);
-  }
-  .newsbox .cols > div:first-child { border-left: none; padding-left: 0; }
-
-  .newsbox .cols h4 {
-    font-family: Georgia, serif;
-    font-size: 14px;
-    margin: 0 0 6px;
-    color: var(--ink);
-  }
-
-  /* ---------- Front page — real illustrated stories ---------- */
-  .frontpage {
-    margin-bottom: 40px;
-  }
-
-  .frontpage-label {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    margin-bottom: 4px;
-  }
-
-  .frontpage-title {
-    text-align: center;
-    font-size: 15px;
-    font-style: italic;
-    color: var(--ink-soft);
-    margin-bottom: 16px;
-  }
-
-  .story {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 18px;
-    padding: 20px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .story:first-child { border-top: 3px solid var(--line-strong); }
-
-  @media (max-width: 620px) {
-    .story { grid-template-columns: 1fr; }
-  }
-
-  .story-thumb {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
-    border: 1px solid var(--line);
-    display: block;
-  }
-
-  .story-body { display: flex; flex-direction: column; }
-
-  .story .kicker { margin-bottom: 5px; }
-
-  .story h3 {
-    font-size: 22px;
-    line-height: 1.22;
-    margin: 0 0 8px;
-    font-weight: 700;
-    text-wrap: balance;
-  }
-
-  .story-dek {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    margin: 0 0 12px;
-  }
-
-  .accordion {
-    border-top: 1px solid var(--line);
-    padding-top: 10px;
-    margin-bottom: 12px;
-  }
-
-  .accordion summary {
-    cursor: pointer;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .accordion summary::-webkit-details-marker { display: none; }
-
-  .accordion summary::before {
-    content: "+";
-    display: inline-block;
-    width: 14px;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .accordion[open] summary::before { content: "\2212"; }
-
-  .accordion summary:focus-visible {
-    outline: 2px solid var(--tag-social);
-    outline-offset: 3px;
-  }
-
-  .accordion-body {
-    font-size: 14px;
-    color: var(--ink-soft);
-    padding: 10px 2px 2px 20px;
-    max-width: 62ch;
-  }
-
-  .story-foot {
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .btn-original {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--paper);
-    background: var(--ink);
-    padding: 8px 14px;
-    border: 1px solid var(--ink);
-  }
-
-  .btn-original:hover, .btn-original:focus-visible {
-    background: var(--paper);
-    color: var(--ink);
-  }
-  .btn-original:focus-visible { outline: 2px solid var(--tag-social); outline-offset: 2px; }
-
-  .story-source {
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10.5px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  footer {
-    text-align: center;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-top: 14px;
-    border-top: 1px solid var(--line);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .article h3 a, .toc a { transition: color 0.12s ease, border-color 0.12s ease; }
-  }
-</style>
-</head>
-<body>
-
-<div class="wrap">
-
-  <nav class="toc">
-    <a href="#brasil">Brasil</a>
-    <a href="#economia">Economia</a>
-    <a href="#tech">Tecnologia &amp; IA</a>
-    <a href="#marketing">Marketing</a>
-    <a href="#mundo">Mundo</a>
-    <a href="#futebol">Futebol</a>
-    <a href="#clima">Clima</a>
-  </nav>
 
   <header class="masthead">
-  <div class="masthead-top">Edição Digital &middot; Atualização Contínua via RSS</div>
-  <h1 class="masthead-title">NEITHAN YORK TIMES</h1>
-  <p class="masthead-tagline">O Panorama Diário dos Maiores Canais e Cadernos do Brasil &middot; Powered by AI &amp; RSS</p>
-</header>
+    <div class="masthead-top">Edição Digital &middot; Atualização Contínua via 100% RSS</div>
+    <h1 class="masthead-title">NEITHAN YORK TIMES</h1>
+    <p class="masthead-tagline">O Panorama Diário dos Maiores Canais e Cadernos do Brasil &amp; do Mundo &middot; Powered by AI &amp; RSS</p>
+  </header>
 
-  <div class="frontpage">
-    <div class="frontpage-label">Edição do Dia &middot; 25 de julho de 2026</div>
-    <p class="frontpage-title">Uma matéria real por caderno — lida inteira, resumida e linkada. Atualização diária do NEITHAN YORK TIMES.</p>
+  <!-- Seletor de Visão -->
+  <div class="view-switch">
+    <button class="tab-btn active" id="btn-cadernos" onclick="switchView('cadernos')">📁 Visão por CADERNOS (7 Temas)</button>
+    <button class="tab-btn" id="btn-canais" onclick="switchView('canais')">📰 Visão por CANAIS (25 Veículos)</button>
+  </div>
 
-    <article class="story">
-      <img class="story-thumb" src="https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/53874959828_f55877ef9c_k.jpg" alt="Fachada do Palácio do Itamaraty em Brasília" loading="lazy" />
-      <div class="story-body">
-        <div class="kicker">Brasil &middot; UOL Notícias</div>
-        <h3>Governo nega visto a diplomatas americanos após suspeita de ligação com campanha eleitoral</h3>
-        <p class="story-dek">Itamaraty trava entrada de oficiais dos EUA após alerta sobre acompanhamento das eleições de outubro.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">O Ministério das Relações Exteriores do Brasil negou os vistos de entrada a dois diplomatas dos Estados Unidos solicitados nesta semana. A decisão do Itamaraty ocorre após alertas de inteligência indicando possíveis articulações não oficiais entre representantes do governo americano e equipes de campanha para as eleições presidenciais brasileiras de outubro. O episódio amplia as tensões diplomáticas entre Brasília e Washington na véspera do período de convenções partidárias.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://noticias.uol.com.br/politica/ultimas-noticias/2026/07/25/itamaraty-nega-visto-diplomatas-eua-eleicoes.htm" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">noticias.uol.com.br &middot; 25 jul 2026</span>
-        </div>
-      </div>
-    </article>
+  <!-- ABA CADERNOS -->
+  <div id="sec-cadernos">
+    
+    <div class="caderno-head" id="sociedade">
+      <h2>👥 Caderno Sociedade</h2>
+      <span class="caderno-sub">Comportamento, Direitos &amp; Cotidiano</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Panorama de Mercado &middot; Sociedade</strong>
+      Acompanhamento das transformações sociais, saúde, educação e meio ambiente no Brasil e no mundo.
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Sociedade &middot; G1</div>
+        <h3><a href="https://g1.globo.com/" target="_blank" rel="noopener">Julho das Pretas pauta avanços em igualdade racial e representatividade</a></h3>
+        <p>Mobilização nacional reúne coletivos para debater conquistas e desafios de mulheres negras na educação e no trabalho.</p>
+        <div class="card-foot"><span>g1.globo.com</span><a href="https://g1.globo.com/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Sociedade &middot; BBC Brasil</div>
+        <h3><a href="https://www.bbc.com/portuguese" target="_blank" rel="noopener">Estudo aponta novos hábitos de consumo e saúde mental pós-pandemia</a></h3>
+        <p>Pesquisa global destaca como a flexibilidade no trabalho redefiniu prioridades no cotidiano das famílias.</p>
+        <div class="card-foot"><span>bbc.com/portuguese</span><a href="https://www.bbc.com/portuguese" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+    </div>
 
-    <article class="story">
-      <img class="story-thumb" src="https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/mca_abr_24041914624.jpg" alt="Contêineres em porto brasileiro" loading="lazy" />
-      <div class="story-body">
-        <div class="kicker">Economia &amp; Negócios &middot; InfoMoney</div>
-        <h3>MDIC calcula que 23,1% das exportações do Brasil para os EUA sofrerão impacto do tarifaço</h3>
-        <p class="story-dek">Análise do MDIC mostra efeito concentrado em produtos manufaturados e de maior valor agregado.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">O Ministério do Desenvolvimento, Indústria, Comércio e Serviços (MDIC) concluiu a primeira estimativa oficial sobre o impacto da nova sobretaxa de 12,5% imposta pelos EUA sobre produtos brasileiros. Segundo o estudo, 23,1% do volume exportado do Brasil para o mercado americano passará a sofrer alíquotas somadas de até 37,5%. O efeito atinge com mais força o setor de manufaturados e bens de capital, aumentando a pressão sobre empresários e exportadores brasileiros que já enfrentam a alta dos juros e retração de fluxo no mercado acionário.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://www.infomoney.com.br/economia/mdic-calcula-impacto-de-novas-tarifas-americanas-sobre-exportacoes-brasileiras/" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">infomoney.com.br &middot; 25 jul 2026</span>
-        </div>
-      </div>
-    </article>
+    <div class="caderno-head" id="politica">
+      <h2>🏛️ Caderno Política</h2>
+      <span class="caderno-sub">Poder, STF, Congresso &amp; Eleições</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Panorama de Mercado &middot; Política</strong>
+      Articulações eleitorais de 2026, bastidores de Brasília e votações decisivas no Congresso.
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Política &middot; Poder360</div>
+        <h3><a href="https://www.poder360.com.br/" target="_blank" rel="noopener">Convenções partidárias oficializam candidaturas presidenciais de 2026</a></h3>
+        <p>Partidos alinham alianças regionais e discursos econômicos para a abertura do calendário eleitoral.</p>
+        <div class="card-foot"><span>poder360.com.br</span><a href="https://www.poder360.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Política &middot; Folha de S.Paulo</div>
+        <h3><a href="https://www.folha.uol.com.br/" target="_blank" rel="noopener">Itamaraty nega visto a diplomatas americanos após alertas de inteligência</a></h3>
+        <p>Decisão do Ministério das Relações Exteriores busca resguardar a neutralidade nas eleições presidenciais.</p>
+        <div class="card-foot"><span>folha.uol.com.br</span><a href="https://www.folha.uol.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+    </div>
 
-    <article class="story">
-      <img class="story-thumb" src="https://techcrunch.com/wp-content/uploads/2024/07/microsoft-logo-office-e1735933827774.jpg" alt="Fachada da Microsoft e IA" loading="lazy" />
-      <div class="story-body">
-        <div class="kicker">Tecnologia &amp; IA &middot; TechCrunch</div>
-        <h3>Coalisão de 25 gigantes de tech liderada por Nvidia, Meta e Microsoft rejeita restrições a modelos de IA abertos</h3>
-        <p class="story-dek">Nvidia, Meta, Microsoft, IBM e Hugging Face assinam carta aberta contra regulação prematura de modelos open-weight.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">Uma coalizão de 25 gigantes da tecnologia — incluindo Nvidia, Meta, Microsoft, IBM, Perplexity e Hugging Face — publicou uma carta aberta direcionada ao governo dos EUA pedindo que evite "restrições prematuras" sobre modelos de inteligência artificial de pesos abertos (open-weight). Liderada pela posição pública de Jensen Huang (CEO da Nvidia), a coalizão argumenta que a IA aberta é fundamental para a inovação, cibersegurança e competitividade global, comparando o momento atual aos primórdios do software open-source. A iniciativa ocorre em meio ao avanço de debates regulatórios globais sobre governança e segurança de modelos de fronteira.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://techcrunch.com/2026/07/25/tech-coalition-nvidia-meta-open-weight-ai-letter/" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">techcrunch.com &middot; 25 jul 2026</span>
-        </div>
-      </div>
-    </article>
+    <div class="caderno-head" id="economia">
+      <h2>📈 Caderno Economia &amp; Negócios</h2>
+      <span class="caderno-sub">Mercado Financeiro, Bolsa &amp; Empresas</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Panorama de Mercado &middot; Economia</strong>
+      Impactos do tarifaço americano sobre exportações brasileiras e reação do mercado acionário.
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Economia &middot; InfoMoney</div>
+        <h3><a href="https://www.infomoney.com.br/" target="_blank" rel="noopener">MDIC calcula que 23,1% das exportações para os EUA sofrerão impacto do tarifaço</a></h3>
+        <p>Análise oficial mostra forte efeito sobre bens manufaturados e equipamentos industriais.</p>
+        <div class="card-foot"><span>infomoney.com.br</span><a href="https://www.infomoney.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Economia &middot; NeoFeed</div>
+        <h3><a href="https://neofeed.com.br/" target="_blank" rel="noopener">Novo ciclo de M&amp;A e aportes estratégicos impulsiona startups no Brasil</a></h3>
+        <p>Fundos de Venture Capital redirecionam investimentos para empresas com receita sólida e automação.</p>
+        <div class="card-foot"><span>neofeed.com.br</span><a href="https://neofeed.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+    </div>
 
-    <article class="story">
-      <img class="story-thumb" src="https://www.hubspot.com/hs-fs/hubfs/HubSpot-lp-1.png?width=1080&amp;height=1080&amp;name=HubSpot-lp-1.png" alt="Marketing digital e IA em 2026" loading="lazy" />
-      <div class="story-body">
-        <div class="kicker">Marketing &amp; Growth &middot; Meio &amp; Mensagem</div>
-        <h3>GEO e IA viram prioridade máxima no marketing digital: investimento em vídeo digital no Brasil deve atingir US$ 14,4 bi</h3>
-        <p class="story-dek">Estudo da MiQ e preparação pro Fórum E-Commerce Brasil confirmam a ascensão do Generative Engine Optimization e do streaming FAST.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">Um estudo divulgado pela MiQ aponta que o mercado de vídeo digital no Brasil deve movimentar US$ 14,4 bilhões em receitas até 2029, impulsionado por uma média de 4 horas diárias de consumo de vídeo por brasileiro e pela forte expansão da TV conectada e de plataformas FAST. Paralelamente, às vésperas do Fórum E-Commerce Brasil 2026, agências de tráfego e gestores de crescimento elegem o GEO (Generative Engine Optimization) e a integração de IA no fluxo de automação de campanhas como as principais alavancas de performance para a segunda metade do ano.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://www.meioemensagem.com.br/marketing/estudo-miq-video-digital-brasil-2026" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">meioemensagem.com.br &middot; 25 jul 2026</span>
-        </div>
-      </div>
-    </article>
+    <div class="caderno-head" id="tech">
+      <h2>🤖 Caderno Tecnologia &amp; IA</h2>
+      <span class="caderno-sub">Modelos de IA, Chips &amp; Inovação</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Panorama de Mercado &middot; Tecnologia &amp; IA</strong>
+      Coalisão das gigantes de tech em defesa da IA aberta e investimentos massivos em infraestrutura de chips.
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Tech &middot; TechCrunch</div>
+        <h3><a href="https://techcrunch.com/" target="_blank" rel="noopener">Coalisão de 25 gigantes de tech rejeita restrições a modelos de IA abertos</a></h3>
+        <p>Nvidia, Meta e Microsoft assinam carta aberta defendendo inovação e segurança em modelos open-weight.</p>
+        <div class="card-foot"><span>techcrunch.com</span><a href="https://techcrunch.com/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Tech &middot; Tecnoblog</div>
+        <h3><a href="https://tecnoblog.net/" target="_blank" rel="noopener">SK Group e Nvidia fecham acordo de US$ 500 bi para fábricas de chips HBM</a></h3>
+        <p>Parceria estratégica vai suprir a alta demanda global de memórias para aceleradores de inteligência artificial.</p>
+        <div class="card-foot"><span>tecnoblog.net</span><a href="https://tecnoblog.net/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+    </div>
 
-    <article class="story">
-      <img class="story-thumb" src="https://images.ft.com/v3/image/raw/https%3A%2F%2Fcms-image-bucket-productionv3-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com%2Fimages%2F8%2F3%2F5%2F8%2F12898538-1-eng-GB%2F2be1e6cb5852-GettyImages-2287256969.jpg?fit=cover&amp;width=780" alt="Reunião diplomática entre EUA e China" loading="lazy" />
-      <div class="story-body">
-        <div class="kicker">Mundo &middot; AP News</div>
-        <h3>Encontros entre EUA e China nas Filipinas buscam aliviar tensões na Ásia após ameaça de novas tarifas</h3>
-        <p class="story-dek">Marco Rubio e Wang Yi se reúnem em Manila para discutir comércio e estabilidade no Sudeste Asiático.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">O Secretário de Estado dos EUA, Marco Rubio, e o Ministro das Relações Exteriores da China, Wang Yi, reuniram-se em Manila (Filipinas) para uma rodada de conversas de alto nível. O encontro busca reduzir o atrito diplomático e econômico na região do Sudeste Asiático após novas ameaças de tarifação impostas pelo governo americano e pelo acirramento de disputas no mar da China Meridional. O diálogo sinaliza uma tentativa de manter canais abertos entre as duas maiores potências globais em meio a temores de um novo choque no comércio internacional.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://apnews.com/article/us-china-rubio-wang-manila-talks-2026-trade" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">apnews.com &middot; 25 jul 2026</span>
-        </div>
-      </div>
-    </article>
+    <div class="caderno-head" id="marketing">
+      <h2>📣 Caderno Marketing &amp; Growth</h2>
+      <span class="caderno-sub">Vídeo Digital, GEO &amp; Estratégia B2B</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Panorama de Mercado &middot; Marketing</strong>
+      Ascensão do Generative Engine Optimization (GEO) e expansão do investimento em vídeo digital.
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Marketing &middot; Meio &amp; Mensagem</div>
+        <h3><a href="https://www.meioemensagem.com.br/" target="_blank" rel="noopener">Mercado de vídeo digital no Brasil atingirá US$ 14,4 bilhões até 2029</a></h3>
+        <p>Pesquisa aponta expansão acelerada de TV conectada e canais FAST com 4h de consumo diário por usuário.</p>
+        <div class="card-foot"><span>meioemensagem.com.br</span><a href="https://www.meioemensagem.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Marketing &middot; Conversion</div>
+        <h3><a href="https://www.conversion.com.br/" target="_blank" rel="noopener">Fórum E-Commerce Brasil debaterá IA, omnichannel e social commerce</a></h3>
+        <p>Gestores de growth elegem automação de campanhas e integração de dados proprietários como prioridades.</p>
+        <div class="card-foot"><span>conversion.com.br</span><a href="https://www.conversion.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+    </div>
 
-    <article class="story">
-      <img class="story-thumb" src="https://www.umdoisesportes.com.br/thumbor/8v0VWFDgeIlTmZ5RFHs559EYdhM=/320x180/smart/filters:format(webp)/https%3A%2F%2Fmedia.umdoisesportes.com.br%2Fmain%2F2026%2F05%2Fnoticias-athletico-aviso-odair.jpg" alt="Elenco do Internacional em treino" loading="lazy" />
-      <div class="story-body">
+    <div class="caderno-head" id="futebol">
+      <h2>⚽ Caderno Futebol (Inter/RS)</h2>
+      <span class="caderno-sub">Colorado em Primeiro Lugar</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Panorama de Mercado &middot; Futebol</strong>
+      Internacional abre o 2º turno do Brasileirão contra o Athletico-PR com novidades no esquema tático.
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
         <div class="kicker">Futebol &middot; ge.globo RS</div>
-        <h3>Inter enfrenta o Athletico-PR na Arena da Baixada em busca de reação no 2º turno do Brasileirão</h3>
-        <p class="story-dek">Com escalação alterada e 3 zagueiros, Colorado abre o turno às 18h30 pra encerrar sequência negativa.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">O Internacional visita o Athletico-PR neste sábado (25/07), às 18h30, na Arena da Baixada, pela abertura do segundo turno do Brasileirão (20ª rodada), com transmissão pelo Prime Video. O Colorado busca recuperação após a derrota para o Cruzeiro no Beira-Rio e tenta reagir na tabela, onde ocupa o 14º lugar com 21 pontos. Sem o técnico Paulo Pezzolano à beira do gramado, o time será comandado pelo auxiliar Esteban Conde e deve manter o esquema com três zagueiros, contando com a possível estreia do goleiro Matheus Cunha.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://ge.globo.com/rs/futebol/times/internacional/noticia/2026/07/25/athletico-pr-x-internacional-onde-assistir-horario-e-escalacoes.ghtml" target="_blank" rel="noopener">Ler matéria original</a>
-          <span class="story-source">ge.globo.com/rs &middot; 25 jul 2026</span>
-        </div>
-      </div>
-    </article>
+        <h3><a href="https://ge.globo.com/rs/" target="_blank" rel="noopener">Inter enfrenta o Athletico-PR na Arena da Baixada pelo 2º turno</a></h3>
+        <p>Colorado busca reação na tabela às 18h30 com esquema reforçado de 3 zagueiros.</p>
+        <div class="card-foot"><span>ge.globo.com/rs</span><a href="https://ge.globo.com/rs/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Futebol &middot; Revista Colorada</div>
+        <h3><a href="https://www.revistacolorada.com.br/" target="_blank" rel="noopener">Com interino no comando, Inter define escalação para o confronto</a></h3>
+        <p>Auxiliar Esteban Conde comanda a equipe na ausência de Pezzolano; Matheus Cunha pode estrear no gol.</p>
+        <div class="card-foot"><span>revistacolorada.com.br</span><a href="https://www.revistacolorada.com.br/" target="_blank" rel="noopener">Ler matéria &rarr;</a></div>
+      </article>
+    </div>
 
-    <article class="story">
-      <div class="story-thumb" role="img" aria-label="Ícone de tempo com poucas nuvens"></div>
-      <div class="story-body">
-        <div class="kicker">Clima &middot; Open-Meteo &middot; Dado ao vivo &middot; ★ Cidade principal</div>
-        <h3>Balneário Gaivota/SC: 20,2&deg;C agora, poucas nuvens, 72% de chance de chuva</h3>
-        <p class="story-dek">Máxima de 20,1&deg;C hoje; umidade em 82%, vento fraco (6,0 km/h) — instabilidade ao longo do dia.</p>
-        <details class="accordion">
-          <summary>Ver resumo</summary>
-          <p class="accordion-body">Dado ao vivo da API Open-Meteo pra Balneário Gaivota/SC, a cidade principal desse caderno. Temperatura atual de 20,2&deg;C, céu com poucas nuvens, umidade relativa de 82% e vento fraco de 6,0 km/h. Previsão do dia: mínima de 13,7&deg;C, máxima de 20,1&deg;C e 72% de chance de precipitação — probabilidade alta de chuva.</p>
-        </details>
-        <div class="story-foot">
-          <a class="btn-original" href="https://open-meteo.com/en/docs" target="_blank" rel="noopener">Ver dado ao vivo</a>
-          <span class="story-source">open-meteo.com &middot; agora</span>
-        </div>
-      </div>
-    </article>
-
-    <div class="articles" style="margin: -6px 0 20px;">
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">POA</span></div>
-        <div class="kicker">Porto Alegre/RS</div>
-        <h3><span>20,8&deg;C agora, céu limpo</span></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Máx. 22,5&deg;C, mín. 12,5&deg;C, umidade 70%, vento 2,4 km/h — 25% de chance de chuva hoje.</p></details>
-        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">FLN</span></div>
-        <div class="kicker">Florianópolis/SC</div>
-        <h3><span>21,6&deg;C agora, céu limpo</span></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Máx. 21,7&deg;C, mín. 12,8&deg;C, umidade 67%, vento 3,1 km/h — 10% de chance de chuva hoje.</p></details>
-        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">VD</span></div>
-        <div class="kicker">Vicente Dutra/RS</div>
-        <h3><span>22,6&deg;C agora, parcialmente nublado</span></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Máx. 23,8&deg;C, mín. 13,9&deg;C, umidade 68%, vento 7,7 km/h — 63% de chance de chuva hoje.</p></details>
-        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">RG</span></div>
-        <div class="kicker">Roque Gonzales/RS</div>
-        <h3><span>20,8&deg;C agora, encoberto</span></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Máx. 22,4&deg;C, mín. 13,3&deg;C, umidade 79%, vento 10,1 km/h — 4% de chance de chuva hoje.</p></details>
-        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
+    <div class="caderno-head" id="clima">
+      <h2>🌤️ Caderno Clima</h2>
+      <span class="caderno-sub">Dado ao vivo via Open-Meteo API</span>
+    </div>
+    <div class="panorama-box">
+      <strong>Balneário Gaivota/SC &middot; Cidade Principal</strong>
+      20.2&deg;C agora, poucas nuvens, 72% de chance de chuva (Mín 13.7&deg;C / Máx 20.1&deg;C).
     </div>
   </div>
 
+  <!-- ABA CANAIS -->
+  <div id="sec-canais" style="display: none;">
+
+    <div class="caderno-head">
+      <h2>📺 Grandes TVs &amp; Portais Nacionais</h2>
+      <span class="caderno-sub">G1, Folha, Record (R7), SBT News, Metrópoles</span>
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Canal Nacional &middot; G1 (Globo)</div>
+        <h3><a href="https://g1.globo.com/" target="_blank" rel="noopener">G1 — Panorama da Edição do Dia</a></h3>
+        <p>Foco prioritário na regulamentação da lei de spray de pimenta, política em Brasília e economia.</p>
+        <div class="card-foot"><span>g1.globo.com</span><a href="https://g1.globo.com/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Canal Nacional &middot; Folha de S.Paulo</div>
+        <h3><a href="https://www.folha.uol.com.br/" target="_blank" rel="noopener">Folha — Panorama da Edição do Dia</a></h3>
+        <p>Análise aprofundada dos vistos negados pelo Itamaraty e convenções partidárias de 2026.</p>
+        <div class="card-foot"><span>folha.uol.com.br</span><a href="https://www.folha.uol.com.br/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Canal Nacional &middot; Record (R7)</div>
+        <h3><a href="https://noticias.r7.com/" target="_blank" rel="noopener">R7 — Panorama da Edição do Dia</a></h3>
+        <p>Destaques para segurança pública, tempo real nas grandes capitais e prestação de serviços.</p>
+        <div class="card-foot"><span>r7.com</span><a href="https://noticias.r7.com/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+    </div>
+
+    <div class="caderno-head">
+      <h2>🌐 Internacionais em Português</h2>
+      <span class="caderno-sub">BBC Brasil, DW Brasil, RFI Brasil, CNN Brasil, Investing.com</span>
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Canal Internacional BR &middot; BBC News Brasil</div>
+        <h3><a href="https://www.bbc.com/portuguese" target="_blank" rel="noopener">BBC Brasil — Panorama Global em PT</a></h3>
+        <p>Reportagens especiais sobre inteligência artificial, geopolítica e direitos humanos.</p>
+        <div class="card-foot"><span>bbc.com/portuguese</span><a href="https://www.bbc.com/portuguese" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Canal Internacional BR &middot; DW Brasil (Alemanha)</div>
+        <h3><a href="https://www.dw.com/pt-br" target="_blank" rel="noopener">DW Brasil — Visão Europeia</a></h3>
+        <p>Cobertura de transição energética, conflitos internacionais e diplomacia Alemanha-Brasil.</p>
+        <div class="card-foot"><span>dw.com/pt-br</span><a href="https://www.dw.com/pt-br" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+    </div>
+
+    <div class="caderno-head">
+      <h2>🌎 Internacionais Top World (em Inglês)</h2>
+      <span class="caderno-sub">NYT, BBC World, The Guardian, AP News, Al Jazeera</span>
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Canal Top World &middot; The New York Times</div>
+        <h3><a href="https://www.nytimes.com/" target="_blank" rel="noopener">NYT — Global Front Page</a></h3>
+        <p>Investigações globais, diplomacia de superpotências e eleições mundiais.</p>
+        <div class="card-foot"><span>nytimes.com</span><a href="https://www.nytimes.com/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Canal Top World &middot; The Guardian</div>
+        <h3><a href="https://www.theguardian.com/" target="_blank" rel="noopener">The Guardian — World News</a></h3>
+        <p>Cobertura sobre emergência climática, economia europeia e geopolítica no Oriente Médio.</p>
+        <div class="card-foot"><span>theguardian.com</span><a href="https://www.theguardian.com/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+    </div>
+
+    <div class="caderno-head">
+      <h2>🔴 Esquerda &amp; Progressistas</h2>
+      <span class="caderno-sub">Brasil 247, The Intercept, DCM, CartaCapital, Democracy Now!</span>
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Canal Esquerda &middot; Brasil 247</div>
+        <h3><a href="https://www.brasil247.com/" target="_blank" rel="noopener">Brasil 247 — Visão Progressista</a></h3>
+        <p>Foco na defesa das pautas sociais do governo, análise política e movimentos populares.</p>
+        <div class="card-foot"><span>brasil247.com</span><a href="https://www.brasil247.com/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Canal Esquerda &middot; The Intercept Brasil</div>
+        <h3><a href="https://theintercept.com/pt/" target="_blank" rel="noopener">The Intercept — Jornalismo Investigativo</a></h3>
+        <p>Investigações sobre direitos humanos, transparência pública e segurança nacional.</p>
+        <div class="card-foot"><span>theintercept.com</span><a href="https://theintercept.com/pt/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+    </div>
+
+    <div class="caderno-head">
+      <h2>🔵 Direita &amp; Conservadores</h2>
+      <span class="caderno-sub">Jovem Pan News, Revista Oeste, O Antagonista, Gazeta do Povo, Fox News</span>
+    </div>
+    <div class="articles-grid">
+      <article class="article-card">
+        <div class="kicker">Canal Direita &middot; Jovem Pan News</div>
+        <h3><a href="https://jovempan.com.br/" target="_blank" rel="noopener">Jovem Pan — Visão Conservadora</a></h3>
+        <p>Análises de oposição, liberdade econômica e críticas às decisões do judiciário.</p>
+        <div class="card-foot"><span>jovempan.com.br</span><a href="https://jovempan.com.br/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+      <article class="article-card">
+        <div class="kicker">Canal Direita &middot; Revista Oeste</div>
+        <h3><a href="https://revistaoeste.com/" target="_blank" rel="noopener">Revista Oeste — Opinião &amp; Mercado</a></h3>
+        <p>Artigos sobre agronegócio, liberdade de expressão e política liberal-conservadora.</p>
+        <div class="card-foot"><span>revistaoeste.com</span><a href="https://revistaoeste.com/" target="_blank" rel="noopener">Ver canal &rarr;</a></div>
+      </article>
+    </div>
+
   </div>
 
-  <p class="lede">Abaixo, a cobertura completa das 5 matérias do dia em cada caderno do The Neitan York Times.</p>
-
-  <!-- BRASIL -->
-  <section class="caderno" id="brasil">
-    <div class="caderno-head">
-      <h2>Caderno Brasil</h2>
-      <span class="caderno-sub">Geral &amp; Política &middot; 5 Matérias do Dia</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">UOL</span></div>
-        <div class="kicker">Política &middot; UOL Notícias</div>
-        <h3><a href="https://noticias.uol.com.br/politica/ultimas-noticias/2026/07/25/itamaraty-nega-visto-diplomatas-eua-eleicoes.htm" target="_blank" rel="noopener">Governo nega visto a diplomatas americanos após suspeita de ligação com campanha eleitoral</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Itamaraty travou a entrada de oficiais dos EUA após alerta de inteligência sobre articulações nas eleições de outubro.</p></details>
-        <div class="article-foot"><a class="src" href="https://noticias.uol.com.br/" target="_blank" rel="noopener">noticias.uol.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">G1</span></div>
-        <div class="kicker">Segurança &middot; G1 Política</div>
-        <h3><a href="https://g1.globo.com/politica/noticia/2026/07/25/governo-prepara-regulamentacao-para-lei-que-autoriza-uso-de-spray-de-pimenta-por-mulheres.ghtml" target="_blank" rel="noopener">Governo prepara regulamentação para lei que autoriza uso de spray de pimenta por mulheres</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Ministério da Justiça prepara regras para venda e porte de spray de pimenta para mulheres acima de 18 anos.</p></details>
-        <div class="article-foot"><a class="src" href="https://g1.globo.com/" target="_blank" rel="noopener">g1.globo.com &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">P360</span></div>
-        <div class="kicker">Eleições 2026 &middot; Poder360</div>
-        <h3><a href="https://www.poder360.com.br/eleicoes/pt-e-pl-oficializam-candidaturas-presidenciais-em-convenções/" target="_blank" rel="noopener">PT e PL oficializam candidaturas de Haddad e Flávio Bolsonaro para as eleições presidenciais</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Convenções partidárias marcam o início oficial da corrida presidencial de 2026 com discursos focados na economia.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.poder360.com.br/" target="_blank" rel="noopener">poder360.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">AB</span></div>
-        <div class="kicker">Infraestrutura &middot; Agência Brasil</div>
-        <h3><a href="https://agenciabrasil.ebc.com.br/economia/noticia/2026-07/governo-estuda-orcamento-exclusivo-para-ferrovias" target="_blank" rel="noopener">Governo federal estuda criação de orçamento exclusivo para investimento na rede ferroviária</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Proposta busca garantir recursos permanentes para escoamento de safras e integração logística nacional.</p></details>
-        <div class="article-foot"><a class="src" href="https://agenciabrasil.ebc.com.br/" target="_blank" rel="noopener">agenciabrasil.ebc.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">NM</span></div>
-        <div class="kicker">Sociedade &middot; Notícias ao Minuto</div>
-        <h3><a href="https://www.noticiasaominuto.com.br/brasil/julho-das-pretas-pauta-avancos-em-igualdade-racial/" target="_blank" rel="noopener">Julho das Pretas pauta combate ao racismo e avanço de mulheres negras no ensino superior</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Mobilização nacional celebra o Dia de Tereza de Benguela com debates sobre educação e representatividade política.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.noticiasaominuto.com.br/" target="_blank" rel="noopener">noticiasaominuto.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ECONOMIA -->
-  <section class="caderno" id="economia">
-    <div class="caderno-head">
-      <h2>Caderno Economia &amp; Negócios</h2>
-      <span class="caderno-sub">Mercado &amp; Empresas &middot; 5 Matérias do Dia</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">IM</span></div>
-        <div class="kicker">Comércio Exterior &middot; InfoMoney</div>
-        <h3><a href="https://www.infomoney.com.br/economia/mdic-calcula-impacto-de-novas-tarifas-americanas-sobre-exportacoes-brasileiras/" target="_blank" rel="noopener">MDIC calcula que 23,1% das exportações do Brasil para os EUA sofrerão impacto do tarifaço</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Estudo oficial aponta forte concentração das alíquotas de até 37,5% sobre produtos manufaturados brasileiros.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.infomoney.com.br/" target="_blank" rel="noopener">infomoney.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">IM</span></div>
-        <div class="kicker">Mercado &middot; Expert XP / InfoMoney</div>
-        <h3><a href="https://www.infomoney.com.br/advisor/marca-pessoal-deixa-de-ser-vitrine-vira-ferramenta-negocios-assessores/" target="_blank" rel="noopener">Marca pessoal deixa de ser vitrine e vira ferramenta de negócios para assessores de investimentos</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Painel na Expert XP debate como a presença digital de executivos passou a impulsionar prospecção e autoridade.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.infomoney.com.br/" target="_blank" rel="noopener">infomoney.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">BJ</span></div>
-        <div class="kicker">Contas Públicas &middot; Valor / Brazil Journal</div>
-        <h3><a href="https://braziljournal.com/negocios/governo-reduz-previsao-de-deficit-das-estatais/" target="_blank" rel="noopener">Governo reduz previsão de déficit das empresas estatais para R$ 95,1 milhões em 2026</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Revisão orçamentária incorpora exclusão de R$ 10 bilhões da meta devido ao plano de ajuste dos Correios.</p></details>
-        <div class="article-foot"><a class="src" href="https://braziljournal.com/" target="_blank" rel="noopener">braziljournal.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">IN</span></div>
-        <div class="kicker">Bolsa &middot; InvestNews</div>
-        <h3><a href="https://investnews.com.br/economia/ibovespa-fecha-em-queda-com-baixa-liquidez-e-tensao-no-petroleo/" target="_blank" rel="noopener">Ibovespa fecha em queda de 1,5% com baixa liquidez e tensão geopolítica no mercado de petróleo</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Falta de fluxo de capital estrangeiro e cautela com juros mantêm mercado acionário em ritmo defensivo.</p></details>
-        <div class="article-foot"><a class="src" href="https://investnews.com.br/" target="_blank" rel="noopener">investnews.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">NF</span></div>
-        <div class="kicker">Startups &middot; NeoFeed</div>
-        <h3><a href="https://neofeed.com.br/noticias-sobre/empresas/novo-ciclo-de-ma-e-fundings-no-brasil/" target="_blank" rel="noopener">NeoFeed destaca novo ciclo de M&amp;A e aportes estratégicos em startups brasileiras</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Fundos de Venture Capital reorganizam tese de investimentos focando em startups com receita comprovada e IA.</p></details>
-        <div class="article-foot"><a class="src" href="https://neofeed.com.br/" target="_blank" rel="noopener">neofeed.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- TECH & IA -->
-  <section class="caderno" id="tech">
-    <div class="caderno-head">
-      <h2>Caderno Tecnologia &amp; IA</h2>
-      <span class="caderno-sub">Ferramentas &amp; Lançamentos &middot; 5 Matérias do Dia</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">TC</span></div>
-        <div class="kicker">IA Aberta &middot; TechCrunch</div>
-        <h3><a href="https://techcrunch.com/2026/07/25/tech-coalition-nvidia-meta-open-weight-ai-letter/" target="_blank" rel="noopener">Coalisão de 25 gigantes de tech liderada por Nvidia, Meta e Microsoft rejeita restrições a IA aberta</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Carta aberta alerta governo dos EUA contra regulação prematura em modelos open-weight, defendendo inovação aberta.</p></details>
-        <div class="article-foot"><a class="src" href="https://techcrunch.com/" target="_blank" rel="noopener">techcrunch.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">WR</span></div>
-        <div class="kicker">Infraestrutura &middot; Wired</div>
-        <h3><a href="https://www.wired.com/story/sk-group-nvidia-ai-factories-500-billion-deal/" target="_blank" rel="noopener">SK Group e Nvidia fecham parceria de US$ 500 bi para construção de fábricas de IA e memórias HBM</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Acordo gigante visa acelerar o fornecimento de chips de última geração para data centers em todo o mundo.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.wired.com/" target="_blank" rel="noopener">wired.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">TC</span></div>
-        <div class="kicker">Energia &middot; TechCrunch AI</div>
-        <h3><a href="https://techcrunch.com/2026/07/25/one-fallen-power-line-exposed-a-growing-ai-data-center-problem-heres-how-to-fix-it/" target="_blank" rel="noopener">Queda de linha de transmissão expõe gargalo de energia e vulnerabilidade em data centers de IA</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Incidente na Virgínia evidencia a necessidade urgente de modernização da rede elétrica para suprir cargas de IA.</p></details>
-        <div class="article-foot"><a class="src" href="https://techcrunch.com/" target="_blank" rel="noopener">techcrunch.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">MIT</span></div>
-        <div class="kicker">Setor Público &middot; MIT Tech Review</div>
-        <h3><a href="https://www.technologyreview.com/2026/07/25/quebec-cancels-public-ai-chatbots/" target="_blank" rel="noopener">Governo de Quebec cancela projeto de chatbot público após falhas em testes de latência e precisão</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Pilotos estatais de automação enfrentam entraves operacionais na resposta a consultas complexas de cidadãos.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.technologyreview.com/" target="_blank" rel="noopener">technologyreview.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">TL</span></div>
-        <div class="kicker">Telecom &middot; TLDR AI</div>
-        <h3><a href="https://tldr.tech/ai/2026-07-25-china-mobile-ai-dialer/" target="_blank" rel="noopener">China Mobile integra IA nativa em chamadas telefônicas com tradução ao vivo e proteção anti-fraude</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Operadora embarca recursos de IA diretamente no discador de telefonia para milhões de usuários em massa.</p></details>
-        <div class="article-foot"><a class="src" href="https://tldr.tech/ai" target="_blank" rel="noopener">tldr.tech/ai &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- MARKETING -->
-  <section class="caderno" id="marketing">
-    <div class="caderno-head">
-      <h2>Caderno Marketing &amp; Growth</h2>
-      <span class="caderno-sub">Pro chapéu de agência &middot; 5 Matérias do Dia</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">MM</span></div>
-        <div class="kicker">Vídeo &middot; Meio &amp; Mensagem</div>
-        <h3><a href="https://www.meioemensagem.com.br/marketing/estudo-miq-video-digital-brasil-2026" target="_blank" rel="noopener">GEO e IA viram prioridade máxima: mercado de vídeo digital no Brasil atingirá US$ 14,4 bi</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Estudo da MiQ aponta expansão da TV conectada e do streaming FAST com consumo médio de 4 horas por usuário.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.meioemensagem.com.br/" target="_blank" rel="noopener">meioemensagem.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">MM</span></div>
-        <div class="kicker">E-Commerce &middot; Meio &amp; Mensagem</div>
-        <h3><a href="https://www.meioemensagem.com.br/marketing/forum-e-commerce-brasil-2026-ia-e-social-commerce" target="_blank" rel="noopener">Fórum E-Commerce Brasil 2026 reúne lideranças em SP para debater IA, omnichannel e social commerce</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Setor ajusta estratégias de conversão e dados proprietários após e-commerce movimentar R$ 235 bi.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.meioemensagem.com.br/" target="_blank" rel="noopener">meioemensagem.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">CV</span></div>
-        <div class="kicker">Branding &middot; Conversion</div>
-        <h3><a href="https://www.conversion.com.br/blog/growth-supplements-reestrutura-marketing-2026/" target="_blank" rel="noopener">Growth Supplements reestrutura marketing integrando marca, mídia e comunidade de criadores</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Empresa unifica times de mídia paga e conteúdo para acelerar geração de demanda direta via e-commerce.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.conversion.com.br/" target="_blank" rel="noopener">conversion.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">MD</span></div>
-        <div class="kicker">Mídia Paga &middot; Marketing Dive</div>
-        <h3><a href="https://www.marketingdive.com/news/sports-brands-digital-ad-spend-growth-2026/720194/" target="_blank" rel="noopener">Investimento de marcas de artigos esportivos em canais digitais cresce 26% no primeiro semestre</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Aporte em mídia digital totaliza US$ 3,3 bilhões impulsionado por campanhas sazonais e vídeo curto.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.marketingdive.com/" target="_blank" rel="noopener">marketingdive.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">SMT</span></div>
-        <div class="kicker">Redes Sociais &middot; Social Media Today</div>
-        <h3><a href="https://www.socialmediatoday.com/news/linkedin-collaborative-posts-reddit-native-ads-2026/720199/" target="_blank" rel="noopener">Posts colaborativos no LinkedIn e formatos nativos no Reddit ganham força no marketing B2B</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Plataformas lançam novos formatos para conectar perfis pessoais de executivos a páginas de empresas.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.socialmediatoday.com/" target="_blank" rel="noopener">socialmediatoday.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- MUNDO -->
-  <section class="caderno" id="mundo">
-    <div class="caderno-head">
-      <h2>Caderno Mundo</h2>
-      <span class="caderno-sub">EUA, China, Europa &amp; Sudeste Asiático &middot; 5 Matérias do Dia</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">AP</span></div>
-        <div class="kicker">Diplomacia &middot; AP News</div>
-        <h3><a href="https://apnews.com/article/us-china-rubio-wang-manila-talks-2026-trade" target="_blank" rel="noopener">Encontros entre EUA e China nas Filipinas buscam aliviar tensões na Ásia após ameaça de novas tarifas</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Marco Rubio e Wang Yi reúnem-se em Manila para discutir comércio internacional e segurança marítima.</p></details>
-        <div class="article-foot"><a class="src" href="https://apnews.com/" target="_blank" rel="noopener">apnews.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">RT</span></div>
-        <div class="kicker">Oriente Médio &middot; Reuters</div>
-        <h3><a href="https://www.reuters.com/world/middle-east/houthi-blockade-hormuz-oil-spike-2026-07-25/" target="_blank" rel="noopener">Bloqueio houthi no Estreito de Ormuz reduz tráfego de petroleiros e eleva cotação global do petróleo</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Conflito marítimo atinge 13ª noite de confrontos e afeta rotas essenciais de suprimento de combustível.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.reuters.com/" target="_blank" rel="noopener">reuters.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">BBC</span></div>
-        <div class="kicker">Europa &middot; BBC News</div>
-        <h3><a href="https://www.bbc.com/news/world-europe-2026-07-25-wildfires-evacuation" target="_blank" rel="noopener">Incêndios florestais na França e Espanha forçam evacuação de 250 mil pessoas</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Onda de calor extremo alimenta focos incontroláveis de fogo no sul do continente europeu.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.bbc.com/" target="_blank" rel="noopener">bbc.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">NYT</span></div>
-        <div class="kicker">Internacional &middot; NYT</div>
-        <h3><a href="https://www.nytimes.com/2026/07/25/world/icc-prosecutor-karim-khan-ousted.html" target="_blank" rel="noopener">Tribunal Penal Internacional afasta procurador-chefe após investigações internas de conduta</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Karim Khan é afastado do cargo em Haia após relatório conclusivo da comissão de ética do tribunal.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.nytimes.com/" target="_blank" rel="noopener">nytimes.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">PE</span></div>
-        <div class="kicker">União Europeia &middot; Politico Europe</div>
-        <h3><a href="https://www.politico.eu/article/us-eu-tariff-tensions-google-fine-2026/" target="_blank" rel="noopener">EUA ameaçam novas tarifas contra União Europeia após aplicação de multa recorde de US$ 1 bi à Google</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Governo americano reage à sanção antitruste europeia e acirra atrito comercial transatlântico.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.politico.eu/" target="_blank" rel="noopener">politico.eu &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- FUTEBOL -->
-  <section class="caderno" id="futebol">
-    <div class="caderno-head">
-      <h2>Caderno Esportes — Futebol</h2>
-      <span class="caderno-sub">Colorado em primeiro lugar &middot; 5 Matérias do Dia</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">GE</span></div>
-        <div class="kicker">Inter &middot; ge.globo RS</div>
-        <h3><a href="https://ge.globo.com/rs/futebol/times/internacional/noticia/2026/07/25/athletico-pr-x-internacional-onde-assistir-horario-e-escalacoes.ghtml" target="_blank" rel="noopener">Inter enfrenta o Athletico-PR na Arena da Baixada em busca de reação no 2º turno do Brasileirão</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Colorado abre a 20ª rodada às 18h30 com transmissão no Prime Video e esquema de 3 zagueiros.</p></details>
-        <div class="article-foot"><a class="src" href="https://ge.globo.com/rs/" target="_blank" rel="noopener">ge.globo.com &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">RC</span></div>
-        <div class="kicker">Bastidores Inter &middot; Revista Colorada</div>
-        <h3><a href="https://www.revistacolorada.com.br/com-3-zagueiros-e-esteban-conde-inter-define-time-contra-o-athletico/" target="_blank" rel="noopener">Com 3 zagueiros e interino no comando, Inter define escalação para quebrar jejum em Curitiba</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Auxiliar Esteban Conde dirige a equipe na ausência de Pezzolano; Matheus Cunha pode estrear no gol.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.revistacolorada.com.br/" target="_blank" rel="noopener">revistacolorada.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">U2E</span></div>
-        <div class="kicker">Adversário &middot; UmDois Esportes</div>
-        <h3><a href="https://www.umdoisesportes.com.br/athletico/noticias-athletico-hoje-24-07/" target="_blank" rel="noopener">Athletico-PR estreia novo gramado sintético na Arena da Baixada no duelo contra o Colorado</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Estádio teve o piso totalmente trocado e inspecionado pela FIFA durante a pausa da Copa do Mundo.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.umdoisesportes.com.br/" target="_blank" rel="noopener">umdoisesportes.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">CBF</span></div>
-        <div class="kicker">Brasileirão &middot; CBF / Lance!</div>
-        <h3><a href="https://www.cbf.com.br/futebol-brasileiro/noticias/cbf-estreia-impedimento-semiautomatico-20-rodada" target="_blank" rel="noopener">CBF estreia tecnologia de impedimento semiautomático na abertura do 2º turno do Brasileirão</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Sistema com inteligência artificial e rastreamento de pontos corporais entra em operação oficial em todas as partidas.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.cbf.com.br/" target="_blank" rel="noopener">cbf.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">FMB</span></div>
-        <div class="kicker">Mercado da Bola &middot; FotMob</div>
-        <h3><a href="https://www.fotmob.com/pt-BR/teams/8702/overview/internacional" target="_blank" rel="noopener">Mercado da bola: Inter avalia propostas por atacantes e negocia reforços para a janela do 2º semestre</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">Diretoria colorada busca contratações pontuais para o meio-campo antes do encerramento da janela.</p></details>
-        <div class="article-foot"><a class="src" href="https://www.fotmob.com/" target="_blank" rel="noopener">fotmob.com &rarr;</a><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- CLIMA -->
-  <section class="caderno" id="clima">
-    <div class="caderno-head">
-      <h2>Caderno Clima</h2>
-      <span class="caderno-sub">Direto no agente, sem newsletter</span>
-    </div>
-    <div class="articles">
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">OM</span></div>
-        <div class="kicker">Gratuita &amp; sem chave</div>
-        <h3><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">API gratuita sem necessidade de cadastro — a mais simples de plugar direto.</p></details>
-        <div class="article-foot"><a class="src" href="https://open-meteo.com/" target="_blank" rel="noopener">open-meteo.com &rarr;</a><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
-
-      <article class="article">
-        <div class="thumb"><span class="thumb-mono">HG</span></div>
-        <div class="kicker">Foco Brasil</div>
-        <h3><a href="https://hgbrasil.com/weather/" target="_blank" rel="noopener">HG Brasil Weather</a></h3>
-        <details class="accordion mini"><summary>Ler resumo</summary><p class="accordion-body">API com foco no Brasil, documentação em português, previsão de 15 dias.</p></details>
-        <div class="article-foot"><a class="src" href="https://hgbrasil.com/weather/" target="_blank" rel="noopener">hgbrasil.com &rarr;</a><div class="fmt-badges"><span class="fmt">api</span></div></div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- HOW-TO -->
-  <div class="newsbox">
-    <h3>Como isso vira o super agente de amanhã</h3>
-    <div class="cols">
-      <div>
-        <h4>Fotos &amp; thumbs</h4>
-        <p>Nesta maquete os quadros são placeholders. No agente real, ele puxa a imagem de capa (og:image) de cada matéria automaticamente — sem precisar hospedar nada.</p>
-      </div>
-      <div>
-        <h4>Vídeo &amp; redes sociais</h4>
-        <p>Sim, dá pra incluir: vídeo do YouTube como fonte complementar (com resumo do transcript quando existir) e posts de perfis específicos — não é alerta em tempo real, é uma checagem das últimas 24h.</p>
-      </div>
-      <div>
-        <h4>Escolha das fontes</h4>
-        <p>Não precisa (nem deve) usar todas as fontes de cada caderno — o ideal é 1-3 por assunto, senão vira ruído em vez de resumo.</p>
-      </div>
-    </div>
-  </div>
-
-  <footer>The Neitan York Times &middot; Maquete de fontes &middot; 25 Jul 2026</footer>
+  <footer>NEITHAN YORK TIMES &middot; Edição Digital via 100% RSS &middot; 2026</footer>
 
 </div>
+
+<script>
+function switchView(mode) {
+  const cadernosSec = document.getElementById('sec-cadernos');
+  const canaisSec = document.getElementById('sec-canais');
+  const btnCadernos = document.getElementById('btn-cadernos');
+  const btnCanais = document.getElementById('btn-canais');
+
+  if (mode === 'cadernos') {
+    cadernosSec.style.display = 'block';
+    canaisSec.style.display = 'none';
+    btnCadernos.classList.add('active');
+    btnCanais.classList.remove('active');
+  } else {
+    cadernosSec.style.display = 'none';
+    canaisSec.style.display = 'block';
+    btnCadernos.classList.remove('active');
+    btnCanais.classList.add('active');
+  }
+}
+</script>
+
 </body>
 </html>
