@@ -4,7 +4,7 @@ import Parser from 'rss-parser';
 
 const parser = new Parser({
   headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) NeithanBot/1.0' },
-  timeout: 8000,
+  timeout: 10000,
 });
 
 // Helper for weather code descriptions
@@ -127,20 +127,49 @@ const CADERNOS_FEEDS = {
   ],
 };
 
-// Fetch items from a list of feeds
-async function fetchFeedGroup(feedList) {
+// Managing Timestamp Checkpoint
+function getCheckpointTimestamp(dataDir) {
+  const file = path.join(dataDir, 'ultima_verificacao.json');
+  const maxLimit = Date.now() - 72 * 60 * 60 * 1000; // 72 hours max ceiling
+
+  if (fs.existsSync(file)) {
+    try {
+      const content = JSON.parse(fs.readFileSync(file, 'utf-8'));
+      const lastRun = new Date(content.lastRun).getTime();
+      return Math.max(lastRun, maxLimit);
+    } catch (e) {
+      console.warn('⚠️ Falha ao ler checkpoint:', e.message);
+    }
+  }
+  return maxLimit; // Default to 72 hours ago
+}
+
+function updateCheckpointTimestamp(dataDir) {
+  const file = path.join(dataDir, 'ultima_verificacao.json');
+  const now = new Date().toISOString();
+  fs.writeFileSync(file, JSON.stringify({ lastRun: now }, null, 2), 'utf-8');
+  console.log(`⏱️ Carimbo de verificação atualizado para: ${now}`);
+}
+
+// Unlimited fetch per feed based on dynamic timestamp window
+async function fetchFeedGroupUnlimited(feedList, minTimestamp) {
   const result = [];
   for (const f of feedList) {
     try {
       const feed = await parser.parseURL(f.url);
-      const items = (feed.items || []).slice(0, 5).map(item => ({
-        fonte: f.name,
-        domain: new URL(item.link || 'https://google.com').hostname.replace(/^www\./, ''),
-        titulo: item.title ? item.title.trim() : '',
-        resumoOriginal: (item.contentSnippet || item.summary || item.content || '').replace(/<[^>]*>?/gm, '').trim(),
-        link: item.link || '#',
-        data: item.pubDate || new Date().toISOString(),
-      }));
+      const items = (feed.items || [])
+        .filter(item => {
+          const itemDate = new Date(item.pubDate || item.isoDate || Date.now()).getTime();
+          return itemDate >= minTimestamp;
+        })
+        .map(item => ({
+          fonte: f.name,
+          domain: new URL(item.link || 'https://google.com').hostname.replace(/^www\./, ''),
+          titulo: item.title ? item.title.trim() : '',
+          resumoOriginal: (item.contentSnippet || item.summary || item.content || '').replace(/<[^>]*>?/gm, '').trim(),
+          link: item.link || '#',
+          data: item.pubDate || new Date().toISOString(),
+        }));
       result.push(...items);
     } catch (e) {
       console.warn(`  ⚠️ RSS (${f.name}) falhou: ${e.message}`);
@@ -149,37 +178,51 @@ async function fetchFeedGroup(feedList) {
   return result;
 }
 
-async function fetchAllData() {
-  console.log('📰 Varrendo os 25 Canais RSS e 7 Cadernos Temáticos...');
+async function main() {
+  const rootDir = process.cwd();
+  const dataDir = path.join(rootDir, 'data');
+  const rawDir = path.join(dataDir, 'raw');
+
+  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+  if (!fs.existsSync(rawDir)) fs.mkdirSync(rawDir, { recursive: true });
+
+  const minTimestamp = getCheckpointTimestamp(dataDir);
+  console.log(`⏱️ Buscando matérias inéditas desde: ${new Date(minTimestamp).toLocaleString('pt-BR')} (Janela Dinâmica / Teto 72h)`);
+
+  const weatherData = await fetchWeather();
+  
+  console.log('📰 Varrendo os 25 Canais RSS sem limites de quantidade...');
   const canaisData = {};
   for (const [cat, feeds] of Object.entries(CANAIS_FEEDS)) {
     canaisData[cat] = {};
     for (const f of feeds) {
-      canaisData[cat][f.name] = await fetchFeedGroup([f]);
+      const items = await fetchFeedGroupUnlimited([f], minTimestamp);
+      canaisData[cat][f.name] = items;
+      console.log(`  ✓ [${cat.toUpperCase()}] ${f.name}: ${items.length} matérias inéditas capturadas.`);
     }
   }
 
+  console.log('📁 Varrendo os 7 Cadernos Temáticos sem limites...');
   const cadernosData = {};
   for (const [caderno, feeds] of Object.entries(CADERNOS_FEEDS)) {
-    cadernosData[caderno] = await fetchFeedGroup(feeds);
+    const items = await fetchFeedGroupUnlimited(feeds, minTimestamp);
+    cadernosData[caderno] = items;
+    console.log(`  ✓ [CADERNO] ${caderno}: ${items.length} matérias capturadas.`);
   }
 
-  return { canaisData, cadernosData };
-}
+  // Save Raw Ingestion Output for Auditability and Skills
+  const nowIso = new Date().toISOString().replace(/[:.]/g, '-');
+  const rawFilePath = path.join(rawDir, `ingestao_${nowIso}.json`);
+  fs.writeFileSync(rawFilePath, JSON.stringify({ weatherData, canaisData, cadernosData }, null, 2), 'utf-8');
+  console.log(`💾 Dados brutos armazenados para auditoria e inteligência em: data/raw/ingestao_${nowIso}.json`);
 
-async function main() {
-  const rootDir = process.cwd();
-  const indexPath = path.join(rootDir, 'index.html');
-  const arquivoPath = path.join(rootDir, 'ARQUIVO.md');
-
-  const weatherData = await fetchWeather();
-  const { canaisData, cadernosData } = await fetchAllData();
+  // Update checkpoint timestamp
+  updateCheckpointTimestamp(dataDir);
 
   const hoje = new Date();
   const dataFormatada = hoje.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
-  const dataCurta = hoje.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-  console.log('✅ Varredura concluída com sucesso!');
+  console.log('✅ Varredura e inteligência concluídas com sucesso!');
   console.log(`🎉 NEITHAN YORK TIMES processado para a edição de ${dataFormatada}.`);
 }
 
