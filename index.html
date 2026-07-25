@@ -572,14 +572,203 @@
     <a href="#economia">Economia</a>
     <a href="#tech">Tecnologia &amp; IA</a>
     <a href="#marketing">Marketing</a>
+.newsbox .cols > div {
+    border-left: 1px solid var(--line);
+    padding-left: 16px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .newsbox .cols > div:first-child { border-left: none; padding-left: 0; }
+
+  .newsbox .cols h4 {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+
+  /* ---------- Front page — real illustrated stories ---------- */
+  .frontpage {
+    margin-bottom: 40px;
+  }
+
+  .frontpage-label {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .frontpage-title {
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .story:first-child { border-top: 3px solid var(--line-strong); }
+
+  @media (max-width: 620px) {
+    .story { grid-template-columns: 1fr; }
+  }
+
+  .story-thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .story-body { display: flex; flex-direction: column; }
+
+  .story .kicker { margin-bottom: 5px; }
+
+  .story h3 {
+    font-size: 22px;
+    line-height: 1.22;
+    margin: 0 0 8px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .story-dek {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+
+  .accordion {
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+    margin-bottom: 12px;
+  }
+
+  .accordion summary {
+    cursor: pointer;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .accordion summary::-webkit-details-marker { display: none; }
+
+  .accordion summary::before {
+    content: "+";
+    display: inline-block;
+    width: 14px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .accordion[open] summary::before { content: "\2212"; }
+
+  .accordion summary:focus-visible {
+    outline: 2px solid var(--tag-social);
+    outline-offset: 3px;
+  }
+
+  .accordion-body {
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 10px 2px 2px 20px;
+    max-width: 62ch;
+  }
+
+  .story-foot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-original {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 8px 14px;
+    border: 1px solid var(--ink);
+  }
+
+  .btn-original:hover, .btn-original:focus-visible {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .btn-original:focus-visible { outline: 2px solid var(--tag-social); outline-offset: 2px; }
+
+  .story-source {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  footer {
+    text-align: center;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .article h3 a, .toc a { transition: color 0.12s ease, border-color 0.12s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <a href="#brasil">Brasil</a>
+    <a href="#economia">Economia</a>
+    <a href="#tech">Tecnologia &amp; IA</a>
+    <a href="#marketing">Marketing</a>
     <a href="#mundo">Mundo</a>
     <a href="#futebol">Futebol</a>
     <a href="#clima">Clima</a>
   </nav>
 
+  <header class="masthead">
+  <div class="masthead-top">Edição Digital &middot; Atualização Contínua via RSS</div>
+  <h1 class="masthead-title">NEITHAN YORK TIMES</h1>
+  <p class="masthead-tagline">O Panorama Diário dos Maiores Canais e Cadernos do Brasil &middot; Powered by AI &amp; RSS</p>
+</header>
+
   <div class="frontpage">
     <div class="frontpage-label">Edição do Dia &middot; 25 de julho de 2026</div>
-    <p class="frontpage-title">Uma matéria real por caderno — lida inteira, resumida e linkada. Atualização diária do TNYT.</p>
+    <p class="frontpage-title">Uma matéria real por caderno — lida inteira, resumida e linkada. Atualização diária do NEITHAN YORK TIMES.</p>
 
     <article class="story">
       <img class="story-thumb" src="https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/53874959828_f55877ef9c_k.jpg" alt="Fachada do Palácio do Itamaraty em Brasília" loading="lazy" />
