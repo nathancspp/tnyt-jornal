@@ -319,6 +319,24 @@
   .article-foot .src {
     color: var(--muted);
     font-style: normal;
+    text-decoration: none;
+  }
+
+  a.article-foot-link.src,
+  .article-foot a.src {
+    color: var(--ink);
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 1px;
+  }
+
+  .article-foot a.src:hover,
+  .article-foot a.src:focus-visible {
+    color: var(--tag-social);
+    border-bottom-color: var(--tag-social);
+  }
+  .article-foot a.src:focus-visible {
+    outline: 2px solid var(--tag-social);
+    outline-offset: 2px;
   }
 
   .fmt-badges { display: flex; gap: 5px; }
@@ -731,7 +749,7 @@
         <div class="kicker">Portal &middot; Globo</div>
         <h3><a href="https://g1.globo.com/rss/g1/" target="_blank" rel="noopener">G1 — feeds por editoria</a></h3>
         <p>Feeds separados por assunto (política, economia, mundo) — puxa só o que interessa.</p>
-        <div class="article-foot"><span class="src">g1.globo.com</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+        <div class="article-foot"><a class="src" href="https://g1.globo.com/rss/g1/" target="_blank" rel="noopener">g1.globo.com &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
       </article>
 
       <article class="article">
@@ -739,7 +757,7 @@
         <div class="kicker">Última hora</div>
         <h3><a href="https://www.noticiasaominuto.com.br/rss" target="_blank" rel="noopener">Notícias ao Minuto</a></h3>
         <p>Feed geral de última hora, cobertura ampla e atualização rápida.</p>
-        <div class="article-foot"><span class="src">noticiasaominuto.com.br</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.noticiasaominuto.com.br/rss" target="_blank" rel="noopener">noticiasaominuto.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
       </article>
 
       <article class="article">
@@ -747,7 +765,7 @@
         <div class="kicker">Curitiba, PR</div>
         <h3><a href="https://www.gazetadopovo.com.br/rss/" target="_blank" rel="noopener">Gazeta do Povo</a></h3>
         <p>Cobertura nacional com viés mais conservador — bom contraponto editorial.</p>
-        <div class="article-foot"><span class="src">gazetadopovo.com.br</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.gazetadopovo.com.br/rss/" target="_blank" rel="noopener">gazetadopovo.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
       </article>
 
       <article class="article">
@@ -755,7 +773,7 @@
         <div class="kicker">Resumo pronto</div>
         <h3><a href="https://seuresumodiario.com.br/" target="_blank" rel="noopener">Seu Resumo Diário</a></h3>
         <p>Já entrega o resumo pronto — o agente só precisa ler esse e-mail.</p>
-        <div class="article-foot"><span class="src">seuresumodiario.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://seuresumodiario.com.br/" target="_blank" rel="noopener">seuresumodiario.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -763,7 +781,7 @@
         <div class="kicker">Brasília</div>
         <h3><a href="https://www.poder360.com.br/" target="_blank" rel="noopener">Poder360</a></h3>
         <p>Política e poder em Brasília — newsletters diárias por tema.</p>
-        <div class="article-foot"><span class="src">poder360.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.poder360.com.br/" target="_blank" rel="noopener">poder360.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
     </div>
@@ -782,7 +800,7 @@
         <div class="kicker">Geraldo Samor</div>
         <h3><a href="https://braziljournal.com/" target="_blank" rel="noopener">Brazil Journal</a></h3>
         <p>A mais lida por CEOs e gestores — bastidor de empresas e mercado, sem enrolação.</p>
-        <div class="article-foot"><span class="src">braziljournal.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://braziljournal.com/" target="_blank" rel="noopener">braziljournal.com &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -790,7 +808,7 @@
         <div class="kicker">Mercado financeiro</div>
         <h3><a href="https://www.infomoney.com.br/newsletters/" target="_blank" rel="noopener">InfoMoney</a></h3>
         <p>Newsletters gratuitas segmentadas: economia, mercado, investimentos.</p>
-        <div class="article-foot"><span class="src">infomoney.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.infomoney.com.br/newsletters/" target="_blank" rel="noopener">infomoney.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -798,7 +816,7 @@
         <div class="kicker">Startups &amp; inovação</div>
         <h3><a href="https://neofeed.com.br/" target="_blank" rel="noopener">NeoFeed</a></h3>
         <p>Quem está crescendo no Brasil — negócios, startups e inovação.</p>
-        <div class="article-foot"><span class="src">neofeed.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://neofeed.com.br/" target="_blank" rel="noopener">neofeed.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -806,7 +824,7 @@
         <div class="kicker">Investimentos</div>
         <h3><a href="https://investnews.com.br/" target="_blank" rel="noopener">InvestNews</a></h3>
         <p>Cobertura de investimentos e economia com leitura rápida.</p>
-        <div class="article-foot"><span class="src">investnews.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://investnews.com.br/" target="_blank" rel="noopener">investnews.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -833,7 +851,7 @@
         <div class="kicker">Diária &middot; 5 min</div>
         <h3><a href="https://tldr.tech/ai" target="_blank" rel="noopener">TLDR AI</a></h3>
         <p>Técnica e rápida — papers, repositórios e lançamentos, sem gordura.</p>
-        <div class="article-foot"><span class="src">tldr.tech/ai</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://tldr.tech/ai" target="_blank" rel="noopener">tldr.tech/ai &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -841,7 +859,7 @@
         <div class="kicker">Andrew Ng</div>
         <h3><a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener">The Batch</a></h3>
         <p>Semanal, linguagem acessível — o "porquê" por trás das notícias de IA.</p>
-        <div class="article-foot"><span class="src">deeplearning.ai</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener">deeplearning.ai &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -849,7 +867,7 @@
         <div class="kicker">Tom informal</div>
         <h3><a href="https://www.bensbites.com/" target="_blank" rel="noopener">Ben's Bites</a></h3>
         <p>Uma das primeiras newsletters diárias de IA — opinativa e direta.</p>
-        <div class="article-foot"><span class="src">bensbites.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.bensbites.com/" target="_blank" rel="noopener">bensbites.com &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -857,7 +875,7 @@
         <div class="kicker">Cenário BR</div>
         <h3><a href="https://www.distrito.me/" target="_blank" rel="noopener">Distrito — AI Factory</a></h3>
         <p>Curadoria brasileira de IA, equilíbrio entre global e local.</p>
-        <div class="article-foot"><span class="src">distrito.me</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.distrito.me/" target="_blank" rel="noopener">distrito.me &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -865,7 +883,7 @@
         <div class="kicker">Sexta-feira</div>
         <h3><a href="https://lps.exame.com/newsletter-ai" target="_blank" rel="noopener">Exame IA</a></h3>
         <p>Foco em aplicação de negócio da IA no mercado brasileiro.</p>
-        <div class="article-foot"><span class="src">exame.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://lps.exame.com/newsletter-ai" target="_blank" rel="noopener">exame.com &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
       <article class="article">
@@ -916,7 +934,7 @@
         <div class="kicker">Performance</div>
         <h3><a href="https://www.conversion.com.br/blog/newsletter-de-marketing/" target="_blank" rel="noopener">Conversion</a></h3>
         <p>Blog e newsletter com dados de performance, funil e conversão.</p>
-        <div class="article-foot"><span class="src">conversion.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.conversion.com.br/blog/newsletter-de-marketing/" target="_blank" rel="noopener">conversion.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
       </article>
 
     </div>
@@ -935,7 +953,7 @@
         <div class="kicker">EUA &middot; Wire service</div>
         <h3><a href="https://apnews.com/" target="_blank" rel="noopener">Associated Press</a></h3>
         <p>Cooperativa sem dono único — o mais factual dos grandes, sem viés editorial forte.</p>
-        <div class="article-foot"><span class="src">apnews.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://apnews.com/" target="_blank" rel="noopener">apnews.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -943,7 +961,7 @@
         <div class="kicker">EUA &middot; Wire service</div>
         <h3><a href="https://www.reuters.com/" target="_blank" rel="noopener">Reuters</a></h3>
         <p>Cobertura global neutra, sourcing rigoroso. ⚠ bloqueia acesso automatizado — agente usa busca.</p>
-        <div class="article-foot"><span class="src">reuters.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.reuters.com/" target="_blank" rel="noopener">reuters.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -951,7 +969,7 @@
         <div class="kicker">EUA &middot; Referência</div>
         <h3><a href="https://www.nytimes.com/" target="_blank" rel="noopener">The New York Times</a></h3>
         <p>Investigativo premiado — o "irmão mais velho" real do seu jornal aqui.</p>
-        <div class="article-foot"><span class="src">nytimes.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.nytimes.com/" target="_blank" rel="noopener">nytimes.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -959,7 +977,7 @@
         <div class="kicker">EUA &middot; Mercado</div>
         <h3><a href="https://www.wsj.com/" target="_blank" rel="noopener">Wall Street Journal</a></h3>
         <p>Referência em economia americana. ⚠ paywall — agente usa busca.</p>
-        <div class="article-foot"><span class="src">wsj.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.wsj.com/" target="_blank" rel="noopener">wsj.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -967,7 +985,7 @@
         <div class="kicker">Reino Unido &middot; Global</div>
         <h3><a href="https://www.bbc.com/news" target="_blank" rel="noopener">BBC News</a></h3>
         <p>Fonte pública, alta confiabilidade, cobre EUA, Europa e Ásia com o mesmo padrão.</p>
-        <div class="article-foot"><span class="src">bbc.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.bbc.com/news" target="_blank" rel="noopener">bbc.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -975,7 +993,7 @@
         <div class="kicker">China &middot; Hong Kong</div>
         <h3><a href="https://www.scmp.com/" target="_blank" rel="noopener">South China Morning Post</a></h3>
         <p>Jornal de referência em inglês pra Grande China e Ásia — perspectiva de dentro.</p>
-        <div class="article-foot"><span class="src">scmp.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.scmp.com/" target="_blank" rel="noopener">scmp.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -983,7 +1001,7 @@
         <div class="kicker">China &middot; Negócios</div>
         <h3><a href="https://www.caixinglobal.com/" target="_blank" rel="noopener">Caixin Global</a></h3>
         <p>Referência em jornalismo financeiro e investigativo sobre a China.</p>
-        <div class="article-foot"><span class="src">caixinglobal.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.caixinglobal.com/" target="_blank" rel="noopener">caixinglobal.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -991,7 +1009,7 @@
         <div class="kicker">Europa &middot; Bruxelas</div>
         <h3><a href="https://www.politico.eu/" target="_blank" rel="noopener">Politico Europe</a></h3>
         <p>Referência em política e política pública da União Europeia.</p>
-        <div class="article-foot"><span class="src">politico.eu</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.politico.eu/" target="_blank" rel="noopener">politico.eu &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -999,7 +1017,7 @@
         <div class="kicker">Europa &middot; Mercado</div>
         <h3><a href="https://www.ft.com/" target="_blank" rel="noopener">Financial Times</a></h3>
         <p>Referência global em economia. ⚠ bloqueia acesso automatizado — agente usa busca.</p>
-        <div class="article-foot"><span class="src">ft.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.ft.com/" target="_blank" rel="noopener">ft.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1007,7 +1025,7 @@
         <div class="kicker">Sudeste Asiático</div>
         <h3><a href="https://asia.nikkei.com/" target="_blank" rel="noopener">Nikkei Asia</a></h3>
         <p>Negócios e política asiática — ASEAN, Japão, Índia e China vista de fora.</p>
-        <div class="article-foot"><span class="src">asia.nikkei.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://asia.nikkei.com/" target="_blank" rel="noopener">asia.nikkei.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
     </div>
@@ -1026,7 +1044,7 @@
         <div class="kicker">Seu time</div>
         <h3><a href="https://internacional.com.br/" target="_blank" rel="noopener">Sport Club Internacional — site oficial</a></h3>
         <p>Direto da fonte: elenco, jogos, boletim médico, coletivas. Prioridade máxima na curadoria.</p>
-        <div class="article-foot"><span class="src">internacional.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://internacional.com.br/" target="_blank" rel="noopener">internacional.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1034,7 +1052,7 @@
         <div class="kicker">Cobertura dedicada</div>
         <h3><a href="https://www.revistacolorada.com.br/" target="_blank" rel="noopener">Revista Colorada</a></h3>
         <p>Site especializado só em Inter — bastidor, mercado da bola e análise tática do Colorado.</p>
-        <div class="article-foot"><span class="src">revistacolorada.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.revistacolorada.com.br/" target="_blank" rel="noopener">revistacolorada.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1042,7 +1060,7 @@
         <div class="kicker">Brasileirão &amp; Gauchão</div>
         <h3><a href="https://ge.globo.com/rs/futebol/times/internacional/" target="_blank" rel="noopener">ge.globo — Internacional / RS</a></h3>
         <p>Cobertura completa de Brasileirão e Gauchão, com editoria fixa pro Inter e pro futebol gaúcho.</p>
-        <div class="article-foot"><span class="src">ge.globo.com</span><div class="fmt-badges"><span class="fmt">rss</span><span class="fmt" data-kind="video">vídeo</span></div></div>
+        <div class="article-foot"><a class="src" href="https://ge.globo.com/rs/futebol/times/internacional/" target="_blank" rel="noopener">ge.globo.com &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span><span class="fmt" data-kind="video">vídeo</span></div></div>
       </article>
 
       <article class="article">
@@ -1050,7 +1068,7 @@
         <div class="kicker">Bastidor &amp; mercado</div>
         <h3><a href="https://www.lance.com.br/internacional" target="_blank" rel="noopener">Lance! — Internacional</a></h3>
         <p>Forte em notícia de bastidor, transferência e furo — editoria própria pro clube.</p>
-        <div class="article-foot"><span class="src">lance.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.lance.com.br/internacional" target="_blank" rel="noopener">lance.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1058,7 +1076,7 @@
         <div class="kicker">Dados ao vivo</div>
         <h3><a href="https://www.fotmob.com/pt-BR/teams/8702/overview/internacional" target="_blank" rel="noopener">FotMob — Internacional</a></h3>
         <p>Placar ao vivo, escalação, estatística de jogo — bom pra resumo pós-jogo automático.</p>
-        <div class="article-foot"><span class="src">fotmob.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.fotmob.com/pt-BR/teams/8702/overview/internacional" target="_blank" rel="noopener">fotmob.com &rarr;</a><div class="fmt-badges"><span class="fmt">api</span></div></div>
       </article>
 
       <article class="article">
@@ -1066,7 +1084,7 @@
         <div class="kicker">Brasileirão geral</div>
         <h3><a href="https://ge.globo.com/futebol/brasileirao-serie-a/" target="_blank" rel="noopener">ge.globo — Brasileirão Série A</a></h3>
         <p>Tabela, rodada, resultados de todos os times — visão geral do campeonato nacional.</p>
-        <div class="article-foot"><span class="src">ge.globo.com</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+        <div class="article-foot"><a class="src" href="https://ge.globo.com/futebol/brasileirao-serie-a/" target="_blank" rel="noopener">ge.globo.com &rarr;</a><div class="fmt-badges"><span class="fmt">rss</span></div></div>
       </article>
 
       <article class="article">
@@ -1074,7 +1092,7 @@
         <div class="kicker">Seleção brasileira</div>
         <h3><a href="https://www.cbf.com.br/selecao-brasileira/noticias" target="_blank" rel="noopener">CBF — Seleção Brasileira</a></h3>
         <p>Fonte oficial de convocação, amistoso e eliminatórias da Seleção.</p>
-        <div class="article-foot"><span class="src">cbf.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.cbf.com.br/selecao-brasileira/noticias" target="_blank" rel="noopener">cbf.com.br &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1082,7 +1100,7 @@
         <div class="kicker">Ligas europeias</div>
         <h3><a href="https://www.espn.com/soccer/" target="_blank" rel="noopener">ESPN Soccer</a></h3>
         <p>Premier League, Champions, La Liga e mais — cobertura mundial consolidada.</p>
-        <div class="article-foot"><span class="src">espn.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.espn.com/soccer/" target="_blank" rel="noopener">espn.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1090,7 +1108,7 @@
         <div class="kicker">Cobertura global</div>
         <h3><a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener">BBC Sport — Football</a></h3>
         <p>Isenta e completa, boa base pra futebol mundial fora do eixo BR.</p>
-        <div class="article-foot"><span class="src">bbc.com/sport</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.bbc.com/sport/football" target="_blank" rel="noopener">bbc.com/sport &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1098,7 +1116,7 @@
         <div class="kicker">Espanha</div>
         <h3><a href="https://www.marca.com/en/" target="_blank" rel="noopener">Marca</a></h3>
         <p>Referência espanhola — La Liga e seleções europeias em detalhe.</p>
-        <div class="article-foot"><span class="src">marca.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.marca.com/en/" target="_blank" rel="noopener">marca.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
       <article class="article">
@@ -1106,7 +1124,7 @@
         <div class="kicker">Transferências</div>
         <h3><a href="https://www.goal.com/en" target="_blank" rel="noopener">Goal.com</a></h3>
         <p>Boa cobertura de mercado da bola e rumores de transferência no futebol mundial.</p>
-        <div class="article-foot"><span class="src">goal.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+        <div class="article-foot"><a class="src" href="https://www.goal.com/en" target="_blank" rel="noopener">goal.com &rarr;</a><div class="fmt-badges"><span class="fmt">site</span></div></div>
       </article>
 
     </div>
@@ -1125,7 +1143,7 @@
         <div class="kicker">Gratuita &amp; sem chave</div>
         <h3><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></h3>
         <p>API gratuita sem necessidade de cadastro — a mais simples de plugar direto.</p>
-        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
+        <div class="article-foot"><a class="src" href="https://open-meteo.com/" target="_blank" rel="noopener">open-meteo.com &rarr;</a><div class="fmt-badges"><span class="fmt">api</span></div></div>
       </article>
 
       <article class="article">
@@ -1133,7 +1151,7 @@
         <div class="kicker">Foco Brasil</div>
         <h3><a href="https://hgbrasil.com/weather/" target="_blank" rel="noopener">HG Brasil Weather</a></h3>
         <p>API com foco no Brasil, documentação em português, previsão de 15 dias.</p>
-        <div class="article-foot"><span class="src">hgbrasil.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
+        <div class="article-foot"><a class="src" href="https://hgbrasil.com/weather/" target="_blank" rel="noopener">hgbrasil.com &rarr;</a><div class="fmt-badges"><span class="fmt">api</span></div></div>
       </article>
 
     </div>
