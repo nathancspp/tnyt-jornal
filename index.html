@@ -1,0 +1,1324 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Neitan York Times</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📰</text></svg>" />
+<style>
+  :root {
+    --paper: #ffffff;
+    --paper-raised: #fafafa;
+    --ink: #1a1a1a;
+    --ink-soft: #3d3d3d;
+    --muted: #767676;
+    --line: #d4d4d4;
+    --line-strong: #1a1a1a;
+    --rule-double: #1a1a1a;
+    --thumb-1: #c9c9c9;
+    --thumb-2: #a8a8a8;
+    --tag-rss: #3d3d3d;
+    --tag-news: #3d3d3d;
+    --tag-api: #3d3d3d;
+    --tag-video: #7a1f1f;
+    --tag-social: #1f4a7a;
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #121212;
+    --paper-raised: #1a1a1a;
+    --ink: #ececec;
+    --ink-soft: #c4c4c4;
+    --muted: #8c8c8c;
+    --line: #333333;
+    --line-strong: #ececec;
+    --rule-double: #ececec;
+    --thumb-1: #2c2c2c;
+    --thumb-2: #3a3a3a;
+    --tag-rss: #c4c4c4;
+    --tag-news: #c4c4c4;
+    --tag-api: #c4c4c4;
+    --tag-video: #d98c8c;
+    --tag-social: #8cadd9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121212;
+      --paper-raised: #1a1a1a;
+      --ink: #ececec;
+      --ink-soft: #c4c4c4;
+      --muted: #8c8c8c;
+      --line: #333333;
+      --line-strong: #ececec;
+      --rule-double: #ececec;
+      --thumb-1: #2c2c2c;
+      --thumb-2: #3a3a3a;
+      --tag-rss: #c4c4c4;
+      --tag-news: #c4c4c4;
+      --tag-api: #c4c4c4;
+      --tag-video: #d98c8c;
+      --tag-social: #8cadd9;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", Times, serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 26px 22px 90px;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 16px 14px 70px; }
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    text-align: center;
+    padding-bottom: 14px;
+  }
+
+  .masthead .edition-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 7px;
+    margin-bottom: 12px;
+  }
+
+  .masthead h1 {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(38px, 8vw, 66px);
+    letter-spacing: -0.005em;
+    margin: 2px 0 6px;
+    text-wrap: balance;
+  }
+
+  .masthead .motto {
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .masthead .rule-thick {
+    border: none;
+    border-top: 4px solid var(--line-strong);
+    margin: 10px 0 3px;
+  }
+  .masthead .rule-thin {
+    border: none;
+    border-top: 1px solid var(--line-strong);
+    margin: 0 0 14px;
+  }
+
+  /* ---------- Front page nav (table of contents) ---------- */
+  .toc {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 0;
+    padding: 10px 0 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 26px;
+  }
+
+  .toc a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 4px 12px;
+    border-right: 1px solid var(--line);
+  }
+
+  .toc a:last-child { border-right: none; }
+  .toc a:hover, .toc a:focus-visible { color: var(--tag-video); }
+
+  /* ---------- Lede note ---------- */
+  .lede {
+    max-width: 62ch;
+    margin: 0 auto 34px;
+    text-align: center;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* ---------- Caderno (section) ---------- */
+  .caderno {
+    scroll-margin-top: 14px;
+    margin-bottom: 46px;
+  }
+
+  .caderno-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-top: 3px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    padding: 6px 0;
+    margin-bottom: 18px;
+  }
+
+  .caderno-head h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .caderno-head .caderno-sub {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: right;
+  }
+
+  .caderno-dek {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: -10px 0 16px;
+  }
+
+  /* ---------- Article grid ---------- */
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 22px 24px;
+  }
+
+  .article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thumb {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
+    border: 1px solid var(--line);
+    margin-bottom: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thumb-mono {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--paper);
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+  }
+
+  .thumb .thumb-tag {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+  }
+
+  .thumb[data-kind="video"] .thumb-tag { color: var(--tag-video); border-color: var(--tag-video); }
+  .thumb[data-kind="social"] .thumb-tag { color: var(--tag-social); border-color: var(--tag-social); }
+
+  .kicker {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .article h3 {
+    font-size: 17px;
+    line-height: 1.25;
+    margin: 0 0 5px;
+    font-weight: 700;
+  }
+
+  .article h3 a {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .article h3 a:hover, .article h3 a:focus-visible {
+    border-bottom-color: var(--ink);
+  }
+  .article h3 a:focus-visible {
+    outline: 2px solid var(--tag-social);
+    outline-offset: 2px;
+  }
+
+  .article p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+    flex: 1;
+  }
+
+  .article-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--line);
+    padding-top: 6px;
+    margin-top: auto;
+  }
+
+  .article-foot .src {
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  .fmt-badges { display: flex; gap: 5px; }
+
+  .fmt {
+    font-size: 9px;
+    padding: 1px 5px;
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .fmt[data-kind="video"] { color: var(--tag-video); border-color: var(--tag-video); }
+  .fmt[data-kind="social"] { color: var(--tag-social); border-color: var(--tag-social); }
+
+  /* ---------- Sidebar note (how-to box) ---------- */
+  .newsbox {
+    border-top: 3px double var(--line-strong);
+    border-bottom: 3px double var(--line-strong);
+    padding: 20px 0;
+    margin: 10px 0 44px;
+  }
+
+  .newsbox h3 {
+    font-size: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 12px;
+    text-align: center;
+  }
+
+  .newsbox .cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  @media (max-width: 700px) {
+    .newsbox .cols { grid-template-columns: 1fr; }
+  }
+
+  .newsbox .cols > div {
+    border-left: 1px solid var(--line);
+    padding-left: 16px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .newsbox .cols > div:first-child { border-left: none; padding-left: 0; }
+
+  .newsbox .cols h4 {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+
+  /* ---------- Front page — real illustrated stories ---------- */
+  .frontpage {
+    margin-bottom: 40px;
+  }
+
+  .frontpage-label {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .frontpage-title {
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .story:first-child { border-top: 3px solid var(--line-strong); }
+
+  @media (max-width: 620px) {
+    .story { grid-template-columns: 1fr; }
+  }
+
+  .story-thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
+    border: 1px solid var(--line);
+    display: block;
+  }
+
+  .story-body { display: flex; flex-direction: column; }
+
+  .story .kicker { margin-bottom: 5px; }
+
+  .story h3 {
+    font-size: 22px;
+    line-height: 1.22;
+    margin: 0 0 8px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .story-dek {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+
+  .accordion {
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+    margin-bottom: 12px;
+  }
+
+  .accordion summary {
+    cursor: pointer;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .accordion summary::-webkit-details-marker { display: none; }
+
+  .accordion summary::before {
+    content: "+";
+    display: inline-block;
+    width: 14px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .accordion[open] summary::before { content: "\2212"; }
+
+  .accordion summary:focus-visible {
+    outline: 2px solid var(--tag-social);
+    outline-offset: 3px;
+  }
+
+  .accordion-body {
+    font-size: 14px;
+    color: var(--ink-soft);
+    padding: 10px 2px 2px 20px;
+    max-width: 62ch;
+  }
+
+  .story-foot {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-original {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 8px 14px;
+    border: 1px solid var(--ink);
+  }
+
+  .btn-original:hover, .btn-original:focus-visible {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .btn-original:focus-visible { outline: 2px solid var(--tag-social); outline-offset: 2px; }
+
+  .story-source {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  footer {
+    text-align: center;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .article h3 a, .toc a { transition: color 0.12s ease, border-color 0.12s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="edition-row">
+      <span>Edição de teste &middot; Ano I, N&ordm;1</span>
+      <span>25 de julho de 2026</span>
+      <span>Base Nathan &amp; Amanda</span>
+    </div>
+    <h1>The Neitan York Times</h1>
+    <div class="motto">&ldquo;All the news that's fit for Nathan&rdquo; &mdash; sem fake news, sem ruído, só o que interessa.</div>
+    <hr class="rule-thick" />
+    <hr class="rule-thin" />
+  </div>
+
+  <nav class="toc">
+    <a href="#brasil">Brasil</a>
+    <a href="#economia">Economia</a>
+    <a href="#tech">Tecnologia &amp; IA</a>
+    <a href="#marketing">Marketing</a>
+    <a href="#eua">Estados Unidos</a>
+    <a href="#china">China</a>
+    <a href="#europa">Europa</a>
+    <a href="#asia">Sudeste Asiático</a>
+    <a href="#futebol">Futebol</a>
+    <a href="#pessoas">Pessoas pra Seguir</a>
+    <a href="#clima">Clima</a>
+  </nav>
+
+  <div class="frontpage">
+    <div class="frontpage-label">Primeira Edição Completa</div>
+    <p class="frontpage-title">Uma matéria real por caderno — lida inteira, resumida e linkada. É exatamente assim que o super agente vai montar a primeira página todo dia.</p>
+
+    <article class="story">
+      <img class="story-thumb" src="https://imagens.imirante.com.br/imagens/noticias/2025/08/20/eEVm6Rnc1csQCkzdde5DKwupKCWQG4IL4xyG5X59.jpg" alt="Eduardo Bolsonaro" loading="lazy" />
+      <div class="story-body">
+        <div class="kicker">Brasil &middot; Imirante</div>
+        <h3>PF recomenda demissão de Eduardo Bolsonaro por abandono de cargo</h3>
+        <p class="story-dek">Ele segue nos EUA desde fevereiro do ano passado; decisão final cabe ao ministro da Justiça.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">A Polícia Federal concluiu um processo administrativo e recomendou a demissão de Eduardo Bolsonaro do cargo de escrivão por abandono de cargo, já que ele permanece nos Estados Unidos desde fevereiro do ano anterior. A decisão final caberá ao ministro da Justiça, Wellington Lima e Silva, que ainda não se manifestou. Além disso, o Supremo Tribunal Federal já havia condenado o ex-deputado pelo crime de coação no curso do processo, com pena de quatro anos e dois meses de prisão e perda do cargo na corporação.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://m.imirante.com/noticias/brasil/2026/07/21/ipolitica-pf-recomenda-demissao-de-eduardo-bolsonaro-por-abandono-de-cargo" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">imirante.com &middot; 21 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <img class="story-thumb" src="https://images.euronews.com/articles/stories/09/84/16/09/1536x864_cmsv2_f1ab3f30-0723-5596-ab95-f0d3c3d916b0-9841609.jpg" alt="Xi Jinping na Conferência Mundial de IA em Xangai" loading="lazy" />
+      <div class="story-body">
+        <div class="kicker">Tecnologia &amp; IA &middot; Euronews</div>
+        <h3>Xi pede cooperação global em IA enquanto restrições dos EUA apertam o acesso da China</h3>
+        <p class="story-dek">Na Conferência Mundial de IA em Xangai, Xi Jinping propôs uma "sinfonia" de cooperação em vez de competição isolada.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Xi Jinping pediu cooperação global em inteligência artificial durante a Conferência Mundial de IA em Xangai, criticando as restrições americanas que limitam o acesso da China à tecnologia avançada. Ele afirmou que o desenvolvimento de IA "não deveria ser uma apresentação solo de qualquer país isolado, mas sim uma sinfonia de cooperação global". A China anunciou que vai oferecer 5.000 oportunidades de treinamento em IA a países em desenvolvimento nos próximos cinco anos, e firmou acordo com 29 nações — incluindo Rússia e Paquistão — pra criar um novo organismo internacional de cooperação em IA baseado em Xangai.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://www.euronews.com/next/2026/07/17/xi-calls-for-global-ai-cooperation-as-us-restrictions-squeeze-chinas-tech-access" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">euronews.com &middot; 17 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <img class="story-thumb" src="https://br.advfn.com/jornal/files/2026/07/globalmercados.jpg" alt="Painel de mercado financeiro em Wall Street" loading="lazy" />
+      <div class="story-body">
+        <div class="kicker">Internacional &middot; ADVFN</div>
+        <h3>Wall Street abre em alta com alívio no petróleo, mas tarifas de Trump seguram o otimismo</h3>
+        <p class="story-dek">Dow Jones sobe com resultado da Intel; mercado de olho em novas tarifas sobre 60 economias parceiras.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Wall Street abriu em alta na sexta-feira (24/07), impulsionada pelos resultados positivos da Intel e pela queda do petróleo. O Dow Jones subiu 0,23%, enquanto S&amp;P 500 e Nasdaq caíram levemente. A expectativa de novas tarifas de Trump sobre 60 economias parceiras — substituindo uma tarifa global temporária de 10% que expira nesse período, com alíquotas entre 10% e 12,5% atingindo UE, Reino Unido, China, Índia, Japão e Canadá — segura o otimismo dos investidores.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://br.advfn.com/jornal/2026/07/abertura-mercados-estados-unidos-dow-jones-wall-street-hoje-sexta-feira-24-07-2026" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">advfn.com &middot; 24 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Gráfico de inflação e Banco Central"></div>
+      <div class="story-body">
+        <div class="kicker">Economia &amp; Negócios &middot; Agência Brasil</div>
+        <h3>Boletim Focus: mercado reduz projeção de inflação para 5,16% em 2026</h3>
+        <p class="story-dek">Segunda queda consecutiva no IPCA projetado; Selic segue estável em 14% ao ano.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Pelo segundo boletim consecutivo, o mercado financeiro reduziu a projeção de inflação para 2026 no Brasil. Segundo o Focus divulgado pelo Banco Central, o IPCA projetado para o ano caiu para 5,16%, descendo de 5,30% na semana anterior. O PIB se mantém projetado em 1,99%, enquanto a Selic segue estável em 14% ao ano. A redução reflete desaceleração inflacionária, com os preços de alimentos registrando a primeira queda desde novembro de 2025 — e o dólar projetado a R$ 5,20 no fim do ano.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://agenciabrasil.ebc.com.br/economia/noticia/2026-07/boletim-focus-mercado-reduz-para-516-expectativa-de-inflacao" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">agenciabrasil.ebc.com.br &middot; jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Estádio de futebol"></div>
+      <div class="story-body">
+        <div class="kicker">Futebol &middot; Inter em crise</div>
+        <h3>Athletico estreia grama nova contra um Inter em crise, com três derrotas seguidas</h3>
+        <p class="story-dek">Colorado é 14º colocado com 21 pontos; jogo vale pela 20ª rodada do Brasileirão, sábado às 18h30.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Athletico recebe o Internacional neste sábado (25/07), às 18h30, na Arena da Baixada, pela 20ª rodada do Brasileirão — com transmissão exclusiva no Amazon Prime Video. O jogo marca a estreia do novo gramado sintético do estádio, trocado durante a pausa da Copa do Mundo e já inspecionado pela FIFA. Enquanto o Athletico vive grande fase, com três vitórias seguidas e a 3ª colocação, o Inter chega em crise, depois de perder os últimos três jogos e ocupando a 14ª posição, com 21 pontos.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://www.umdoisesportes.com.br/athletico/noticias-athletico-hoje-24-07/" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">umdoisesportes.com.br &middot; 24 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Gráfico de crescimento e marketing digital"></div>
+      <div class="story-body">
+        <div class="kicker">Marketing &amp; Growth &middot; HubSpot State of Marketing</div>
+        <h3>2026: crescimento vem de confiança e personalização, não de campanha ampla</h3>
+        <p class="story-dek">IA virou obrigatória — a diferença agora é quem usa melhor; influencer marketing e posts colaborativos ganham força.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">O relatório aponta que em 2026 o marketing digital deixou de ser sobre campanhas amplas e passou a girar em torno de diferenciação, confiança e relevância, com experiências de cliente altamente direcionadas. IA já é considerada obrigatória — o diferencial competitivo não é mais "usar IA", e sim usar bem. Marketing de influenciadores segue crescendo (48% dos profissionais aumentando investimento no canal) e o LinkedIn lançou posts colaborativos entre membros e páginas. Reddit também ganha espaço com formatos de anúncio nativo que misturam conteúdo de usuário com conteúdo pago.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://www.hubspot.com/state-of-marketing" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">hubspot.com &middot; jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Fábrica e exportação na China"></div>
+      <div class="story-body">
+        <div class="kicker">China &middot; Caixin Global</div>
+        <h3>Produção industrial da China supera previsões, puxada por IA e exportação</h3>
+        <p class="story-dek">Alta de 5,3% em junho compensa a crise imobiliária prolongada e o consumo doméstico fraco.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">A produção industrial da China acelerou em junho, impulsionada por manufatura de alta tecnologia e exportações robustas. Segundo o Bureau Nacional de Estatísticas, a produção industrial com valor agregado cresceu 5,3% em relação ao ano anterior, superando a estimativa média de 4,6%. O boom de IA e a demanda por exportações ajudaram a compensar a queda prolongada do setor imobiliário e o consumo doméstico ainda fraco no país.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://www.caixinglobal.com/2026-07-15/chinas-industrial-output-beats-forecasts-on-ai-export-boom-102464462.html" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">caixinglobal.com &middot; 15 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <img class="story-thumb" src="https://digital-markets-act.ec.europa.eu/sites/default/files/styles/oe_theme_medium_no_crop/public/2026-07/AdobeStock_1872939623_3x2.png" alt="Logo do Google e martelo de justiça" loading="lazy" />
+      <div class="story-body">
+        <div class="kicker">Europa &middot; Comissão Europeia</div>
+        <h3>UE multa Google em €890 milhões pela primeira violação do Digital Markets Act</h3>
+        <p class="story-dek">€460 mi por favorecer os próprios serviços na busca, €430 mi por travar alternativas de compra no Play Store.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">A Comissão Europeia multou o Google em €890 milhões por duas violações distintas da Lei de Mercados Digitais — a primeira sanção da empresa sob essa lei. São €460 milhões por favorecer sistematicamente os próprios serviços nos resultados de busca (compras, hotéis, transporte, esportes) em detrimento de concorrentes, e €430 milhões por impedir que desenvolvedores de apps informassem gratuitamente aos usuários sobre alternativas de compra mais baratas fora da Google Play. O Google foi ordenado a cessar as práticas.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://digital-markets-act.ec.europa.eu/commission-fines-google-eur890-million-breaches-digital-markets-act-2026-07-23_en" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">ec.europa.eu &middot; 23 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Mapa do Mar do Sul da China"></div>
+      <div class="story-body">
+        <div class="kicker">Sudeste Asiático &middot; Nikkei Asia</div>
+        <h3>Disputa China-EUA no Mar do Sul da China ofusca reunião da ASEAN em Manila</h3>
+        <p class="story-dek">Wang Yi e Marco Rubio se encontram por 90 minutos em meio a choque entre guarda-costeira chinesa e marinha filipina.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Um confronto crescente entre China e EUA em torno de um choque entre a guarda-costeira chinesa e a marinha filipina no Mar do Sul da China ameaça ofuscar o encontro de ministros das relações exteriores da ASEAN em Manila. O chanceler chinês Wang Yi e o secretário de Estado americano Marco Rubio se reuniram por 90 minutos à margem do encontro, com a viagem planejada de Xi Jinping aos EUA e a disputa Pequim-Manila no topo da pauta. O presidente filipino Ferdinand Marcos Jr. sinalizou querer resetar a relação com a China, mesmo com a série de confrontos recentes na região.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://asia.nikkei.com/politics/international-relations/south-china-sea/china-us-spat-over-south-china-sea-threatens-to-overshadow-asean-meeting" target="_blank" rel="noopener">Ler matéria original</a>
+          <span class="story-source">asia.nikkei.com &middot; 22 jul 2026</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Ícone de tempo nublado"></div>
+      <div class="story-body">
+        <div class="kicker">Clima &middot; Open-Meteo &middot; Dado ao vivo</div>
+        <h3>Florianópolis/SC: 13,4&deg;C agora, máxima de 22&deg;C hoje, nublado</h3>
+        <p class="story-dek">Umidade em 99%, vento fraco (3,5 km/h), chance de chuva de 20% ao longo do dia.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Dado puxado ao vivo da API Open-Meteo pra coordenada de Florianópolis/SC. Temperatura atual de 13,4&deg;C, céu encoberto (nublado), umidade relativa de 99% e vento fraco de 3,5 km/h. A previsão do dia aponta mínima de 12,3&deg;C, máxima de 22&deg;C e 20% de chance de precipitação. Esse caderno não tem "matéria" — é o único que o agente busca em tempo real toda manhã, sem depender de nenhuma fonte editorial.</p>
+        </details>
+        <div class="story-foot">
+          <a class="btn-original" href="https://open-meteo.com/en/docs" target="_blank" rel="noopener">Ver dado ao vivo</a>
+          <span class="story-source">open-meteo.com &middot; agora</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-thumb" role="img" aria-label="Espaço reservado para redes sociais"></div>
+      <div class="story-body">
+        <div class="kicker">Pessoas pra Seguir &middot; Aguardando você</div>
+        <h3>Esse caderno ainda não tem fonte — falta você escolher os perfis</h3>
+        <p class="story-dek">Sem nome definido, o agente não sabe quem monitorar. É o único caderno que depende de você antes de rodar.</p>
+        <details class="accordion">
+          <summary>Ver resumo</summary>
+          <p class="accordion-body">Me passa de 3 a 5 pessoas ou contas que você quer acompanhar (X/Twitter, LinkedIn, Instagram) e o agente confere o que elas postaram nas últimas 24h toda manhã, resumindo o que for relevante — não é alerta em tempo real, é uma checagem diária.</p>
+        </details>
+        <div class="story-foot">
+          <span class="story-source">a definir com você</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="lede">Abaixo, o diretório completo de fontes por caderno — o agente de amanhã vai puxar as matérias do dia de cada uma delas e montar a primeira página automaticamente, no mesmo formato acima.</p>
+
+  <!-- BRASIL -->
+  <section class="caderno" id="brasil">
+    <div class="caderno-head">
+      <h2>Caderno Brasil</h2>
+      <span class="caderno-sub">Geral &amp; Política</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">G1</span></div>
+        <div class="kicker">Portal &middot; Globo</div>
+        <h3><a href="https://g1.globo.com/rss/g1/" target="_blank" rel="noopener">G1 — feeds por editoria</a></h3>
+        <p>Feeds separados por assunto (política, economia, mundo) — puxa só o que interessa.</p>
+        <div class="article-foot"><span class="src">g1.globo.com</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">NM</span></div>
+        <div class="kicker">Última hora</div>
+        <h3><a href="https://www.noticiasaominuto.com.br/rss" target="_blank" rel="noopener">Notícias ao Minuto</a></h3>
+        <p>Feed geral de última hora, cobertura ampla e atualização rápida.</p>
+        <div class="article-foot"><span class="src">noticiasaominuto.com.br</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">GP</span></div>
+        <div class="kicker">Curitiba, PR</div>
+        <h3><a href="https://www.gazetadopovo.com.br/rss/" target="_blank" rel="noopener">Gazeta do Povo</a></h3>
+        <p>Cobertura nacional com viés mais conservador — bom contraponto editorial.</p>
+        <div class="article-foot"><span class="src">gazetadopovo.com.br</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">SR</span></div>
+        <div class="kicker">Resumo pronto</div>
+        <h3><a href="https://seuresumodiario.com.br/" target="_blank" rel="noopener">Seu Resumo Diário</a></h3>
+        <p>Já entrega o resumo pronto — o agente só precisa ler esse e-mail.</p>
+        <div class="article-foot"><span class="src">seuresumodiario.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">P360</span></div>
+        <div class="kicker">Brasília</div>
+        <h3><a href="https://www.poder360.com.br/" target="_blank" rel="noopener">Poder360</a></h3>
+        <p>Política e poder em Brasília — newsletters diárias por tema.</p>
+        <div class="article-foot"><span class="src">poder360.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ECONOMIA -->
+  <section class="caderno" id="economia">
+    <div class="caderno-head">
+      <h2>Caderno Economia &amp; Negócios</h2>
+      <span class="caderno-sub">Mercado &amp; Empresas</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">BJ</span></div>
+        <div class="kicker">Geraldo Samor</div>
+        <h3><a href="https://braziljournal.com/" target="_blank" rel="noopener">Brazil Journal</a></h3>
+        <p>A mais lida por CEOs e gestores — bastidor de empresas e mercado, sem enrolação.</p>
+        <div class="article-foot"><span class="src">braziljournal.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">IM</span></div>
+        <div class="kicker">Mercado financeiro</div>
+        <h3><a href="https://www.infomoney.com.br/newsletters/" target="_blank" rel="noopener">InfoMoney</a></h3>
+        <p>Newsletters gratuitas segmentadas: economia, mercado, investimentos.</p>
+        <div class="article-foot"><span class="src">infomoney.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">NF</span></div>
+        <div class="kicker">Startups &amp; inovação</div>
+        <h3><a href="https://neofeed.com.br/" target="_blank" rel="noopener">NeoFeed</a></h3>
+        <p>Quem está crescendo no Brasil — negócios, startups e inovação.</p>
+        <div class="article-foot"><span class="src">neofeed.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">IN</span></div>
+        <div class="kicker">Investimentos</div>
+        <h3><a href="https://investnews.com.br/" target="_blank" rel="noopener">InvestNews</a></h3>
+        <p>Cobertura de investimentos e economia com leitura rápida.</p>
+        <div class="article-foot"><span class="src">investnews.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">MEI</span></div>
+        <div class="kicker">Resumo do dia</div>
+        <h3><span>Meio</span></h3>
+        <p>Resumo claro de negócios, tech e cultura — boa base geral pro dia.</p>
+        <div class="article-foot"><span class="src">meio.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- TECH & IA -->
+  <section class="caderno" id="tech">
+    <div class="caderno-head">
+      <h2>Caderno Tecnologia &amp; IA</h2>
+      <span class="caderno-sub">Ferramentas &amp; Lançamentos</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">TL</span></div>
+        <div class="kicker">Diária &middot; 5 min</div>
+        <h3><a href="https://tldr.tech/ai" target="_blank" rel="noopener">TLDR AI</a></h3>
+        <p>Técnica e rápida — papers, repositórios e lançamentos, sem gordura.</p>
+        <div class="article-foot"><span class="src">tldr.tech/ai</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">TB</span></div>
+        <div class="kicker">Andrew Ng</div>
+        <h3><a href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener">The Batch</a></h3>
+        <p>Semanal, linguagem acessível — o "porquê" por trás das notícias de IA.</p>
+        <div class="article-foot"><span class="src">deeplearning.ai</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">BB</span></div>
+        <div class="kicker">Tom informal</div>
+        <h3><a href="https://www.bensbites.com/" target="_blank" rel="noopener">Ben's Bites</a></h3>
+        <p>Uma das primeiras newsletters diárias de IA — opinativa e direta.</p>
+        <div class="article-foot"><span class="src">bensbites.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">DT</span></div>
+        <div class="kicker">Cenário BR</div>
+        <h3><a href="https://www.distrito.me/" target="_blank" rel="noopener">Distrito — AI Factory</a></h3>
+        <p>Curadoria brasileira de IA, equilíbrio entre global e local.</p>
+        <div class="article-foot"><span class="src">distrito.me</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">EX</span></div>
+        <div class="kicker">Sexta-feira</div>
+        <h3><a href="https://lps.exame.com/newsletter-ai" target="_blank" rel="noopener">Exame IA</a></h3>
+        <p>Foco em aplicação de negócio da IA no mercado brasileiro.</p>
+        <div class="article-foot"><span class="src">exame.com</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb" data-kind="video"><span class="thumb-mono">YT</span><span class="thumb-tag">vídeo</span></div>
+        <div class="kicker">Canal complementar</div>
+        <h3><span>Lex Fridman / Matthew Berman</span></h3>
+        <p>Entrevistas e análises em vídeo sobre IA — usar como complemento, com resumo do transcript quando disponível.</p>
+        <div class="article-foot"><span class="src">youtube.com</span><div class="fmt-badges"><span class="fmt" data-kind="video">vídeo</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MARKETING -->
+  <section class="caderno" id="marketing">
+    <div class="caderno-head">
+      <h2>Caderno Marketing &amp; Growth</h2>
+      <span class="caderno-sub">Pro chapéu de agência</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">GA</span></div>
+        <div class="kicker">Tendência</div>
+        <h3><span>Garimpo</span></h3>
+        <p>Curadoria de tendência de mercado digital — achados antes do mainstream.</p>
+        <div class="article-foot"><span class="src">buscar "newsletter Garimpo"</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">B2B</span></div>
+        <div class="kicker">Marca &amp; consumo</div>
+        <h3><span>Bits to Brands</span></h3>
+        <p>Posicionamento de marca, comportamento de consumo, transformação digital.</p>
+        <div class="article-foot"><span class="src">buscar "Bits to Brands"</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">GH</span></div>
+        <div class="kicker">Pedro Waengertner</div>
+        <h3><span>Growthaholics — ACE</span></h3>
+        <p>Semanal, opinião sobre empreendedorismo e venture capital.</p>
+        <div class="article-foot"><span class="src">buscar "Growthaholics ACE"</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">CV</span></div>
+        <div class="kicker">Performance</div>
+        <h3><a href="https://www.conversion.com.br/blog/newsletter-de-marketing/" target="_blank" rel="noopener">Conversion</a></h3>
+        <p>Blog e newsletter com dados de performance, funil e conversão.</p>
+        <div class="article-foot"><span class="src">conversion.com.br</span><div class="fmt-badges"><span class="fmt">newsletter</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ESTADOS UNIDOS -->
+  <section class="caderno" id="eua">
+    <div class="caderno-head">
+      <h2>Caderno Internacional — Estados Unidos</h2>
+      <span class="caderno-sub">Política, mercado &amp; tech</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">AP</span></div>
+        <div class="kicker">Wire service</div>
+        <h3><a href="https://apnews.com/" target="_blank" rel="noopener">Associated Press</a></h3>
+        <p>Cooperativa sem dono único — o mais factual dos grandes, sem viés editorial forte.</p>
+        <div class="article-foot"><span class="src">apnews.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">RT</span></div>
+        <div class="kicker">Wire service</div>
+        <h3><a href="https://www.reuters.com/" target="_blank" rel="noopener">Reuters</a></h3>
+        <p>Cobertura global neutra, sourcing rigoroso — base sólida antes de qualquer opinião.</p>
+        <div class="article-foot"><span class="src">reuters.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">NYT</span></div>
+        <div class="kicker">Jornal de referência</div>
+        <h3><a href="https://www.nytimes.com/" target="_blank" rel="noopener">The New York Times</a></h3>
+        <p>Investigativo premiado — o "irmão mais velho" real do seu jornal aqui.</p>
+        <div class="article-foot"><span class="src">nytimes.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">WSJ</span></div>
+        <div class="kicker">Mercado &amp; economia</div>
+        <h3><a href="https://www.wsj.com/" target="_blank" rel="noopener">Wall Street Journal</a></h3>
+        <p>Referência em economia e mercado financeiro americano.</p>
+        <div class="article-foot"><span class="src">wsj.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">NPR</span></div>
+        <div class="kicker">Rádio pública</div>
+        <h3><a href="https://www.npr.org/" target="_blank" rel="noopener">NPR</a></h3>
+        <p>Cobertura factual e neutra, boa pra contrabalançar a imprensa comercial.</p>
+        <div class="article-foot"><span class="src">npr.org</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CHINA -->
+  <section class="caderno" id="china">
+    <div class="caderno-head">
+      <h2>Caderno Internacional — China</h2>
+      <span class="caderno-sub">Em inglês, sem filtro estatal</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">SCMP</span></div>
+        <div class="kicker">Hong Kong</div>
+        <h3><a href="https://www.scmp.com/" target="_blank" rel="noopener">South China Morning Post</a></h3>
+        <p>Jornal de referência em inglês pra Grande China e Ásia — perspectiva de dentro.</p>
+        <div class="article-foot"><span class="src">scmp.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">ST</span></div>
+        <div class="kicker">China moderna</div>
+        <h3><a href="https://www.sixthtone.com/" target="_blank" rel="noopener">Sixth Tone</a></h3>
+        <p>Histórias humanas da China continental, repórteres locais, edição em inglês.</p>
+        <div class="article-foot"><span class="src">sixthtone.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">CX</span></div>
+        <div class="kicker">Negócios &amp; finanças</div>
+        <h3><a href="https://www.caixinglobal.com/" target="_blank" rel="noopener">Caixin Global</a></h3>
+        <p>Referência em jornalismo financeiro e investigativo sobre a China.</p>
+        <div class="article-foot"><span class="src">caixinglobal.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">NK</span></div>
+        <div class="kicker">Ásia inteira</div>
+        <h3><a href="https://asia.nikkei.com/" target="_blank" rel="noopener">Nikkei Asia</a></h3>
+        <p>Negócios e política asiática, com forte cobertura de China vista de fora.</p>
+        <div class="article-foot"><span class="src">asia.nikkei.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">TP</span></div>
+        <div class="kicker">Xangai</div>
+        <h3><span>The Paper (澎湃)</span></h3>
+        <p>Um dos maiores portais chineses — útil pro agente cruzar com a versão internacional da notícia.</p>
+        <div class="article-foot"><span class="src">thepaper.cn</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- EUROPA -->
+  <section class="caderno" id="europa">
+    <div class="caderno-head">
+      <h2>Caderno Internacional — Europa</h2>
+      <span class="caderno-sub">Política, UE &amp; mercado</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">PE</span></div>
+        <div class="kicker">Bruxelas</div>
+        <h3><a href="https://www.politico.eu/" target="_blank" rel="noopener">Politico Europe</a></h3>
+        <p>Referência em política e política pública da União Europeia.</p>
+        <div class="article-foot"><span class="src">politico.eu</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">EN</span></div>
+        <div class="kicker">Multi-idioma</div>
+        <h3><a href="https://www.euronews.com/" target="_blank" rel="noopener">Euronews</a></h3>
+        <p>Cobertura pan-europeia, também disponível em vídeo sob demanda.</p>
+        <div class="article-foot"><span class="src">euronews.com</span><div class="fmt-badges"><span class="fmt">site</span><span class="fmt" data-kind="video">vídeo</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">FT</span></div>
+        <div class="kicker">Mercado &amp; finanças</div>
+        <h3><a href="https://www.ft.com/" target="_blank" rel="noopener">Financial Times</a></h3>
+        <p>Referência global em economia e mercado, forte cobertura europeia.</p>
+        <div class="article-foot"><span class="src">ft.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">EO</span></div>
+        <div class="kicker">Independente</div>
+        <h3><a href="https://euobserver.com/" target="_blank" rel="noopener">EUobserver</a></h3>
+        <p>Não-lucrativo, editorialmente independente das instituições da UE.</p>
+        <div class="article-foot"><span class="src">euobserver.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">BBC</span></div>
+        <div class="kicker">Reino Unido</div>
+        <h3><a href="https://www.bbc.com/news/world/europe" target="_blank" rel="noopener">BBC Europe</a></h3>
+        <p>Fonte pública, alta confiabilidade, ótima porta de entrada pro continente.</p>
+        <div class="article-foot"><span class="src">bbc.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SUDESTE ASIÁTICO -->
+  <section class="caderno" id="asia">
+    <div class="caderno-head">
+      <h2>Caderno Internacional — Sudeste Asiático</h2>
+      <span class="caderno-sub">ASEAN &amp; negócios</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">ST</span></div>
+        <div class="kicker">Singapura</div>
+        <h3><a href="https://www.straitstimes.com/" target="_blank" rel="noopener">The Straits Times</a></h3>
+        <p>Diário de referência de Singapura, forte cobertura regional ASEAN.</p>
+        <div class="article-foot"><span class="src">straitstimes.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">NK</span></div>
+        <div class="kicker">Negócios</div>
+        <h3><a href="https://asia.nikkei.com/location/southeast-asia" target="_blank" rel="noopener">Nikkei Asia — SE Asia</a></h3>
+        <p>Editoria dedicada a negócios e mercado no Sudeste Asiático.</p>
+        <div class="article-foot"><span class="src">asia.nikkei.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">CNA</span></div>
+        <div class="kicker">TV &amp; digital</div>
+        <h3><a href="https://www.channelnewsasia.com/" target="_blank" rel="noopener">Channel News Asia</a></h3>
+        <p>Emissora de Singapura, forte em vídeo e cobertura ao vivo da região.</p>
+        <div class="article-foot"><span class="src">channelnewsasia.com</span><div class="fmt-badges"><span class="fmt">site</span><span class="fmt" data-kind="video">vídeo</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">RW</span></div>
+        <div class="kicker">Tech &amp; sociedade</div>
+        <h3><a href="https://restofworld.org/" target="_blank" rel="noopener">Rest of World</a></h3>
+        <p>Tecnologia fora do eixo EUA/China — ótimo pra tendência emergente na Ásia.</p>
+        <div class="article-foot"><span class="src">restofworld.org</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">DIP</span></div>
+        <div class="kicker">Geopolítica</div>
+        <h3><a href="https://thediplomat.com/" target="_blank" rel="noopener">The Diplomat</a></h3>
+        <p>Análise de geopolítica e segurança da Ásia-Pacífico, incluindo ASEAN.</p>
+        <div class="article-foot"><span class="src">thediplomat.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FUTEBOL -->
+  <section class="caderno" id="futebol">
+    <div class="caderno-head">
+      <h2>Caderno Esportes — Futebol</h2>
+      <span class="caderno-sub">Colorado em primeiro lugar</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">SCI</span></div>
+        <div class="kicker">Seu time</div>
+        <h3><a href="https://internacional.com.br/" target="_blank" rel="noopener">Sport Club Internacional — site oficial</a></h3>
+        <p>Direto da fonte: elenco, jogos, boletim médico, coletivas. Prioridade máxima na curadoria.</p>
+        <div class="article-foot"><span class="src">internacional.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">RC</span></div>
+        <div class="kicker">Cobertura dedicada</div>
+        <h3><a href="https://www.revistacolorada.com.br/" target="_blank" rel="noopener">Revista Colorada</a></h3>
+        <p>Site especializado só em Inter — bastidor, mercado da bola e análise tática do Colorado.</p>
+        <div class="article-foot"><span class="src">revistacolorada.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">GE</span></div>
+        <div class="kicker">Brasileirão &amp; Gauchão</div>
+        <h3><a href="https://ge.globo.com/rs/futebol/times/internacional/" target="_blank" rel="noopener">ge.globo — Internacional / RS</a></h3>
+        <p>Cobertura completa de Brasileirão e Gauchão, com editoria fixa pro Inter e pro futebol gaúcho.</p>
+        <div class="article-foot"><span class="src">ge.globo.com</span><div class="fmt-badges"><span class="fmt">rss</span><span class="fmt" data-kind="video">vídeo</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">LN</span></div>
+        <div class="kicker">Bastidor &amp; mercado</div>
+        <h3><a href="https://www.lance.com.br/internacional" target="_blank" rel="noopener">Lance! — Internacional</a></h3>
+        <p>Forte em notícia de bastidor, transferência e furo — editoria própria pro clube.</p>
+        <div class="article-foot"><span class="src">lance.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">FMB</span></div>
+        <div class="kicker">Dados ao vivo</div>
+        <h3><a href="https://www.fotmob.com/pt-BR/teams/8702/overview/internacional" target="_blank" rel="noopener">FotMob — Internacional</a></h3>
+        <p>Placar ao vivo, escalação, estatística de jogo — bom pra resumo pós-jogo automático.</p>
+        <div class="article-foot"><span class="src">fotmob.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">BR</span></div>
+        <div class="kicker">Brasileirão geral</div>
+        <h3><a href="https://ge.globo.com/futebol/brasileirao-serie-a/" target="_blank" rel="noopener">ge.globo — Brasileirão Série A</a></h3>
+        <p>Tabela, rodada, resultados de todos os times — visão geral do campeonato nacional.</p>
+        <div class="article-foot"><span class="src">ge.globo.com</span><div class="fmt-badges"><span class="fmt">rss</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">CBF</span></div>
+        <div class="kicker">Seleção brasileira</div>
+        <h3><a href="https://www.cbf.com.br/selecao-brasileira/noticias" target="_blank" rel="noopener">CBF — Seleção Brasileira</a></h3>
+        <p>Fonte oficial de convocação, amistoso e eliminatórias da Seleção.</p>
+        <div class="article-foot"><span class="src">cbf.com.br</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">ESPN</span></div>
+        <div class="kicker">Ligas europeias</div>
+        <h3><a href="https://www.espn.com/soccer/" target="_blank" rel="noopener">ESPN Soccer</a></h3>
+        <p>Premier League, Champions, La Liga e mais — cobertura mundial consolidada.</p>
+        <div class="article-foot"><span class="src">espn.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">BBC</span></div>
+        <div class="kicker">Cobertura global</div>
+        <h3><a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener">BBC Sport — Football</a></h3>
+        <p>Isenta e completa, boa base pra futebol mundial fora do eixo BR.</p>
+        <div class="article-foot"><span class="src">bbc.com/sport</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">MC</span></div>
+        <div class="kicker">Espanha</div>
+        <h3><a href="https://www.marca.com/en/" target="_blank" rel="noopener">Marca</a></h3>
+        <p>Referência espanhola — La Liga e seleções europeias em detalhe.</p>
+        <div class="article-foot"><span class="src">marca.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">GOL</span></div>
+        <div class="kicker">Transferências</div>
+        <h3><a href="https://www.goal.com/en" target="_blank" rel="noopener">Goal.com</a></h3>
+        <p>Boa cobertura de mercado da bola e rumores de transferência no futebol mundial.</p>
+        <div class="article-foot"><span class="src">goal.com</span><div class="fmt-badges"><span class="fmt">site</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PESSOAS / REDES SOCIAIS -->
+  <section class="caderno" id="pessoas">
+    <div class="caderno-head">
+      <h2>Caderno Pessoas pra Seguir</h2>
+      <span class="caderno-sub">O que postaram nas últimas 24h</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb" data-kind="social"><span class="thumb-mono">@</span><span class="thumb-tag">social</span></div>
+        <div class="kicker">Slot livre</div>
+        <h3><span>[definir perfis]</span></h3>
+        <p>Me passa 3-5 pessoas que você quer acompanhar (X, LinkedIn, Instagram) — o agente confere o que postaram e resume o que for relevante.</p>
+        <div class="article-foot"><span class="src">a definir</span><div class="fmt-badges"><span class="fmt" data-kind="social">social</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CLIMA -->
+  <section class="caderno" id="clima">
+    <div class="caderno-head">
+      <h2>Caderno Clima</h2>
+      <span class="caderno-sub">Direto no agente, sem newsletter</span>
+    </div>
+    <div class="articles">
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">OM</span></div>
+        <div class="kicker">Gratuita &amp; sem chave</div>
+        <h3><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></h3>
+        <p>API gratuita sem necessidade de cadastro — a mais simples de plugar direto.</p>
+        <div class="article-foot"><span class="src">open-meteo.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
+      </article>
+
+      <article class="article">
+        <div class="thumb"><span class="thumb-mono">HG</span></div>
+        <div class="kicker">Foco Brasil</div>
+        <h3><a href="https://hgbrasil.com/weather/" target="_blank" rel="noopener">HG Brasil Weather</a></h3>
+        <p>API com foco no Brasil, documentação em português, previsão de 15 dias.</p>
+        <div class="article-foot"><span class="src">hgbrasil.com</span><div class="fmt-badges"><span class="fmt">api</span></div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- HOW-TO -->
+  <div class="newsbox">
+    <h3>Como isso vira o super agente de amanhã</h3>
+    <div class="cols">
+      <div>
+        <h4>Fotos &amp; thumbs</h4>
+        <p>Nesta maquete os quadros são placeholders. No agente real, ele puxa a imagem de capa (og:image) de cada matéria automaticamente — sem precisar hospedar nada.</p>
+      </div>
+      <div>
+        <h4>Vídeo &amp; redes sociais</h4>
+        <p>Sim, dá pra incluir: vídeo do YouTube como fonte complementar (com resumo do transcript quando existir) e posts de perfis específicos — não é alerta em tempo real, é uma checagem das últimas 24h.</p>
+      </div>
+      <div>
+        <h4>Escolha das fontes</h4>
+        <p>Não precisa (nem deve) usar todas as fontes de cada caderno — o ideal é 1-3 por assunto, senão vira ruído em vez de resumo.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>The Neitan York Times &middot; Maquete de fontes &middot; 25 Jul 2026</footer>
+
+</div>
+</body>
+</html>
