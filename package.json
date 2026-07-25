@@ -1,0 +1,13 @@
+{
+  "name": "tnyt-jornal",
+  "version": "1.0.0",
+  "description": "The Neitan York Times - Automação Diária",
+  "type": "module",
+  "main": "scripts/gerar_edicao.mjs",
+  "scripts": {
+    "gerar": "node scripts/gerar_edicao.mjs"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  }
+}

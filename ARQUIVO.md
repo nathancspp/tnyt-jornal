@@ -8,6 +8,23 @@
 
 | Caderno | Manchete | Fonte |
 |---|---|---|
+| Brasil | Governo prepara regulamentação para lei que autoriza uso de spray de pimenta por mulheres | G1 Política |
+| Economia | Marca pessoal deixa de ser vitrine e vira ferramenta de negócios para assessores | InfoMoney |
+| Tech | One fallen power line exposed a growing AI data center problem. Here’s how to fix it. | TechCrunch AI |
+| Marketing | Mario Peixoto: audiovisual está desafiador, mas oportunidades são muitas | Meio & Mensagem |
+| Mundo | Trump takes swipes at press during White House Correspondents' Dinner | BBC World |
+| Futebol | Atualização do dia — Futebol | TNYT Redação |
+| Clima (capa) | Balneário Gaivota/SC: 20.2°C, poucas nuvens, 72% de chance de chuva | Open-Meteo |
+
+**Notas da edição:** Edição Nº3 gerada automaticamente em 25 de julho de 2026. Todos os 7 cadernos atualizados.
+
+---
+
+
+## 25/07/2026 — Edição do dia
+
+| Caderno | Manchete | Fonte |
+|---|---|---|
 | Brasil | Governo nega visto a diplomatas americanos após suspeita de ligação com campanha eleitoral | UOL Notícias |
 | Economia & Negócios | MDIC calcula que 23,1% das exportações do Brasil para os EUA sofrerão impacto do tarifaço | InfoMoney |
 | Tecnologia & IA | Coalisão de 25 gigantes de tech liderada por Nvidia, Meta e Microsoft rejeita restrições a modelos de IA abertos | TechCrunch |
