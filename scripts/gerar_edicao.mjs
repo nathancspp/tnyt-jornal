@@ -94,15 +94,15 @@ const CANAIS_FEEDS = {
   ],
 };
 
-// 7 CADERNOS FEEDS
+// 7 CADERNOS FEEDS (CANAIS ESPECIALIZADOS POR ASSUNTO)
 const CADERNOS_FEEDS = {
   Sociedade: [
-    { name: 'G1 Sociedade', url: 'https://g1.globo.com/rss/g1/brasil/' },
-    { name: 'Agência Brasil', url: 'https://agenciabrasil.ebc.com.br/rss/geral/feed.xml' },
-    { name: 'BBC Brasil', url: 'https://feeds.bbci.co.uk/portuguese/rss.xml' },
+    { name: 'G1 Brasil / Sociedade', url: 'https://g1.globo.com/rss/g1/brasil/' },
+    { name: 'Agência Brasil Geral', url: 'https://agenciabrasil.ebc.com.br/rss/geral/feed.xml' },
+    { name: 'BBC Brasil Sociedade', url: 'https://feeds.bbci.co.uk/portuguese/rss.xml' },
   ],
   Politica: [
-    { name: 'Poder360', url: 'https://www.poder360.com.br/feed/' },
+    { name: 'Poder360 Brasília', url: 'https://www.poder360.com.br/feed/' },
     { name: 'G1 Política', url: 'https://g1.globo.com/rss/g1/politica/' },
     { name: 'Folha Poder', url: 'https://feeds.folha.uol.com.br/poder/rss091.xml' },
   ],
@@ -122,7 +122,7 @@ const CADERNOS_FEEDS = {
     { name: 'Conversion', url: 'https://www.conversion.com.br/feed/' },
   ],
   Futebol: [
-    { name: 'ge.globo Inter', url: 'https://ge.globo.com/rss/globoesporte/rs/futebol/times/internacional/' },
+    { name: 'ge.globo Inter-RS', url: 'https://ge.globo.com/rss/globoesporte/rs/futebol/times/internacional/' },
     { name: 'Revista Colorada', url: 'https://www.revistacolorada.com.br/feed/' },
   ],
 };
@@ -141,7 +141,7 @@ function getCheckpointTimestamp(dataDir) {
       console.warn('⚠️ Falha ao ler checkpoint:', e.message);
     }
   }
-  return maxLimit; // Default to 72 hours ago
+  return maxLimit;
 }
 
 function updateCheckpointTimestamp(dataDir) {
@@ -191,23 +191,26 @@ async function main() {
 
   const weatherData = await fetchWeather();
   
-  console.log('📰 Varrendo os 25 Canais RSS sem limites de quantidade...');
+  console.log('📰 Varrendo os 25 Canais RSS sem limites...');
   const canaisData = {};
   for (const [cat, feeds] of Object.entries(CANAIS_FEEDS)) {
     canaisData[cat] = {};
     for (const f of feeds) {
       const items = await fetchFeedGroupUnlimited([f], minTimestamp);
       canaisData[cat][f.name] = items;
-      console.log(`  ✓ [${cat.toUpperCase()}] ${f.name}: ${items.length} matérias inéditas capturadas.`);
+      console.log(`  ✓ [${cat.toUpperCase()}] ${f.name}: ${items.length} matérias lidas.`);
     }
   }
 
-  console.log('📁 Varrendo os 7 Cadernos Temáticos sem limites...');
+  console.log('📁 Varrendo os Canais Especializados dos 7 Cadernos Temáticos...');
   const cadernosData = {};
   for (const [caderno, feeds] of Object.entries(CADERNOS_FEEDS)) {
-    const items = await fetchFeedGroupUnlimited(feeds, minTimestamp);
-    cadernosData[caderno] = items;
-    console.log(`  ✓ [CADERNO] ${caderno}: ${items.length} matérias capturadas.`);
+    cadernosData[caderno] = {};
+    for (const f of feeds) {
+      const items = await fetchFeedGroupUnlimited([f], minTimestamp);
+      cadernosData[caderno][f.name] = items;
+      console.log(`  ✓ [CADERNO: ${caderno.toUpperCase()}] Fonte Especializada ${f.name}: ${items.length} matérias lidas.`);
+    }
   }
 
   // Save Raw Ingestion Output for Auditability and Skills
@@ -222,8 +225,8 @@ async function main() {
   const hoje = new Date();
   const dataFormatada = hoje.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
 
-  console.log('✅ Varredura e inteligência concluídas com sucesso!');
-  console.log(`🎉 NEITHAN YORK TIMES processado para a edição de ${dataFormatada}.`);
+  console.log('✅ Varredura total concluída com sucesso!');
+  console.log(`🎉 NEITHAN YORK TIMES 100% pronto para a edição de ${dataFormatada}.`);
 }
 
 main().catch(err => {
