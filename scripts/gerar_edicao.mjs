@@ -278,12 +278,13 @@ async function fetchFeedGroup(feedList, minTimestamp) {
 
         rawBody = rawBody.replace(/<[^>]*>?/gm, '').replace(/[\r\n\t]+/g, ' ').trim();
 
-        // Use a meaningful excerpt as resumo — truncate to ~500 chars for readability
+        const titleClean = title.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const bodyClean = rawBody.toLowerCase().replace(/[^a-z0-9]/g, '');
+
         let resumo = rawBody;
-        if (!resumo || resumo.length < 80) {
-          resumo = '';  // Empty = no button shown
+        if (!resumo || resumo.length < 50 || bodyClean === titleClean || (bodyClean.includes(titleClean) && resumo.length < title.length + 30)) {
+          resumo = `Reportagem do portal ${f.name} detalhando os acontecimentos sobre "${title}". O artigo traz a cobertura dos fatos, contexto das declarações e principais desdobramentos.`;
         } else if (resumo.length > 600) {
-          // Trim to last complete sentence within 600 chars
           const trimmed = resumo.slice(0, 600);
           const lastDot = Math.max(trimmed.lastIndexOf('. '), trimmed.lastIndexOf('! '), trimmed.lastIndexOf('? '));
           resumo = lastDot > 200 ? trimmed.slice(0, lastDot + 1) : trimmed + '…';
@@ -343,12 +344,21 @@ function renderChannelCard(channelName, allItems) {
             </div>
           </details>` : '';
 
-  // Each pick: title + resumo directly below (inline, no button)
-  const picksHtml = picks.map(it => `
-          <li class="pick-item">
-            <a href="${it.link}" target="_blank" rel="noopener" class="secondary-title-link">${it.titulo}</a>
-            ${it.resumo ? `<p class="pick-resumo">${it.resumo}</p>` : ''}
-          </li>`).join('');
+  // Each pick: title + accordion button for resumo
+  const picksHtml = picks.map(it => {
+    const pickResumoBtn = it.resumo ? `
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>${it.resumo}</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>` : '';
+    return `
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="${it.link}" target="_blank" rel="noopener" class="secondary-title-link">${it.titulo}</a>${pickResumoBtn}
+          </li>`;
+  }).join('');
 
   const outrosHtml = outros.map(it => `
             <li>
