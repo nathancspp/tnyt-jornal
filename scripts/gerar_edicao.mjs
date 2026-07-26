@@ -524,11 +524,9 @@ ${renderSection('Futebol', cadernosData.Futebol, 'Colorado em Primeiro Lugar')}
   html = html.replace(/<!-- BARRINHA CURTA DO CLIMA[\s\S]*?<!-- FIM BARRINHA TEMPO -->\n?/g, '');
   html = html.replace(/<!-- BARRINHA CURTA NO TOPO COM O TEMPO -->[\s\S]*?<!-- FIM BARRINHA TEMPO -->\n?/g, '');
 
-  // Insert weather bar right after view-switch closing tag
-  if (html.includes('<div class="view-switch">')) {
-    const [before, after] = html.split('<div class="view-switch">');
-    const [switchContent, ...rest] = after.split('</div>');
-    html = `${before}<div class="view-switch">${switchContent}</div>\n\n${weatherBarHtml}\n  <!-- FIM BARRINHA TEMPO -->${rest.join('</div>')}`;
+  // Insert weather bar right after masthead-top-bar closing tag (below date/edition bar, above title)
+  if (html.includes('class="masthead-top-bar"')) {
+    html = html.replace(/(<\/div>\s*)(<h1 class="masthead-title">)/, `$1${weatherBarHtml}\n  <!-- FIM BARRINHA TEMPO -->\n\n    $2`);
   }
 
   // Replace content sections

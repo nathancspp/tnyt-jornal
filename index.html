@@ -77,13 +77,13 @@
   /* ---------- Top Weather Bar ---------- */
   .top-weather-bar {
     border-top: 1px solid var(--line);
-    border-bottom: 2px solid var(--line-strong);
+    border-bottom: 1px solid var(--line);
     padding: 6px 0;
-    margin-bottom: 20px;
+    margin: 8px 0 16px;
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     font-size: 11px;
     color: var(--ink-soft);
-    background: var(--paper-raised);
+    background: transparent;
   }
 
   .weather-bar-inner {
@@ -710,6 +710,25 @@
       <span>BASE NATHAN &amp; AMANDA</span>
     </div>
 
+      <!-- BARRINHA INTEGRADA DE CLIMA HOJE -->
+  <div class="top-weather-bar">
+    <div class="weather-bar-inner">
+      <span class="weather-bar-label">CLIMA HOJE</span>
+      <div class="weather-bar-items">
+        <span class="weather-city"><strong>Gaivota:</strong> 17.1&deg;C <span>(21.1&deg; / 13.8&deg;)</span></span>
+        <span class="weather-sep">&bull;</span>
+        <span class="weather-city"><strong>Porto Alegre:</strong> 20.1&deg;C <span>(20.2&deg; / 13.7&deg;)</span></span>
+        <span class="weather-sep">&bull;</span>
+        <span class="weather-city"><strong>Florianópolis:</strong> 17.4&deg;C <span>(21.4&deg; / 13.7&deg;)</span></span>
+        <span class="weather-sep">&bull;</span>
+        <span class="weather-city"><strong>Vicente Dutra:</strong> 20.6&deg;C <span>(25.3&deg; / 16.1&deg;)</span></span>
+        <span class="weather-sep">&bull;</span>
+        <span class="weather-city"><strong>Roque Gonzales:</strong> 21.4&deg;C <span>(22.7&deg; / 17.5&deg;)</span></span>
+      </div>
+    </div>
+  </div>
+  <!-- FIM BARRINHA TEMPO -->
+
     <h1 class="masthead-title">The Neitan York Times</h1>
 
     <p class="masthead-tagline">&ldquo;All the news that&rsquo;s fit for Nathan&rdquo; &mdash; sem fake news, sem ru&iacute;do, s&oacute; o que interessa.</p>
@@ -723,25 +742,7 @@
     <button class="tab-btn" id="btn-canais" onclick="switchView('canais')">CANAIS DE NOTÍCIAS</button>
   </div>
 
-  <!-- BARRINHA INTEGRADA DE CLIMA HOJE -->
-  <div class="top-weather-bar">
-    <div class="weather-bar-inner">
-      <span class="weather-bar-label">CLIMA HOJE</span>
-      <div class="weather-bar-items">
-        <span class="weather-city"><strong>Gaivota:</strong> 16.6&deg;C <span>(21.1&deg; / 13.8&deg;)</span></span>
-        <span class="weather-sep">&bull;</span>
-        <span class="weather-city"><strong>Porto Alegre:</strong> 20.2&deg;C <span>(20.2&deg; / 13.7&deg;)</span></span>
-        <span class="weather-sep">&bull;</span>
-        <span class="weather-city"><strong>Florianópolis:</strong> 16.6&deg;C <span>(21.4&deg; / 13.7&deg;)</span></span>
-        <span class="weather-sep">&bull;</span>
-        <span class="weather-city"><strong>Vicente Dutra:</strong> 20.1&deg;C <span>(25.3&deg; / 16.1&deg;)</span></span>
-        <span class="weather-sep">&bull;</span>
-        <span class="weather-city"><strong>Roque Gonzales:</strong> 21.1&deg;C <span>(22.7&deg; / 17.5&deg;)</span></span>
-      </div>
-    </div>
-  </div>
-  <!-- FIM BARRINHA TEMPO -->
-
+  
   
   
   
@@ -1283,11 +1284,11 @@
             </details>
           </li>
           <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://www.poder360.com.br/poder-internacional/alemanha-faz-cacada-por-suspeitos-de-ataque-em-parada-lgbti/" target="_blank" rel="noopener" class="secondary-title-link">Alemanha faz caçada por suspeitos de ataque em parada LGBTI</a>
+            <a href="https://www.poder360.com.br/poder-internacional/eua-lancam-projeto-de-microrreatores-nucleares-moveis/" target="_blank" rel="noopener" class="secondary-title-link">EUA lançam projeto de microrreatores nucleares móveis</a>
             <details class="accordion" style="margin-top: 5px;">
               <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
               <div class="accordion-body">
-                <p>A polícia da Alemanha faz uma operação nacional para localizar os suspeitos do ataque perto da parada do Orgulho LGBTI de Berlim. Uma mulher morreu e pelo menos 16 pessoas ficaram feridas depois que uma van atingiu um grupo no parque Tiergarten, na noite de sábado (25.jul.2026). O principal suspeito foi identificado como Abdul Ballout, de 21 anos. As autoridades pediram ajuda da população para localizá-lo, mas orientaram que ninguém tente abordá-lo. Ele pode estar armado e é considerado perigoso. BUSCAS PELOS SUSPEITOS A polícia também procura um possível 2º envolvido, ainda não identificado.</p>
+                <p>Os Estados Unidos lançaram na 6ª feira (24.jul.2026) um projeto para desenvolver microrreatores nucleares móveis, equipamentos de pequeno porte que podem ser transportados em caminhões e usados para gerar eletricidade e calor em diferentes localidades. A iniciativa foi anunciada pela Casa Branca e envolve 4 empresas, cujos nomes não foram divulgados, que concluíram a 1ª fase do programa. O objetivo é criar uma fonte de energia independente para bases militares, regiões isoladas e áreas afetadas por desastres, sem depender da rede elétrica convencional.</p>
                 <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
               </div>
             </details>
@@ -1303,6 +1304,9 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
+              <a href="https://www.poder360.com.br/poder-internacional/alemanha-faz-cacada-por-suspeitos-de-ataque-em-parada-lgbti/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Alemanha faz caçada por suspeitos de ataque em parada LGBTI</a>
+            </li>
+            <li>
               <a href="https://www.poder360.com.br/poder-internacional/eua-chamam-de-mentira-suspeita-de-interferencia-eleitoral/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">EUA chamam de mentira suspeita de interferência eleitoral</a>
             </li>
             <li>
@@ -1310,9 +1314,6 @@
             </li>
             <li>
               <a href="https://www.poder360.com.br/poder-sustentavel/diamante-superprofundo-revela-como-agua-pode-ir-mais-fundo-na-terra/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Diamante superprofundo revela como água pode ir mais fundo na Terra</a>
-            </li>
-            <li>
-              <a href="https://www.poder360.com.br/poder-economia/brasil-tem-janela-ate-2032-para-avancar-em-minerais-criticos-diz-setor/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Brasil tem janela até 2032 para avançar em minerais críticos, diz setor</a>
             </li>
             <li>
               <a href="https://www.poder360.com.br/poder-eleicoes-2026/ao-vivo-psd-lanca-candidatura-de-caiado-a-presidencia/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Ao vivo: PSD lança candidatura de Caiado à Presidência</a>
@@ -3097,21 +3098,21 @@
             </details>
           </li>
           <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQTFpKRXNlMGI1X0FYeXdyRVFocWZTTGJWZkVtMUprVzVxWFRNc3ZRWFlLMkZ2QXQteGxOZGp3bWJmYVVnN2dqTGQzMERsZVFfaVFINXYyNDd4dmZyNU5uS3VLc1Y0a0doalFQaDhOTTdFamRBcnJWM3Z2YWtwMk1rLXF2dWVuVktUbkpGWE1TdDl3MjVveW1nME5tME9lTmNBVnc?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Athletico-PR X Internacional Análise, Estatísticas e Odds no Brasileirão — 20ª rodada - Sports Betting Dime</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>Athletico-PR X Internacional Análise, Estatísticas e Odds no Brasileirão — 20ª rodada&nbsp;&nbsp;Sports Betting Dime</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://news.google.com/rss/articles/CBMiiAJBVV95cUxNQjh6ZzF5clRpa0k1WGROcFM3Rm1YY1F4VERyWHpRaG5YZFdRSFc5S3dPZ1ctZW9adEd6aVNDLUJpczduT0RzQ3VlVk9JQk1iblZWVzV0N1VsWnNNZEE1dmlfcXc5cWxaMnlWTmtlT0tLdEx4ZkJaWnhWRHNpd21qeDl5c19WZE41Q0w1UDB0MHRjTnliOUs1b0ItRTBaYlhVMG5EWnhtMXZvdVhfWUhJckhMZzBORlJSU0tJdkpMQzd1bkVCSUFWNm5RWVRRbEZOX3djbTdCSzVPRk9RMFFuN0ZvT0lJR1k3VlA0Z2FxM0I5Zm9vc0stTVgzYnpFcXZWSjhEcXVPQW4?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Internacional vence o Fluminense e retorna ao G4 do Brasileirão Feminino - Terra</a>
             <details class="accordion" style="margin-top: 5px;">
               <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
               <div class="accordion-body">
                 <p>Internacional vence o Fluminense e retorna ao G4 do Brasileirão Feminino&nbsp;&nbsp;Terra</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxQTFpKRXNlMGI1X0FYeXdyRVFocWZTTGJWZkVtMUprVzVxWFRNc3ZRWFlLMkZ2QXQteGxOZGp3bWJmYVVnN2dqTGQzMERsZVFfaVFINXYyNDd4dmZyNU5uS3VLc1Y0a0doalFQaDhOTTdFamRBcnJWM3Z2YWtwMk1rLXF2dWVuVktUbkpGWE1TdDl3MjVveW1nME5tME9lTmNBVnc?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Athletico-PR X Internacional Análise, Estatísticas e Odds no Brasileirão — 20ª rodada - Sports Betting Dime</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Athletico-PR X Internacional Análise, Estatísticas e Odds no Brasileirão — 20ª rodada&nbsp;&nbsp;Sports Betting Dime</p>
                 <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
               </div>
             </details>
@@ -3440,31 +3441,31 @@
             </details>
           </li>
           <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://g1.globo.com/sp/itapetininga-regiao/noticia/2026/07/26/motociclista-morre-em-colisao-frontal-com-carreta-na-rodovia-raposo-tavares-em-itapetininga.ghtml" target="_blank" rel="noopener" class="secondary-title-link">Motociclista morre em colisão frontal com carreta na Rodovia Raposo Tavares em Itapetininga</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>Motociclista morre em colisão frontal com carreta na SP-270 em Itapetininga (SP) Portal CCM – Artesp/Divulgação Um motociclista morreu na manhã deste domingo (26) após colidir de frente com uma carreta na Rodovia Raposo Tavares (SP-270), na altura do Km 183, em Itapetininga (SP). O acidente ocorreu na pista simples, por volta das 6h30. De acordo com a concessionária Via Raposo, responsável pelo trecho, a moto trafegava no sentido interior-capital quando, por motivos que ainda serão esclarecidos, invadiu a pista no contrafluxo.</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://g1.globo.com/sp/santos-regiao/noticia/2026/07/26/motorista-de-carro-que-capotou-na-praia-e-derrubou-coqueiro-sofreu-mal-subito.ghtml" target="_blank" rel="noopener" class="secondary-title-link">Motorista de carro que capotou na praia e derrubou coqueiro sofreu mal súbito</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>Carro capota, atravessa calçadão e derruba coqueiro em praia do litoral de SP O motorista do carro que avançou em alta velocidade, bateu em um veículo e capotou na faixa de areia em Praia Grande, no litoral de São Paulo, perdeu o controle do automóvel após sofrer um mal súbito enquanto dirigia. A informação foi apurada pela TV Tribuna, afiliada da Globo, com a polícia.  Uma câmera de monitoramento flagrou toda a dinâmica do acidente. Nas imagens, é possível ver que o carro circulava em alta velocidade pela rua Honduras, quando cruzou a Avenida Castelo Branco e atingiu outro veículo.</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://g1.globo.com/to/tocantins/noticia/2026/07/26/dono-de-bmw-deixada-em-oficina-ha-mais-de-um-ano-diz-que-paga-ipva-sem-poder-usar-o-carro.ghtml" target="_blank" rel="noopener" class="secondary-title-link">Dono de BMW deixada em oficina há mais de um ano diz que paga IPVA sem poder usar o carro</a>
             <details class="accordion" style="margin-top: 5px;">
               <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
               <div class="accordion-body">
                 <p>Morador de Palmas espera há dois anos por devolução de carro em oficina Kelvin Lucas, de 31 anos, continua pagando o Imposto sobre a Propriedade de Veículos Automotores (IPVA) da BMW 118i, ano 2009, que está há mais de um ano em uma oficina de Palmas para conserto. Ele pagou antecipadamente mais de R$ 26 mil para reparar um problema no motor. O dono do carro de luxo é mecânico, mas explicou que sua especialização não é em veículos desse nicho. Por isso, contratou a oficina Ruicar Imports. Pelo segundo ano seguido, Kelvin precisou pagar o IPVA do veículo, em um valor superior a R$ 1 mil.</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://g1.globo.com/ce/ceara/noticia/2026/07/26/deputado-danilo-forte-sofre-infarto-e-passa-por-procedimento-medico.ghtml" target="_blank" rel="noopener" class="secondary-title-link">Deputado Danilo Forte sofre infarto e passa por procedimento médico</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Deputado Danilo Forte sofre infarto e passa por procedimento médico O deputado federal Danilo Forte (PP) sofreu um infarto na última quinta-feira (23) e precisou passar por um procedimento cirúrgico de emergência em Fortaleza. Por orientação médica, o parlamentar não vai compararer a convenção do partido que ocorre neste domingo (26). Segundo a assessoria do deputado, ele apresenta um quadro de saúde estável e segue em recuperação ao lado da família, cumprindo as recomendações da equipe médica. Em vídeo gravado no hospital, o deputado agradeceu o apoio recebido e detalhou seu estado de saúde.</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://g1.globo.com/sp/sorocaba-jundiai/noticia/2026/07/26/motociclista-morre-apos-colidir-contra-bitrem-na-raposo-tavares-em-mairinque.ghtml" target="_blank" rel="noopener" class="secondary-title-link">Motociclista morre após colidir contra bitrem na Raposo Tavares em Mairinque</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Motociclista morre após colidir contra bitrem na SP-280 em Mairinque (SP) Portal CCM – Artesp/Divulgação Um motociclista morreu na madrugada deste domingo (26) após colidir contra a traseira de um bitrem na Rodovia Raposo Tavares (SP-270), na altura do km 68, em Mairinque (SP).  As informações são da Artesp e foram repassadas pelo Centro de Controle Operacional (CCO) da concessionária Sorocabana. Segundo dados coletados no local, a motocicleta trafegava pela faixa 3 de rolamento, sentido capital-interior, quando, por motivos ainda a serem esclarecidos, bateu na traseira do bitrem e tombou.</p>
                 <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
               </div>
             </details>
@@ -3480,22 +3481,22 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
-              <a href="https://g1.globo.com/ce/ceara/noticia/2026/07/26/deputado-danilo-forte-sofre-infarto-e-passa-por-procedimento-medico.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Deputado Danilo Forte sofre infarto e passa por procedimento médico</a>
-            </li>
-            <li>
-              <a href="https://g1.globo.com/sp/sorocaba-jundiai/noticia/2026/07/26/motociclista-morre-apos-colidir-contra-bitrem-na-raposo-tavares-em-mairinque.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Motociclista morre após colidir contra bitrem na Raposo Tavares em Mairinque</a>
-            </li>
-            <li>
               <a href="https://g1.globo.com/pa/santarem-regiao/noticia/2026/07/26/suspeitos-de-trafico-sao-detidos-e-dois-casos-de-violencia-contra-a-mulher-sao-registrados-em-acoes-da-pm-em-santarem-e-belterra.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Suspeitos de tráfico são detidos e dois casos de violência contra a mulher são registrados em ações da PM em Santarém e Belterra</a>
+            </li>
+            <li>
+              <a href="https://g1.globo.com/ma/maranhao/noticia/2026/07/26/moradores-associam-lesoes-na-pele-a-vazamento-em-empresa-de-fertilizantes-na-zona-rural-de-sao-luis.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Moradores associam lesões na pele a vazamento em empresa de fertilizantes na zona rural de São Luís</a>
+            </li>
+            <li>
+              <a href="https://g1.globo.com/go/goias/noticia/2026/07/26/morte-de-jornalista-delson-carlos-policia-usou-bomba-e-arma-de-choque-para-prender-dentista-suspeita-do-crime.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Morte de jornalista Delson Carlos: polícia usou bomba e arma de choque para prender dentista suspeita do crime</a>
             </li>
             <li>
               <a href="https://g1.globo.com/mundo/noticia/2026/07/26/atropelamento-em-parada-lgbt-de-berlim-deixa-1-morto-e-29-feridos-caso-e-tratado-como-ataque-islamista.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Atropelamento em parada LGBT+ de Berlim deixa 1 morto e 29 feridos; caso é tratado como ataque islamista</a>
             </li>
             <li>
-              <a href="https://g1.globo.com/mg/grande-minas/playlist/videos-inter-tv-rural-deste-domingo-26-de-julho.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">VÍDEOS: Inter TV Rural deste domingo, 26 de julho de 2026</a>
+              <a href="https://g1.globo.com/mg/vales-mg/playlist/videos-inter-tv-rural-deste-domingo-26-de-julho-de-2026.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">VÍDEOS: Inter TV Rural deste domingo, 26 de julho de 2026</a>
             </li>
             <li>
-              <a href="https://g1.globo.com/mg/vales-mg/playlist/videos-inter-tv-rural-deste-domingo-26-de-julho-de-2026.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">VÍDEOS: Inter TV Rural deste domingo, 26 de julho de 2026</a>
+              <a href="https://g1.globo.com/to/tocantins/noticia/2026/07/26/matriculas-e-transferencias-de-alunos-na-rede-municipal-de-palmas-comecam-nesta-segunda-27-veja-prazos.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Matrículas e transferências de alunos na rede municipal de Palmas começam nesta segunda (27); veja prazos</a>
             </li>
             <li>
               <a href="https://g1.globo.com/mt/mato-grosso/noticia/2026/07/26/mulher-e-presa-por-dirigir-embriagada-fugir-de-abordagem-e-deixar-quatro-criancas-sozinhas-em-casa-em-mt.ghtml" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Mulher é presa por dirigir embriagada, fugir de abordagem e deixar quatro crianças sozinhas em casa em MT</a>
@@ -4137,21 +4138,21 @@
             </details>
           </li>
           <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/richarlison-marca-na-vitoria-do-tottenham-em-amistoso-na-nova-zelandia/" target="_blank" rel="noopener" class="secondary-title-link">Richarlison marca na vitória do Tottenham em amistoso na Nova Zelândia</a>
+            <a href="https://www.cnnbrasil.com.br/esportes/brasileirao/flamengo-e-sao-paulo-duelam-com-objetivos-diferentes-no-brasileirao/" target="_blank" rel="noopener" class="secondary-title-link">Flamengo e São Paulo duelam com objetivos diferentes no Brasileirão</a>
             <details class="accordion" style="margin-top: 5px;">
               <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
               <div class="accordion-body">
-                <p>O Tottenham iniciou sua série de amistosos de pré-temporada na Oceania com vitória na madrugada deste domingo (26) do Brasil. Em seu primeiro desafio, o time inglês superou o Auckland FC, da Nova Zelândia, por 2 a 0, com um gol do atacante Richarlison. A equipe londrina começou a partida com um elenco alternativo, e o jovem Dane Scarlett abriu o placar nos minutos iniciais. Na segunda etapa, Richarlison, entre outros nomes conhecidos, entrou em campo e marcou o segundo e último gol do confronto. A jornada do Tottenham pela Oceania continua com mais dois jogos importantes.</p>
+                <p>Flamengo e São Paulo se enfrentam neste domingo (26), às 18h30 (de Brasília), no Maracanã, em jogo válido pela primeira rodada do segundo turno da Série A do Campeonato Brasileiro. Enquanto o Rubro-Negro busca se aproximar da liderança, o Tricolor tenta se afastar da zona de rebaixamento e tentar entrar na zona de classificação para Copa Sul-Americana. O Flamengo é o segundo colocado na tabela, com 37 pontos, e o São Paulo ocupa a zona central, com 25.</p>
                 <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
               </div>
             </details>
           </li>
           <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://www.cnnbrasil.com.br/internacional/por-que-o-ouro-da-venezuela-esta-bloqueado-no-banco-da-inglaterra-entenda/" target="_blank" rel="noopener" class="secondary-title-link">Por que o ouro da Venezuela está bloqueado no Banco da Inglaterra? Entenda</a>
+            <a href="https://www.cnnbrasil.com.br/esportes/brasileirao/bragantino-enfrenta-o-coritiba-de-olho-no-g4-do-campeonato-brasileiro/" target="_blank" rel="noopener" class="secondary-title-link">Bragantino enfrenta o Coritiba, de olho no G4 do Campeonato Brasileiro</a>
             <details class="accordion" style="margin-top: 5px;">
               <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
               <div class="accordion-body">
-                <p>Dois países disputam o controle de uma carga de ouro guardada no cofre de um banco. Não, não se trata de um romance de piratas do século XVIII nem de um filme de assaltos, mas de parte da complexa realidade vivida pela Venezuela em um ano marcado por mudanças e tragédias.</p>
+                <p>RB Bragantino e Coritiba se enfrentam neste domingo (26) pela 20ª rodada da Série A do Campeonato Brasileiro. A partida acontece às 18h30 (de Brasília), no estádio Cícero de Souza Marques, em Bragança Paulista (SP). Os times voltam a campo após a Copa do Mundo buscando a vitória: o Massa Bruta de olho no G4 e o Coxa tentando se recuperar de uma sequência negativa. O Bragantino, atualmente na quinta colocação com 30 pontos, almeja entrar no G4. A equipe paulista está apenas dois pontos atrás do Fluminense, quarto colocado.</p>
                 <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
               </div>
             </details>
@@ -4167,16 +4168,16 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
+              <a href="https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/richarlison-marca-na-vitoria-do-tottenham-em-amistoso-na-nova-zelandia/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Richarlison marca na vitória do Tottenham em amistoso na Nova Zelândia</a>
+            </li>
+            <li>
+              <a href="https://www.cnnbrasil.com.br/internacional/por-que-o-ouro-da-venezuela-esta-bloqueado-no-banco-da-inglaterra-entenda/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Por que o ouro da Venezuela está bloqueado no Banco da Inglaterra? Entenda</a>
+            </li>
+            <li>
               <a href="https://www.cnnbrasil.com.br/esportes/brasileirao/partida-de-reencontros-atletico-mg-e-palmeiras-se-enfrentam-no-brasileirao/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Partida de reencontros: Palmeiras e Atlético-MG se enfrentam no Brasileirão</a>
             </li>
             <li>
               <a href="https://www.cnnbrasil.com.br/esportes/automobilismo/f1-anuncia-gp-do-bahrein-na-malasia-em-retorno-de-sepang/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">F1 anuncia GP do Bahrein na Malásia em retorno de Sepang</a>
-            </li>
-            <li>
-              <a href="https://www.cnnbrasil.com.br/esportes/volei/apos-perder-para-o-brasil-italia-vence-china-e-conquista-o-bronze-na-vnl/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Após perder para o Brasil, Itália vence China e conquista o bronze na VNL</a>
-            </li>
-            <li>
-              <a href="https://www.cnnbrasil.com.br/internacional/artista-ganhador-do-grammy-fala-sobre-exilio-e-futuro-de-cuba/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Artista ganhador do Grammy fala sobre exílio nos EUA e futuro de Cuba</a>
             </li>
             <li>
               <a href="https://www.cnnbrasil.com.br/esportes/brasileirao/em-momentos-opostos-gremio-e-fluminense-duelam-pelo-brasileirao/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Em momentos opostos, Grêmio e Fluminense duelam pelo Brasileirão</a>
@@ -4402,7 +4403,7 @@
               <a href="https://www.nytimes.com/2026/07/25/world/americas/colombia-president-de-la-espriella-trump-us-investigation.html" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">O presidente eleito da Colômbia, endossado por Trump, já foi investigado pelas autoridades dos EUA</a>
             </li>
             <li>
-              <a href="https://www.nytimes.com/2026/07/25/world/middleeast/us-iran-cease-fire-deal-violations.html" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">O que resta do acordo de cessar-fogo entre os EUA e o Irão?</a>
+              <a href="https://www.nytimes.com/2026/07/26/world/europe/berlin-pride-car-attack.html" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Ataque do Orgulho de Berlim: o que sabemos sobre o suposto ato de terrorismo</a>
             </li>
             <li>
               <a href="https://www.nytimes.com/2026/07/25/world/middleeast/bus-collision-syria.html" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Colisão de ônibus na Síria mata 35, afirma Ministério da Saúde</a>
@@ -4675,12 +4676,12 @@
           <div class="main-headline-badge">MATÉRIA PRINCIPAL</div>
           
           <h4 class="main-article-title">
-            <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQNW96QktiZXRvUmI4WWdlZ1BsU2puNU5Lb1g2RVFUODFXNjZYT2hjVnhPc2xTdkE5d29jNVhJYlpQN0JvSTR6TUxyWDBGeDV1Z21ueHQxMTRvemRhMXdobC1taVdSUE1Cb1hxU2RwbDlYcXctdTRndHdGR0pfOHVGRF9XNjRPa3I0WDRJUzRsQW5OVUt4bjhYVWVCS1VBbjZYZ20w?oc=5" target="_blank" rel="noopener">América em foco: novas tarifas, aumento do gás, hipotecas e uma semana de baixa para Wall Street - AP News</a>
+            <a href="https://news.google.com/rss/articles/CBMickFVX3lxTFB0Z1ZBSnd6dG9LN2pHclUwYkd1ZEg4NVVtZGxlVmJUbWpVY0tYSHFmQ29OV2ExTjJkaW9RWWhzR2RSd0xJRkEzVGR1Y0hrN0p4aWJEN3pkdm9WMzV3a19XVDZLWjhCV1pLQk9zWDdyMVhpQQ?oc=5" target="_blank" rel="noopener">Pessoas de negócios - The Arkansas Democrat-Gazette</a>
           </h4>
           <details class="accordion" style="margin-top: 8px;">
             <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
             <div class="accordion-body">
-              <p>América em foco: novas tarifas, aumento do gás, hipotecas e uma semana de queda para Wall Street  AP News</p>
+              <p>Pessoas de negócios  The Arkansas Democrat-Gazette</p>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:8px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
             </div>
           </details>
@@ -4693,6 +4694,16 @@
         <div class="card-section">
           <strong class="section-label">DESTAQUES DO DIA:</strong>
           <ul class="picks-list" style="margin-top:10px;">
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQNW96QktiZXRvUmI4WWdlZ1BsU2puNU5Lb1g2RVFUODFXNjZYT2hjVnhPc2xTdkE5d29jNVhJYlpQN0JvSTR6TUxyWDBGeDV1Z21ueHQxMTRvemRhMXdobC1taVdSUE1Cb1hxU2RwbDlYcXctdTRndHdGR0pfOHVGRF9XNjRPa3I0WDRJUzRsQW5OVUt4bjhYVWVCS1VBbjZYZ20w?oc=5" target="_blank" rel="noopener" class="secondary-title-link">América em foco: novas tarifas, aumento do gás, hipotecas e uma semana de baixa para Wall Street - AP News</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>América em foco: novas tarifas, aumento do gás, hipotecas e uma semana de queda para Wall Street  AP News</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
           <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxNSlJtRUZJU3lfNzNLRGk5bFFxdTRhUGl4WU1sbjBrbml6SVZYbzBSc2VPbzYxTUt4eHFmUnB2bHA5d2IxVi1tNlkzMXZWVk5jVVpyQUZYYXZmV1NJNnhGQkw1WUxFWjEzeXMxcllyMWpuU2xDWm1uTVdNcG9ZRWE4QjdqeWpoUWdtbmQwMlpPLVptTkZkRUprOEpGUWQ4QTN3YXloVWtzZw?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Trump encomenda novas placas para o Smithsonian e diz que algumas exposições são imprecisas - 1News</a>
             <details class="accordion" style="margin-top: 5px;">
@@ -4723,16 +4734,6 @@
               </div>
             </details>
           </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPQk8tTDNWNWMySk52QlB0VVpFdDFVLWxQaEh0Q3VDUHZtWE9iaXFGckNUeWwyaWpGSVZiRkVYLVlzdUVxeEROYUY0cnoxS3ZFRnoydzYxZ1B3WmkyVmlYT2h2SHItdHlqdVFOTDRucjhCb1p5b0xmY2tVUHFYdTVSeDJya1E1U1lyVjJoUWpJMEU3alFhQUJhcThVZXZ4R0FnbzdIbkhyemVjNXVlWDNjajd2WVhBNTZsejFMMDdTS2lZRVRvazZSSnk3ZFljUdIB0wFBVV95cUxQRHdvaUthdXZ2cl9oLUI4REVRaWZJcUU5c0FGQUtydEQ5akszNU56TzRoanBZVUNHRk9WcklpU0FfVnZvT2JTWTBNbE1mZlNRUG1VSmJwMnByM3Bnc2ZISV9JWEZodVpaMjJieTUwSm5Zb28yRU1SbG9WS2YyTFVGaDhaTzRxSjJnSTNBMjF0M0JIRHlHRE1tWU95VGZJU1VHd1M1N2RtU3hmd0VKWXd4YzdvbnZRUXREVFV1UU1hajhuWHhrNHFpeWEyMmFXbTNpSG1V?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Qual é a diferença entre IA fechada, de código aberto e de peso aberto? Um pesquisador explica - PBS</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>Qual é a diferença entre IA fechada, de código aberto e de peso aberto? Um pesquisador explica  PBS</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
           </ul>
         </div>
 
@@ -4744,6 +4745,9 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
+              <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxPQk8tTDNWNWMySk52QlB0VVpFdDFVLWxQaEh0Q3VDUHZtWE9iaXFGckNUeWwyaWpGSVZiRkVYLVlzdUVxeEROYUY0cnoxS3ZFRnoydzYxZ1B3WmkyVmlYT2h2SHItdHlqdVFOTDRucjhCb1p5b0xmY2tVUHFYdTVSeDJya1E1U1lyVjJoUWpJMEU3alFhQUJhcThVZXZ4R0FnbzdIbkhyemVjNXVlWDNjajd2WVhBNTZsejFMMDdTS2lZRVRvazZSSnk3ZFljUdIB0wFBVV95cUxQRHdvaUthdXZ2cl9oLUI4REVRaWZJcUU5c0FGQUtydEQ5akszNU56TzRoanBZVUNHRk9WcklpU0FfVnZvT2JTWTBNbE1mZlNRUG1VSmJwMnByM3Bnc2ZISV9JWEZodVpaMjJieTUwSm5Zb28yRU1SbG9WS2YyTFVGaDhaTzRxSjJnSTNBMjF0M0JIRHlHRE1tWU95VGZJU1VHd1M1N2RtU3hmd0VKWXd4YzdvbnZRUXREVFV1UU1hajhuWHhrNHFpeWEyMmFXbTNpSG1V?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Qual é a diferença entre IA fechada, de código aberto e de peso aberto? Um pesquisador explica - PBS</a>
+            </li>
+            <li>
               <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNYlpoV2d0cFRIeUdhMWF5NGhFY1RZTEd3TVU5a2h5dlUtNlVWNzRfSFVMVEJLSE9nS2Rvb05ITjI1N3VOeWVWQnNwSnBMOTk2dnNnSVM0NWhVUVQwN0I3MERyNUxHT2hva1ZsTGZnbTI5ZFRuWkdfM3duelBLd0tQS1RSbUZYQkYzSm1xNU4zWjM4YklKdmtjT2NBR18xVlhwaXNJ?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Oregon fire looms near town as fourth firefighter dies weeks after Colorado blaze - AP News</a>
             </li>
             <li>
@@ -4751,9 +4755,6 @@
             </li>
             <li>
               <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxNdGJMUmVnQ3IzU3owVVBoQlJPV0pQNlJmZTFXdXFSNE5SNWlPWVhPdUNvb1RVVmg0QTYwaUhzX2Z1c3FoZHFTSGVSNC15dGhlWXVYV2VxQTJ3WVJSZnViLUxfRlp5WUR3bWF5SjhBelV4VGkzZDFLNHJJRmt1LVpZWG5Ndk0?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Movimento indiano encerra protestos – The Arkansas Democrat-Gazette</a>
-            </li>
-            <li>
-              <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE9uay1ZUXFycXJ0QnVvb2dXMi1nakY1TUdWX1dnZHpxYnNnWWY1RGZZTWIzVFgtSHVrTGNhMkVNUXd0dnVjSXlKX1F2R2UwOHZWWmNNZXJXMUlhTENfYTliYlJjOG44bjU3aFZLUlRZQnpuMmFFZVNqWlZB?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Arkansas no beisebol - The Arkansas Democrat-Gazette</a>
             </li>
             <li>
               <a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxQc1hid21tRFlKV29YMWlsbnJMckJmQmF0Z0d1Z1FMVHY4T25KZFVpZjYySFFPc3M4b0xRUnNrNXNsVTNXRE51S2hQUG1pR245Mjh4d2RQaW0yQkQtb2hWeDZqdzFfTHZUbWdQMmtxNWRzdGxMSlM3YW04c3Y1dHBtN05mRzA?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Linda Joyce Hudson - The Arkansas Democrat-Gazette</a>
@@ -4794,12 +4795,12 @@
           <div class="main-headline-badge">MATÉRIA PRINCIPAL</div>
           
           <h4 class="main-article-title">
-            <a href="https://www.brasil247.com/brasil/pt-pode-acionar-o-tse-apos-video-com-inteligencia-artificial-de-bolsonaro-na-convencao-do-pl/" target="_blank" rel="noopener">PT pode acionar o TSE após vídeo com inteligência artificial de Bolsonaro na convenção do PL</a>
+            <a href="https://www.brasil247.com/ideias/entenda-como-a-guerra-contra-o-ira-esta-redesenhando-o-mercado-global-de-petroleo/" target="_blank" rel="noopener">Entenda como a guerra contra o Irã está redesenhando o mercado global de petróleo</a>
           </h4>
           <details class="accordion" style="margin-top: 8px;">
             <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
             <div class="accordion-body">
-              <p>247 &#8211; O PT avalia acionar o Tribunal Superior Eleitoral (TSE) devido à exibição de um vídeo gerado por inteligência artificial durante a convenção oficial que lançou a candidatura do senador Flávio Bolsonaro (PL) à Presidência da República. O evento ocorreu no sábado (25), em São Paulo, relata Milena Teixeira, do Metrópoles. Integrantes da campanha do presidente Lula (PT) discutem se a peça publicitária e política exibida no encontro descumpre as normas rígidas estabelecidas pelo TSE quanto ao uso de tecnologias de IA em materiais eleitorais.</p>
+              <p>247 – A guerra contra o Irã e as tensões em torno do Estreito de Ormuz recolocaram a geopolítica no centro do mercado internacional de petróleo. A volatilidade dos preços e os riscos para o abastecimento global demonstraram que conflitos militares voltaram a exercer influência direta sobre o setor energético, afetando produtores, consumidores e rotas comerciais em todo o mundo. Essa é a avaliação de Konstantin Simonov, diretor-geral do Fundo Nacional de Segurança Energética da Rússia, em artigo publicado na Coluna Valdai desta quinzena no Brasil de Fato.</p>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:8px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
             </div>
           </details>
@@ -4812,6 +4813,16 @@
         <div class="card-section">
           <strong class="section-label">DESTAQUES DO DIA:</strong>
           <ul class="picks-list" style="margin-top:10px;">
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://www.brasil247.com/blog/a-triplice-fronteira-do-governo-trump/" target="_blank" rel="noopener" class="secondary-title-link">A tríplice fronteira do governo Trump</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Guerra, petróleo, inflação, tarifaço A guerra entre Estados Unidos e Irã tem repercussões econômicas e políticas muito além do Oriente Médio. O principal canal de transmissão é o mercado de petróleo, já que o Golfo Pérsico concentra uma parcela expressiva da produção mundial e o Estreito de Ormuz, uma das principais rotas marítimas para exportação de petróleo e gás, concentra 20% do comércio mundial de petróleo. A intensificação dos ataques e das ameaças à navegação elevou a incerteza nos mercados e provocou alta nos preços do petróleo.</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
           <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://www.brasil247.com/brasil-soberano/em-artigo-no-washington-post-lula-aponta-motivacao-ideologica-e-eleitoral-do-tarifaco-de-trump/" target="_blank" rel="noopener" class="secondary-title-link">Em artigo no Washington Post, Lula aponta motivação ‘ideológica e eleitoral’ do tarifaço de Trump</a>
             <details class="accordion" style="margin-top: 5px;">
@@ -4842,16 +4853,6 @@
               </div>
             </details>
           </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://www.brasil247.com/economia/cesta-basica-consome-mais-da-metade-do-salario-minimo-e-exige-105-horas-de-trabalho-no-brasil/" target="_blank" rel="noopener" class="secondary-title-link">Cesta básica consome mais da metade do salário mínimo e exige 105 horas de trabalho no Brasil</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>247 &#8211; O trabalhador brasileiro precisa dedicar 105 horas e 51 minutos do seu mês de trabalho apenas para conseguir adquirir os alimentos de primeira necessidade. A jornada considera uma rotina de oito horas diárias em escala 5&#215;2 e revela que o conjunto de alimentos consome, em média, 52,02% do salário-mínimo líquido no país, segundo dados da Companhia Nacional de Abastecimento (Conab) e do Departamento Intersindical de Estatística e Estudos Socioeconômicos (Dieese). O encarecimento das refeições acompanha o avanço da inflação.</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
           </ul>
         </div>
 
@@ -4863,7 +4864,7 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
-              <a href="https://www.brasil247.com/sudeste/dominado-pelo-crime-mercado-do-rio-vira-cartel-territorial-e-gera-prejuizo-de-r-214-bilhoes-por-ano/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Dominado pelo crime, mercado do Rio vira ‘cartel territorial’ e gera prejuízo de R$ 21,4 bilhões por ano</a>
+              <a href="https://www.brasil247.com/economia/cesta-basica-consome-mais-da-metade-do-salario-minimo-e-exige-105-horas-de-trabalho-no-brasil/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Cesta básica consome mais da metade do salário mínimo e exige 105 horas de trabalho no Brasil</a>
             </li>
             <li>
               <a href="https://www.brasil247.com/blog/a-nova-corrida-armamentista-e-a-soberania-brasileira/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">A nova corrida armamentista e a soberania brasileira</a>
@@ -5001,16 +5002,16 @@
         <div class="card-section">
           <div class="main-headline-badge">MATÉRIA PRINCIPAL</div>
           
-          <a href="https://www.diariodocentrodomundo.com.br/a-estrategia-do-pt-para-garantir-palanques-em-todos-estados-e-no-df-para-lula/" target="_blank" rel="noopener" style="display:block;margin:8px 0 10px;">
-            <img src="https://controle.diariodocentrodomundo.com.br/wp-content/uploads/2026/07/55412407905_2cc006930f_k.jpg" alt="" class="main-article-img" loading="lazy" onerror="this.style.display='none';" />
+          <a href="https://www.diariodocentrodomundo.com.br/deputada-pgr-video-bolsonaro-ia-convencao-flavio/" target="_blank" rel="noopener" style="display:block;margin:8px 0 10px;">
+            <img src="https://controle.diariodocentrodomundo.com.br/wp-content/uploads/2026/07/imagem-principal-deputada-pgr-video-bolsonaro-ia-convencao-flavio-17850225036a6548271d0f6_1785022503_3x2_rt.jpg" alt="" class="main-article-img" loading="lazy" onerror="this.style.display='none';" />
           </a>
           <h4 class="main-article-title">
-            <a href="https://www.diariodocentrodomundo.com.br/a-estrategia-do-pt-para-garantir-palanques-em-todos-estados-e-no-df-para-lula/" target="_blank" rel="noopener">A estratégia do PT para garantir palanques em todos estados e no DF para Lula</a>
+            <a href="https://www.diariodocentrodomundo.com.br/deputada-pgr-video-bolsonaro-ia-convencao-flavio/" target="_blank" rel="noopener">Deputada aciona PGR contra vídeo de Jair Bolsonaro feito por IA em convenção de Flávio</a>
           </h4>
           <details class="accordion" style="margin-top: 8px;">
             <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
             <div class="accordion-body">
-              <p>O presidente Lula (PT). Foto: Ricardo Stuckert/PR O presidente Luiz Inácio Lula da Silva (PT) e o Partido dos Trabalhadores decidiram abrir mão da cabeça de chapa em cerca de metade dos estados nas eleições de 2026 para montar palanques com nomes considerados mais competitivos. O PT terá candidato próprio a governador em 12 estados e no Distrito Federal, enquanto Lula já fechou palanques em todas as unidades da Federação. Com informações de Metrópoles. Nos demais estados, Lula vai apoiar partidos aliados e siglas que não necessariamente estarão com ele na disputa presidencial.</p>
+              <p>Bonecos de Flávio Bolsonaro e Jair Bolsonaro na convenção do PL. Foto: Reprodução A deputada federal Dandara (PT-MG) pediu à Procuradoria-Geral da República (PGR) que investigue a exibição de um vídeo feito com inteligência artificial do ex-presidente Jair Bolsonaro em um evento de Flávio Bolsonaro (PL), que formalizou a candidatura presidencial do senador. A parlamentar aponta possível propaganda eleitoral irregular e crime eleitoral.</p>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:8px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
             </div>
           </details>
@@ -5023,6 +5024,16 @@
         <div class="card-section">
           <strong class="section-label">DESTAQUES DO DIA:</strong>
           <ul class="picks-list" style="margin-top:10px;">
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://www.diariodocentrodomundo.com.br/a-estrategia-do-pt-para-garantir-palanques-em-todos-estados-e-no-df-para-lula/" target="_blank" rel="noopener" class="secondary-title-link">A estratégia do PT para garantir palanques em todos estados e no DF para Lula</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>O presidente Lula (PT). Foto: Ricardo Stuckert/PR O presidente Luiz Inácio Lula da Silva (PT) e o Partido dos Trabalhadores decidiram abrir mão da cabeça de chapa em cerca de metade dos estados nas eleições de 2026 para montar palanques com nomes considerados mais competitivos. O PT terá candidato próprio a governador em 12 estados e no Distrito Federal, enquanto Lula já fechou palanques em todas as unidades da Federação. Com informações de Metrópoles. Nos demais estados, Lula vai apoiar partidos aliados e siglas que não necessariamente estarão com ele na disputa presidencial.</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
           <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://www.diariodocentrodomundo.com.br/video-apoiadores-abandonam-evento-do-pl-antes-de-flavio-bolsonaro-subir-ao-palco/" target="_blank" rel="noopener" class="secondary-title-link">VÍDEO: Apoiadores abandonam evento do PL antes de Flávio Bolsonaro subir ao palco</a>
             <details class="accordion" style="margin-top: 5px;">
@@ -5053,16 +5064,6 @@
               </div>
             </details>
           </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://www.diariodocentrodomundo.com.br/sem-vice-e-sem-aliados-merval-traca-cenario-sombrio-para-flavio/" target="_blank" rel="noopener" class="secondary-title-link">“Sem vice e sem aliados”: Merval traça cenário sombrio para Flávio</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>Flávio Bolsonaro, senador pelo PL do Rio de Janeiro, em debate na CNI. Foto: Reprodução Na coluna intitulada “Tempo contra Flavio”, publicada neste domingo (26) no Globo, o jornalista Merval Pereira afirma que o pré-candidato do PL permanece competitivo, mas enfrenta riscos políticos, falta de aliados e uma campanha marcada pela inexperiência. Leia trechos: A pesquisa do DataFolha que deu uma vitória para o presidente Lula de cinco pontos percentuais sobre Flavio Bolsonaro no segundo turno, portanto fora da margem de erro, teve o dom de dar alento aos dois candidatos.</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
           </ul>
         </div>
 
@@ -5074,6 +5075,9 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
+              <a href="https://www.diariodocentrodomundo.com.br/sem-vice-e-sem-aliados-merval-traca-cenario-sombrio-para-flavio/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">“Sem vice e sem aliados”: Merval traça cenário sombrio para Flávio</a>
+            </li>
+            <li>
               <a href="https://www.diariodocentrodomundo.com.br/acredite-se-quiser-eua-chamam-de-rotineira-missao-sobre-eleicoes-barrada-pelo-itamaraty/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Acredite se quiser: EUA chamam de “rotineira” missão sobre eleições barrada pelo Itamaraty</a>
             </li>
             <li>
@@ -5084,9 +5088,6 @@
             </li>
             <li>
               <a href="https://www.diariodocentrodomundo.com.br/angela-davis-evita-citar-bolsonaro-e-alerta-contra-eleicao-de-flavio-nao-permitam/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Angela Davis evita citar Bolsonaro e alerta contra eleição de Flávio: “Não permitam”</a>
-            </li>
-            <li>
-              <a href="https://www.diariodocentrodomundo.com.br/csn-tarifaco-trump-eua-influenciaram-politica-brasileira/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Da CSN ao tarifaço de Trump: como os EUA influenciaram a política brasileira</a>
             </li></ul>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:10px;display:inline-block;"><span class="plus-icon">−</span> Recolher</span>
             </div>
@@ -5112,12 +5113,12 @@
           <div class="main-headline-badge">MATÉRIA PRINCIPAL</div>
           
           <h4 class="main-article-title">
-            <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxPa0RmNV8wOGRKdkVJRkNKTFNFRXJVbndMZlJBb0FvckViM21PZGhCN3gwUU5aSVZuT2JjMzdpR2p4dklsdjVxRVJiempKYm9WampwVFdTX0VmcXdRWkltVVUwdUd4MUhQbWtNd2lRMTU3OF94UDRpdUg1V2dtU2s3VGtvbnluWmNQVmtyaXRwV3NhS20wT0thMHVtbEhjX2w0dW5SNXoyLWRoYVFzWURBMVI3NlIzejBIdEh2bXBMOExMTlE?oc=5" target="_blank" rel="noopener">Professora Dorinha lidera disputa pelo governo do Tocantins, mostra Paraná Pesquisas - CartaCapital</a>
+            <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOblhobWtJNlctSjh5WTJuNWpBU2RZQ1lMRTY1N3RLeV9IbEhqdFhtaW1kV0ppZkZDbkpfSkN6ZUhoNG54a29vZ0F1Ync3TzNZN2VEY01wQTRFaDN2NkZSLW45bHdwTVVuZEljcDNSN0VwWEdneGFjM3dyd0dMQ20xZzh3LUFraU1PdzBtRE0zeUttUm94SFY2dlljSXhQdDRpd1hHd0tBdw?oc=5" target="_blank" rel="noopener">A nova pesquisa PoderData sobre a eleição para presidente - CartaCapital</a>
           </h4>
           <details class="accordion" style="margin-top: 8px;">
             <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
             <div class="accordion-body">
-              <p>Professora Dorinha lidera disputa pelo governo do Tocantins, mostra Paraná Pesquisas&nbsp;&nbsp;CartaCapital</p>
+              <p>A nova pesquisa PoderData sobre a eleição para presidente&nbsp;&nbsp;CartaCapital</p>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:8px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
             </div>
           </details>
@@ -5130,16 +5131,6 @@
         <div class="card-section">
           <strong class="section-label">DESTAQUES DO DIA:</strong>
           <ul class="picks-list" style="margin-top:10px;">
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOblhobWtJNlctSjh5WTJuNWpBU2RZQ1lMRTY1N3RLeV9IbEhqdFhtaW1kV0ppZkZDbkpfSkN6ZUhoNG54a29vZ0F1Ync3TzNZN2VEY01wQTRFaDN2NkZSLW45bHdwTVVuZEljcDNSN0VwWEdneGFjM3dyd0dMQ20xZzh3LUFraU1PdzBtRE0zeUttUm94SFY2dlljSXhQdDRpd1hHd0tBdw?oc=5" target="_blank" rel="noopener" class="secondary-title-link">A nova pesquisa PoderData sobre a eleição para presidente - CartaCapital</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>A nova pesquisa PoderData sobre a eleição para presidente&nbsp;&nbsp;CartaCapital</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
           <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxPZ0x6M0ZDYTR2eXdLMVdXT0otX2x5VnBFNUlPSzZYRkZsS1NhdllGdEhmZ0IwdUo4eExpZmttY3hsbzh5cHhUMGZEX1VBMDB2eEJOOERUTk9IVXlUV1BTQjZhLW9ERXJDU3RCLTRkazE2YWFBd3hJSVJlSnRhT1BFZ1d6dzR6Ui0xV0dPdlJJbEhTWi1xVkpmY2I2d19ET1Z6cllNdDFDdEhEeXM?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Em palanque de Flávio Bolsonaro, Milei chama Moraes de ‘lixo careca’ - CartaCapital</a>
             <details class="accordion" style="margin-top: 5px;">
@@ -5170,6 +5161,16 @@
               </div>
             </details>
           </li>
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOSlpUb0lMVVJ5b2NHdGdPaWNQOEtRZmpfdm5XOGxBcGNVUkdkV1pVLU9QZjdPUkRQS0VUbExmNjhMR1RleFNTWmE3OG9YQWpqMXZGcTdac1d3bmlVMlJwY2dOMkRLcElzR3Y4SkZDWjUxbjRteFdSYkhCUTRvUmYwNm9OVE5lWjM5YmpoQVNSbkdkRVpudDRoM0VxWE9YUDRuVUZZb1JKQjVvQ2pINkVqWVlXQW4wVkI3aFpPalBPYjEtdWRMLTdvdXpYc1k?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Trump volta a falar em candidatura em 2028, apesar de Constituição dos EUA limitar mandatos - CartaCapital</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Trump volta a falar em candidatura em 2028, apesar de Constituição dos EUA limitar mandatos&nbsp;&nbsp;CartaCapital</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
           </ul>
         </div>
 
@@ -5181,13 +5182,7 @@
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
             <li>
-              <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOSlpUb0lMVVJ5b2NHdGdPaWNQOEtRZmpfdm5XOGxBcGNVUkdkV1pVLU9QZjdPUkRQS0VUbExmNjhMR1RleFNTWmE3OG9YQWpqMXZGcTdac1d3bmlVMlJwY2dOMkRLcElzR3Y4SkZDWjUxbjRteFdSYkhCUTRvUmYwNm9OVE5lWjM5YmpoQVNSbkdkRVpudDRoM0VxWE9YUDRuVUZZb1JKQjVvQ2pINkVqWVlXQW4wVkI3aFpPalBPYjEtdWRMLTdvdXpYc1k?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Trump volta a falar em candidatura em 2028, apesar de Constituição dos EUA limitar mandatos - CartaCapital</a>
-            </li>
-            <li>
               <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxQQkMwZnlnSFpzOW5CcFBqcWU4eGZZdmd3MHA2ZlV2Q2hCazFnSEt5Y1hrMUhrRGtKQVNoeHJ0V0JSeldzT3h5X0xNV2ZQQy1ZcTN0YUMtTjlCM01sak92b0hrbXlCS1ZkS1dEN3dxc21FZkhsM08xOG82YzE3VWw0LW50NGtSNHRUUFZMdmZ2YkFZYlNsSVo3d0J0NHpScTJMbFlIR2VHQjhocEFUaDJKM1dveGRIMjY2UGtJWEJMeFFucHM?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Trump prepara envio de representantes para acompanhar eleições no Brasil, mas Itamaraty nega vistos - CartaCapital</a>
-            </li>
-            <li>
-              <a href="https://news.google.com/rss/articles/CBMivAFBVV95cUxNMFh6bnJ1U1JJNG5KZVNJOWVmUkIyM2xVOU9pd2ZCWDFsS0RHa1dRVDhUd3dJTXZXNVFEMk4tTFZ4ZDgxc0U5V2t2bC1wRmlsREo5enRYcmhrMVY1Y3dOemM0eEFZaXFzQlNnbVctMVkxaFFQaXk4Q084NVd6czYwYlh3QTc2bmlMM2NfdTNJXzIwRXB5aXhLZElTS1dmbVFQRXBlU1dIVW4xY2ZlVFV3eUxrRUVPdTh2X3JLUw?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Eduardo Gomes lidera disputa ao Senado no Tocantins, segundo o Paraná Pesquisas - CartaCapital</a>
             </li>
             <li>
               <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNZ0o4dkR3REZBYUl0TU9kMUNCU0RjemhJWE9sODZkUm84Q3FoU05uMDZsdjNOdkVYYzlQWW83d1lFcl9UUUlzT25Bd0NaUVBuSk9VT0ZuVGdCUFg5OEcxVWZKTTByaWh1dmtXOWFTRWVOaUV5SC1KUy05c1kxVFFBS29OemhoajVyUDJYaVFienBqV3RWb0JzREhObkhQOUIzWWc3S3dTdF96TzVlRC1aank5Qi1YY0VYV05fVjZlSQ?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Atropelamento deixa ao menos um morto e 15 feridos após marcha do Orgulho em Berlim - CartaCapital</a>
@@ -5200,6 +5195,12 @@
             </li>
             <li>
               <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPNUlCYzVDN2JNWVc2OGhYdDh3M1poTUhtQWZfcnNzMGozdGh5Vk5ELU1XVXkwOEgzcWlwR0NaSHNmSlBpa2VOT29MbWZXdUVPbllRTTBwZ0ZIMFlTY1ZkWlJ0ZEhGVWVoTTZTTVNzazBKQk9vbWZPdGpmNk1qR25tb3pyY08yN3EyN0F2LXRsc09Xa1UtTWZUSmw0WmdkVlJjR3VXQkxBc2hhbGprR2pQNXBQRQ?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">3 receitas de peixe assado para um almoço de sábado saudável e saboroso - CartaCapital</a>
+            </li>
+            <li>
+              <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxONFM0OE0tbGREaE5qU0ZaYnlxUVFaM1JnMGV5aTRQc2MxdUJkRld5MUFsdnJVbUxzM0ZTTW9PSFljYmp0Mk1lUDlScTBnbjlOVEliOEMwTDgxNEVreFRXT1FtaHEzSlNGQUtXWU9JU2M1YmFJTmV0cGZrd19IVVh4aFpWZWJmb1I1UC1uTUg5N1Z5N2lYTnAzUW9Kemp1b295dVZoelRtSjZodEMyR0hIN2tBaV8ybHprRzRyeW5lMVRCdk0?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Com desistência de Joaquim Barbosa, DC lança Clariana Barão na disputa pelo Planalto - CartaCapital</a>
+            </li>
+            <li>
+              <a href="https://news.google.com/rss/articles/CBMimAFBVV95cUxNVDB5elRxXzYzTE80bG1GVF8zbGpSSmg2bktPSVV2UXJobGV2QTJyc0JyZHZDNGk2RE1Zei1uNmxjaWlCT3pQTTJVQ3U1eFl5T0NLbWFYQWtyRnZiaGYxdlJvb3VtNU81RGRvbzNjZGhUWHhTR3dnR3pmdXdMVTAxQjdtOHh1Z25XSGl1TDkwNnJlc0VtVm1sLQ?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">5 atitudes para ter que encantam no mercado de trabalho e elevam o networking - CartaCapital</a>
             </li></ul>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:10px;display:inline-block;"><span class="plus-icon">−</span> Recolher</span>
             </div>
@@ -5470,6 +5471,26 @@
           <strong class="section-label">DESTAQUES DO DIA:</strong>
           <ul class="picks-list" style="margin-top:10px;">
           <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://oantagonista.com.br/mundo/netanyahu-conversa-com-rubio-sobre-ofensiva-dos-eua-contra-tpi/" target="_blank" rel="noopener" class="secondary-title-link">Netanyahu conversa com Rubio sobre ofensiva dos EUA contra TPI</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>O primeiro-ministro de Israel, Benjamin Netanyahu, afirmou neste domingo, 26, que conversou com o secretário de Estado dos EUA, Marco Rubio, sobre a campanha de Washington para desmantelar o Tribunal Penal Internacional (TPI). Segundo Netanyahu, Rubio reafirmou a intenção dos EUA de adotar medidas contra a corte.&#160; &#8220;Ontem à noite falei com o secretário de... The post Netanyahu conversa com Rubio sobre ofensiva dos EUA contra TPI appeared first on O Antagonista.</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://oantagonista.com.br/ladooa/entretenimento/truques-caseiros-por-que-colocar-folhas-de-louro-no-limao/" target="_blank" rel="noopener" class="secondary-title-link">Truques caseiros: Por que colocar folhas de louro no limão?</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Misturar folhas de louro com limão voltou a chamar atenção nas redes sociais e em sites de dicas domésticas. O método promete perfumar ambientes e até oferecer benefícios para a saúde, mas especialistas alertam que parte das alegações divulgadas na internet não possui comprovação científica. Entenda o que realmente se sabe sobre essa combinação e... The post Truques caseiros: Por que colocar folhas de louro no limão? appeared first on O Antagonista.</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
+          <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://oantagonista.com.br/ladooa/variedades/sobremesa-de-domingo-3-receitas-faceis-e-deliciosas-para-fazer-em-casa/" target="_blank" rel="noopener" class="secondary-title-link">Sobremesa de domingo: 3 receitas fáceis e deliciosas para fazer em casa</a>
             <details class="accordion" style="margin-top: 5px;">
               <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
@@ -5489,26 +5510,6 @@
               </div>
             </details>
           </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://oantagonista.com.br/brasil/cenipa-voepass-simulava-reparos-em-avioes-para-driblar-prazos-de-manutencao/" target="_blank" rel="noopener" class="secondary-title-link">Cenipa: Voepass simulava reparos em aviões para driblar prazos de manutenção</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>O relatório final do Centro de Investigação e Prevenção de Acidentes Aeronáuticos (Cenipa) sobre a queda do voo 2283 da Voepass apontou que a companhia adotava práticas para ocultar problemas técnicos em aeronaves e evitar o cumprimento de prazos de manutenção. O acidente matou 62 pessoas em Vinhedo (SP), em agosto de 2024. Segundo o... The post Cenipa: Voepass simulava reparos em aviões para driblar prazos de manutenção appeared first on O Antagonista.</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://oantagonista.com.br/economia/depois-de-93-anos-rede-com-400-lojas-perde-sua-ultima-chance-de-resgate-e-manda-12-500-trabalhadores-para-casa/" target="_blank" rel="noopener" class="secondary-title-link">Depois de 93 anos, rede com 400 lojas perde sua última chance de resgate e manda 12.500 trabalhadores para casa</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>A rede com 400 lojas era a Wilko, varejista britânica fundada em 1930 que entrou em administração após não obter financiamento para continuar. A tentativa final de preservar parte das unidades fracassou, as 408 filiais foram encerradas e mais de 12 mil empregos desapareceram. Qual rede com 400 lojas perdeu sua última chance de resgate?... The post Depois de 93 anos, rede com 400 lojas perde sua última chance de resgate e manda 12.500 trabalhadores para casa appeared first on O Antagonista.</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
           </ul>
         </div>
 
@@ -5519,6 +5520,12 @@
             <summary><span class="plus-icon">+</span> Mais notícias do dia (7)</summary>
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
+            <li>
+              <a href="https://oantagonista.com.br/brasil/cenipa-voepass-simulava-reparos-em-avioes-para-driblar-prazos-de-manutencao/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Cenipa: Voepass simulava reparos em aviões para driblar prazos de manutenção</a>
+            </li>
+            <li>
+              <a href="https://oantagonista.com.br/economia/depois-de-93-anos-rede-com-400-lojas-perde-sua-ultima-chance-de-resgate-e-manda-12-500-trabalhadores-para-casa/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Depois de 93 anos, rede com 400 lojas perde sua última chance de resgate e manda 12.500 trabalhadores para casa</a>
+            </li>
             <li>
               <a href="https://oantagonista.com.br/ladooa/carros/uma-cacamba-de-943-litros-agora-trabalha-com-sistema-hibrido-e-tracao-integral-inteligente/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Uma caçamba de 943 litros agora trabalha com sistema híbrido e tração integral inteligente</a>
             </li>
@@ -5533,12 +5540,6 @@
             </li>
             <li>
               <a href="https://oantagonista.com.br/brasil/master-transferiu-r-57-bilhoes-em-creditos-sob-suspeita-antes-de-liquidacao/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Master transferiu R$ 5,7 bilhões em créditos sob suspeita antes de liquidação</a>
-            </li>
-            <li>
-              <a href="https://oantagonista.com.br/mundo/carros-passam-a-vigiar-a-velocidade-e-avisar-toda-vez-que-motorista-ultrapassa-o-limite/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Carros passam a vigiar a velocidade e avisar toda vez que motorista ultrapassa o limite</a>
-            </li>
-            <li>
-              <a href="https://oantagonista.com.br/economia/governo-emite-prazo-para-troca-de-rg-antigo-pela-nova-cin/" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Governo emite prazo para troca de RG antigo pela nova CIN</a>
             </li></ul>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:10px;display:inline-block;"><span class="plus-icon">−</span> Recolher</span>
             </div>
@@ -5564,12 +5565,12 @@
           <div class="main-headline-badge">MATÉRIA PRINCIPAL</div>
           
           <h4 class="main-article-title">
-            <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNdGxuN3FHN3RwZGRjeUNEOGh0UWVENUhuUjdyY0Rody1Ha2UwcFQ1aVpEbDQ2U3ZZWjNQdDJaY1hueFFNTzBqT1h3ZVJzTUljVExSWUYxdm8yVVEwNTh3NWJTT1ZycEwweUJNYWIwS0daMWV0cWRnR0h6czV5SHFzX3pSOW1PdTNFMi1ZUEkxMk9VdzF6alhZM2JwWnhjMlUxVHE2VzRuTlhGWXJYeDlDWURMUzUzUEljVU1WOFFtSVBPSm10Y1Rj?oc=5" target="_blank" rel="noopener">Leis criadas para proteger o cidadão viram escudo para blindar o poder público - Gazeta do Povo</a>
+            <a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPT3pmNm93cnlBQnE5QnRra0NpbnR0M1VnUU1TeHpoZUZydW5CZXItVlFHYVByOWtiNFM0aDVnVWc0RktSYklmU1cxekloRXdOSW1pT0U5eUdRU2swcEdzaU1vLU9EbU5fMjJtS0NwaDFLWTNzb2ZKdnJaTlBGZzJCc215bmliVDB0cFl1R0ZsRTJFLUQ3?oc=5" target="_blank" rel="noopener">Brasileiros impulsionam setor imobiliário do Paraguai - Gazeta do Povo</a>
           </h4>
           <details class="accordion" style="margin-top: 8px;">
             <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
             <div class="accordion-body">
-              <p>Leis criadas para proteger o cidadão viram escudo para blindar o poder público&nbsp;&nbsp;Gazeta do Povo</p>
+              <p>Brasileiros impulsionam setor imobiliário do Paraguai&nbsp;&nbsp;Gazeta do Povo</p>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:8px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
             </div>
           </details>
@@ -5582,6 +5583,16 @@
         <div class="card-section">
           <strong class="section-label">DESTAQUES DO DIA:</strong>
           <ul class="picks-list" style="margin-top:10px;">
+          <li class="pick-item" style="margin-bottom: 8px;">
+            <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxNdGxuN3FHN3RwZGRjeUNEOGh0UWVENUhuUjdyY0Rody1Ha2UwcFQ1aVpEbDQ2U3ZZWjNQdDJaY1hueFFNTzBqT1h3ZVJzTUljVExSWUYxdm8yVVEwNTh3NWJTT1ZycEwweUJNYWIwS0daMWV0cWRnR0h6czV5SHFzX3pSOW1PdTNFMi1ZUEkxMk9VdzF6alhZM2JwWnhjMlUxVHE2VzRuTlhGWXJYeDlDWURMUzUzUEljVU1WOFFtSVBPSm10Y1Rj?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Leis criadas para proteger o cidadão viram escudo para blindar o poder público - Gazeta do Povo</a>
+            <details class="accordion" style="margin-top: 5px;">
+              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
+              <div class="accordion-body">
+                <p>Leis criadas para proteger o cidadão viram escudo para blindar o poder público&nbsp;&nbsp;Gazeta do Povo</p>
+                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
+              </div>
+            </details>
+          </li>
           <li class="pick-item" style="margin-bottom: 8px;">
             <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxOOTNGSUwwR1BRdEpjekJaaVBVeUpqZTdSTHhwZXVteW11QVlDcjY2aDFXUi1HZjJDRFB1MHU2RlNBQ1FmNmhNLXh6WnQ4djd0akVNY0pZZDF4U1phSF9VLVpuU1lpamFaTGd0a19aVDlDeW1PRGl3aUJXdmZQeUo3d0gxMVdGZXBKaVhWVmNmS3hoa1J0UVpaNnhMYk93X3JmcHVNWjNB?oc=5" target="_blank" rel="noopener" class="secondary-title-link">Ucrânia aniquila força de tanques da Rússia com ataque de drones - Gazeta do Povo</a>
             <details class="accordion" style="margin-top: 5px;">
@@ -5612,16 +5623,6 @@
               </div>
             </details>
           </li>
-          <li class="pick-item" style="margin-bottom: 8px;">
-            <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOM3VaZDNmaG9aSGpRVTVpWnhIQ2NIQWtqUFRSd2tfeV9jUUZwYU1WSDU1MWM4VWYxWDJxSzNkNzcxTHdpWFNRZTJVMmE2V1pmeW44MU1USXlQSmhIRTFzdTJHcldyMTk4ektweE9pRVZKS2dtU1BXRDNsbWVnRzdPeEVlX2NTby1IZ096NWo0ODkwNV8xME5oelk0cVpVLUhFM21IV2ZJaw?oc=5" target="_blank" rel="noopener" class="secondary-title-link">No Brasil, Milei chama Lula de “presidiário” e Moraes de “lixo careca” - Gazeta do Povo</a>
-            <details class="accordion" style="margin-top: 5px;">
-              <summary><span class="plus-icon">+</span> Resumo da Matéria</summary>
-              <div class="accordion-body">
-                <p>No Brasil, Milei chama Lula de “presidiário” e Moraes de “lixo careca”&nbsp;&nbsp;Gazeta do Povo</p>
-                <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:6px;display:inline-block;"><span class="plus-icon">−</span> Fechar</span>
-              </div>
-            </details>
-          </li>
           </ul>
         </div>
 
@@ -5632,6 +5633,9 @@
             <summary><span class="plus-icon">+</span> Mais notícias do dia (7)</summary>
             <div class="accordion-body" style="margin-top:8px;">
               <ul class="secondary-list">
+            <li>
+              <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOM3VaZDNmaG9aSGpRVTVpWnhIQ2NIQWtqUFRSd2tfeV9jUUZwYU1WSDU1MWM4VWYxWDJxSzNkNzcxTHdpWFNRZTJVMmE2V1pmeW44MU1USXlQSmhIRTFzdTJHcldyMTk4ektweE9pRVZKS2dtU1BXRDNsbWVnRzdPeEVlX2NTby1IZ096NWo0ODkwNV8xME5oelk0cVpVLUhFM21IV2ZJaw?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">No Brasil, Milei chama Lula de “presidiário” e Moraes de “lixo careca” - Gazeta do Povo</a>
+            </li>
             <li>
               <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTFBFYmJTRFhLY1FrdWU0SHdvR2pIMlVNTFFMQjlfb1JibnV6alpVNktyNlpfTzZWZGl4MnkwTmp1MWVVeXlBeUdHTm1fc1RsaVExb05BeDJHd0ZCUnpZVDAtd3d2RlRNSEk0NDdMaDl3d3NtbmVKd2UwanZzbWc?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Trump 2028: presidente dos EUA veste boné e faz piada - Gazeta do Povo</a>
             </li>
@@ -5649,9 +5653,6 @@
             </li>
             <li>
               <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQQ3hyMkhhWTdHZ2JtRUF0Z0o0UXc4azBlck9qYjVBbTlseVoyU0t6ZURoS25XbU5xbDFYbERPeC1BNnZkTEw0b3RhTklseFhNQXg4OUpVR3lPTmRuMUJOY0J2SnpFUWtmTlZtUkNEem9TdVVPRmV1WGtsQVlTamNSMlVGV2U5Q3ltemVScUpmd3VwaUJqdjJ1Z1U3ZGFnVVJEby1CR0FSUHM0YWRnRnBRTWM0SkZrelZxRTBVekpR?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Netanyahu envia vídeo de apoio à campanha presidencial de Flávio Bolsonaro - Gazeta do Povo</a>
-            </li>
-            <li>
-              <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQWjJ4RWktNTcxSGt2WDhLOU13cFV1bHh4YnNiLWJDQ1BYbzZmV00wLXlMQU9QV1ZTQWZfVFphbTktTlpFQThQYjZDdy1WQTYycktHZ21zQWxxRklxaEg5ZEdmTWJBOWdqbkhjMWU3NU16dFI3dzZIN19rNjhZUUpOOHdkZDJ1eDdMTHRHd1J1RmRqQXkzUl9HSFp3dV8xbnRWTWVfSm9Hd00?oc=5" target="_blank" rel="noopener" class="secondary-title-link" style="color:var(--ink-soft);">Boom de médicos e mudanças na profissão fragilizam qualidade da assistência médica - Gazeta do Povo</a>
             </li></ul>
               <span class="close-link-text" onclick="closeAccordion(this)" style="margin-top:10px;display:inline-block;"><span class="plus-icon">−</span> Recolher</span>
             </div>
