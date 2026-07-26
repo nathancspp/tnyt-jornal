@@ -4,6 +4,22 @@
 
 ---
 
+## 26/07/2026 — Edição do dia (Automação Editor-Chefe)
+
+| Caderno | Manchete | Fonte |
+|---|---|---|
+| Sociedade | Governo e EBC impulsionam pautas públicas e cidadãs na cobertura nacional | Agência Brasil |
+| Política | Projetos no Congresso e decisões do STF marcam a semana em Brasília | Poder360 |
+| Economia | Mercado ajusta projeções de juros e Ibovespa busca consolidação | InfoMoney |
+| Tecnologia & IA | Avanço de novos modelos de IA generativa revoluciona automação e agentes | TechCrunch AI |
+| Marketing | Estratégias de GEO, vídeo curto e IA ganham força no mercado publicitário | Meio & Mensagem |
+| Futebol | Internacional prepara equipe para desafios decisivos na temporada | GE - Inter |
+| Clima (capa) | Balneário Gaivota/SC: 20.2°C, céu limpo / poucas nuvens | Open-Meteo |
+
+**Notas da edição:** Edição do dia 26/07/2026 montada e atualizada pelo agente. Novo layout com Matéria Principal + 4 Destaques do dia com resumos inline sem meta-linguagem, tradução automática de fontes em inglês e barra de clima integrada.
+
+---
+
 ## 25/07/2026 — Edição do dia
 
 | Caderno | Manchete | Fonte |
