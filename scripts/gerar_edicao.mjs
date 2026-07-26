@@ -295,6 +295,8 @@ async function fetchFeedGroup(feedList, minTimestamp) {
           if (resumo) resumo = await translateToPortuguese(resumo);
         }
 
+        const pubTime = (item.pubDate || item.isoDate) ? new Date(item.pubDate || item.isoDate).getTime() : 0;
+
         return {
           fonte: f.name,
           domain: (() => { try { return new URL(item.link || 'https://google.com').hostname.replace(/^www\./, ''); } catch (_) { return 'portal.com'; } })(),
@@ -303,6 +305,7 @@ async function fetchFeedGroup(feedList, minTimestamp) {
           imagem: imageUrl,
           link: item.link || '#',
           score: getInterestScore(title, resumo),
+          pubDateTimestamp: isNaN(pubTime) ? 0 : pubTime,
         };
       }));
 
@@ -318,8 +321,12 @@ async function fetchFeedGroup(feedList, minTimestamp) {
 function renderChannelCard(channelName, allItems) {
   if (!allItems.length) return '';
 
-  // Sort items: first by interest score (highest first), then as-is
-  const sorted = [...allItems].sort((a, b) => (b.score?.score || 0) - (a.score?.score || 0));
+  // Sort items: first by interest score (highest first), then by newest publication date
+  const sorted = [...allItems].sort((a, b) => {
+    const scoreDiff = (b.score?.score || 0) - (a.score?.score || 0);
+    if (scoreDiff !== 0) return scoreDiff;
+    return (b.pubDateTimestamp || 0) - (a.pubDateTimestamp || 0);
+  });
 
   // Main article = highest scoring or first item
   const main = sorted[0];
@@ -529,8 +536,14 @@ ${renderSection('Futebol', cadernosData.Futebol, 'Colorado em Primeiro Lugar')}
   const part2 = html.split('<footer>')[1];
   html = `${part1}<!-- ABA CADERNOS -->\n${cadernosHTML}\n\n${canaisHTML}\n\n  <footer>${part2}`;
 
+  // Replace masthead date dynamically to today's date (e.g. 26 DE JULHO DE 2026)
+  const monthsPT = ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'];
+  const now = new Date();
+  const dateFormatted = `${now.getDate()} DE ${monthsPT[now.getMonth()]} DE ${now.getFullYear()}`;
+  html = html.replace(/<span>\d{1,2} DE [A-ZÇ]+ DE \d{4}<\/span>/gi, `<span>${dateFormatted}</span>`);
+
   fs.writeFileSync(indexPath, html, 'utf-8');
-  console.log('✅ Edição gerada! Cards limpos com Matéria Principal + 4 Destaques + Resumos reais.');
+  console.log(`✅ Edição gerada para ${dateFormatted}! Cards limpos com Matéria Principal + 4 Destaques + Resumos reais.`);
 
   updateCheckpointTimestamp(dataDir);
 }
