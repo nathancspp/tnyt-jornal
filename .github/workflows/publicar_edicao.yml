@@ -1,0 +1,44 @@
+name: Publicar Edição Diária TNYT
+
+on:
+  schedule:
+    # 11:00 UTC = 08:00 Horário de Brasília
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar Dependências
+        run: npm ci
+
+      - name: Gerar Edição do Dia
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/gerar_edicao.mjs
+
+      - name: Commit e Push das Alterações
+        run: |
+          git config user.name "TNYT Bot"
+          git config user.email "bot@tnyt.local"
+          git add index.html ARQUIVO.md FONTES.md
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "edição $(date +%d/%m) [auto]"
+            git push
+          else
+            echo "Nenhuma alteração para commitar."
+          fi

@@ -1,0 +1,220 @@
+{
+  "weatherData": [
+    {
+      "cidade": "Balneário Gaivota/SC",
+      "temp": "18.9",
+      "humidade": 87,
+      "vento": "11.3",
+      "desc": "poucas nuvens",
+      "max": "20.1",
+      "min": "13.7",
+      "rainProb": 72
+    },
+    {
+      "cidade": "Porto Alegre/RS",
+      "temp": "22.4",
+      "humidade": 63,
+      "vento": "7.8",
+      "desc": "céu limpo",
+      "max": "22.5",
+      "min": "12.5",
+      "rainProb": 25
+    },
+    {
+      "cidade": "Florianópolis/SC",
+      "temp": "21.0",
+      "humidade": 74,
+      "vento": "10.1",
+      "desc": "poucas nuvens",
+      "max": "21.7",
+      "min": "12.8",
+      "rainProb": 10
+    },
+    {
+      "cidade": "Vicente Dutra/RS",
+      "temp": "23.6",
+      "humidade": 65,
+      "vento": "5.9",
+      "desc": "poucas nuvens",
+      "max": "23.8",
+      "min": "13.9",
+      "rainProb": 63
+    },
+    {
+      "cidade": "Roque Gonzales/RS",
+      "temp": "21.8",
+      "humidade": 75,
+      "vento": "7.0",
+      "desc": "encoberto",
+      "max": "22.4",
+      "min": "13.3",
+      "rainProb": 4
+    }
+  ],
+  "canaisData": {
+    "nacionais": {
+      "G1 (Globo)": [],
+      "Folha de S.Paulo": [],
+      "Record (R7)": [],
+      "SBT News": [],
+      "Metrópoles": []
+    },
+    "internacionais_br": {
+      "BBC News Brasil": [],
+      "DW Brasil": [],
+      "RFI Brasil": [],
+      "CNN Brasil": [],
+      "Investing.com Brasil": [
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Como Abhijeet Dipke tornou-se a face do 1º protesto da Geração Z na Índia",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/economic-indicators/como-abhijeet-dipke-tornouse-a-face-do-1o-protesto-da-geracao-z-na-india-2013657",
+          "data": "2026-07-25 17:28:37"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Michigan enfrenta surto parasitário enquanto sofre com cortes de Trump",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/stock-market-news/michigan-enfrenta-surto-parasitario-enquanto-sofre-com-cortes-de-trump-2013656",
+          "data": "2026-07-25 17:14:06"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "EUA tentaram enviar representantes ao Brasil para questionar sistema eleitoral, dizem fontes",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/eua-tentaram-enviar-representantes-ao-brasil-para-questionar-sistema-eleitoral-dizem-fontes-2013623",
+          "data": "2026-07-25 16:56:30"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Canadense é presa na Bélgica sob acusação de espionagem em instalação da Otan",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/canadense-e-presa-na-belgica-sob-acusacao-de-espionagem-em-instalacao-da-otan-2013653",
+          "data": "2026-07-25 16:49:06"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Guterres se reúne com Sharaa, da Síria, em 1ª visita de um secretário-geral da ONU a Damasco em 17 anos",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/guterres-se-reune-com-sharaa-da-siria-em-1a-visita-de-um-secretariogeral-da-onu-a-damasco-em-17-anos-2013648",
+          "data": "2026-07-25 16:35:09"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "França detém seis por suspeita de plano contra sinagoga",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/franca-detem-seis-por-suspeita-de-plano-contra-sinagoga-2013647",
+          "data": "2026-07-25 16:35:08"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Trinta e cinco mortos e 30 feridos em colisão entre ônibus na Síria",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/trinta-e-cinco-mortos-e-30-feridos-em-colisao-entre-onibus-na-siria-2013646",
+          "data": "2026-07-25 16:21:07"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Israel mata alto oficial da polícia liderada pelo Hamas em Gaza, dizem médicos e polícia",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/economy-news/israel-mata-alto-oficial-da-policia-liderada-pelo-hamas-em-gaza-dizem-medicos-e-policia-2013645",
+          "data": "2026-07-25 16:14:07"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Número de casos confirmados de Ebola no Congo sobe para 2.973, incluindo 1.309 mortes",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/numero-de-casos-confirmados-de-ebola-no-congo-sobe-para-2973-incluindo-1309-mortes-2013644",
+          "data": "2026-07-25 16:14:07"
+        },
+        {
+          "fonte": "Investing.com Brasil",
+          "domain": "br.investing.com",
+          "titulo": "Índia manterá diálogo com EUA sobre acordo comercial após novas tarifas",
+          "resumoOriginal": "",
+          "link": "https://br.investing.com/news/world-news/india-mantera-dialogo-com-eua-sobre-acordo-comercial-apos-novas-tarifas-2013641",
+          "data": "2026-07-25 16:07:07"
+        }
+      ]
+    },
+    "internacionais_world": {
+      "The New York Times": [],
+      "BBC News World": [],
+      "The Guardian": [],
+      "Associated Press": [],
+      "Al Jazeera English": []
+    },
+    "esquerda": {
+      "Brasil 247": [],
+      "The Intercept Brasil": [],
+      "DCM": [],
+      "CartaCapital": [],
+      "Democracy Now!": []
+    },
+    "direita": {
+      "Jovem Pan News": [],
+      "Revista Oeste": [],
+      "O Antagonista": [],
+      "Gazeta do Povo": [],
+      "Fox News": []
+    }
+  },
+  "cadernosData": {
+    "Sociedade": {
+      "G1 Sociedade": [],
+      "Agência Brasil": [],
+      "BBC Brasil Sociedade": []
+    },
+    "Politica": {
+      "Poder360": [],
+      "G1 Política": [],
+      "Folha Poder": []
+    },
+    "Economia": {
+      "InfoMoney": [
+        {
+          "fonte": "InfoMoney",
+          "domain": "infomoney.com.br",
+          "titulo": "Barcelona confirma morte de trabalhador em obras do Spotify Camp Nou",
+          "resumoOriginal": "Esse foi o primeiro acidente fatal desde que a reforma teve início, em 2023; diretoria lamentou o ocorrido\nThe post Barcelona confirma morte de trabalhador em obras do Spotify Camp Nou appeared first on InfoMoney.",
+          "link": "https://www.infomoney.com.br/esportes/barcelona-confirma-morte-de-trabalhador-em-obras-do-spotify-camp-nou/",
+          "data": "Sat, 25 Jul 2026 17:42:45 +0000"
+        },
+        {
+          "fonte": "InfoMoney",
+          "domain": "infomoney.com.br",
+          "titulo": "Com Milei e ausência de familiares, Flávio Bolsonaro lança candidatura à Presidência",
+          "resumoOriginal": "No evento, marcado pela ausência de Michelle e irmãos, mensagens exibidas em nome de Jair Bolsonaro reforçaram a continuidade do projeto político nas mãos de Flávio\nThe post Com Milei e ausência de familiares, Flávio Bolsonaro lança candidatura à Presidência appeared first on InfoMoney.",
+          "link": "https://www.infomoney.com.br/politica/com-milei-e-ausencia-de-familiares-flavio-bolsonaro-lanca-candidatura-a-presidencia/",
+          "data": "Sat, 25 Jul 2026 17:42:06 +0000"
+        }
+      ],
+      "InvestNews": [],
+      "NeoFeed": []
+    },
+    "Tech": {
+      "TechCrunch AI": [],
+      "Tecnoblog": [],
+      "Wired AI": []
+    },
+    "Marketing": {
+      "Meio & Mensagem": [],
+      "Marketing Dive": [],
+      "Conversion": []
+    },
+    "Futebol": {
+      "ge.globo Inter": [],
+      "Revista Colorada": []
+    }
+  }
+}
